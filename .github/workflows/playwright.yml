@@ -1,0 +1,39 @@
+name: Günlük Playwright Testleri
+
+on:
+  schedule:
+    - cron: '10 9 * * *'
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - run: npx playwright install --with-deps chromium
+
+      - run: npx playwright test --reporter=json
+        continue-on-error: true
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: test-results.json
+
+      - name: test-results.json kaydet
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actionom"
+          git add test-results.json
+          git diff --cached --quiet || git comdate -u +%Y-%m-%d)"
+          git push
