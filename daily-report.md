@@ -1,15 +1,14 @@
 # Günlük Playwright Test Raporu
-**Tarih:** 2026-06-01 10:37 UTC
+**Tarih:** 2026-06-01T10:37:45.037Z
 
 ## Özet
 - Toplam test: 0
 - Geçen: 0
 - Başarısız: 0
-- Derleme/Yapılandırma Hatası: 2
 
 ## Sonuç
 
-Testler çalıştırılamadı — test dosyasında **derleme hatası** var.
+⚠️ Testler çalıştırılamadı — test dosyasında **derleme hatası** var.
 
 ### Hatalar
 
@@ -26,4 +25,4 @@ Testler çalıştırılamadı — test dosyasında **derleme hatası** var.
 
 ### Olası Sebep
 
-Kod hatası — `@playwright/test` modülünden `test` nesnesi import edilmemiş. Site ile veya ağ ile ilgili bir sorun değil; test dosyası düzeltilmeden testler çalışmayacak.
+Kod hatası — `@playwright/test` modülünden `test` nesnesi import edilmemiş. Site veya ağ ile ilgili bir sorun değil; test dosyası düzeltilmeden testler çalışmayacak.
