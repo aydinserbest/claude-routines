@@ -5,36 +5,25 @@
 - Toplam test: 0
 - Geçen: 0
 - Başarısız: 0
-- Çalışamayan (hata): 1 test dosyası
+- Derleme/Yapılandırma Hatası: 2
 
 ## Sonuç
 
-Testler **çalışamadı** — test dosyasında bir kod hatası var.
+Testler çalıştırılamadı — test dosyasında **derleme hatası** var.
 
-### Hata Detayı
+### Hatalar
 
-**`homepage.spec.js` dosyası yüklenemedi:**
-```
-ReferenceError: test is not defined
-    at homepage.spec.js:1:1
-```
+**1. `ReferenceError: test is not defined`**
+- Dosya: `tests/homepage.spec.js`, 1. satır
+- `test.describe(...)` kullanılmış ancak `test` Playwright'tan import edilmemiş.
+- Dosyanın başına şu satır eklenmeli:
+  ```js
+  const { test, expect } = require('@playwright/test');
+  ```
 
-Test dosyası `test.describe(...)` kullanıyor ancak `test` değişkeni import edilmemiş. Bunun yanı sıra Playwright da "No tests found" (hiç test bulunamadı) hatası verdi.
+**2. `Error: No tests found`**
+- Yukarıdaki import hatası nedeniyle hiçbir test keşfedilemedi.
 
 ### Olası Sebep
 
-`homepage.spec.js` dosyasının en üstünde şu import satırı **eksik**:
-
-```js
-const { test, expect } = require('@playwright/test');
-```
-
-Bu, site veya ağ sorunu değil; test dosyasındaki **eksik import** nedeniyle oluşan bir yapılandırma hatasıdır.
-
-### Önerilen Düzeltme
-
-`tests/homepage.spec.js` dosyasının ilk satırına şunu ekleyin:
-
-```js
-const { test, expect } = require('@playwright/test');
-```
+Kod hatası — `@playwright/test` modülünden `test` nesnesi import edilmemiş. Site ile veya ağ ile ilgili bir sorun değil; test dosyası düzeltilmeden testler çalışmayacak.
