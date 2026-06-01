@@ -2,19 +2,25 @@
 **Tarih:** 2026-06-01 12:18 UTC
 
 ## Ozet
-- Toplam test: 9 (3 senaryo × 3 tarayici: chromium, firefox, webkit)
+- Toplam test: 9
 - Gecen: 6
 - Basarisiz: 3
 
 ## Sonuc
 
-Anlamli testlerin tumu gecti. Basarisiz gorunen 3 test (chromium, firefox, webkit) ayni senaryoya aittir: **"should have a login button"** — bu test kasitli olarak basarisiz birakılmıstır, gercek bir hata degildir.
+**3 test basarisiz oldu.**
 
-### Kasitli Basarisiz Test Detayi
-- **Test:** `Homepage > should have a login button` (`homepage.spec.js:19`)
-- **Hata:** `locator('button#login')` sayfada bulunamadi — `toBeVisible()` basarisiz oldu
-- **Sebep:** `example.com` anasayfasinda `button#login` id'li bir giris butonu bulunmamaktadir. Test bu gercegi dogrulamak uzere kasitli yazilmistir.
-- Her tarayicide 2 yeniden deneme yapildi, sonuc degismedi.
+### Basarisiz Testler
+
+**Homepage > should have a login button** (3 tarayici × 2 yeniden deneme, hepsi basarisiz)
+
+- **Hata:** `button#login` elementi sayfada bulunamadi.
+- **Beklenen:** Login butonu gorunur olmali (`toBeVisible`)
+- **Gerceklesen:** Element yok (`element(s) not found`), 3000ms zaman asimina ugradi.
+
+### Olasi Sebep Tahmini
+
+Selector degismis olmasi cok muhtemel. `button#login` ID'li eleman artik `example.com` sayfasinda bulunmuyor. Uc farkli tarayicide (chromium, firefox, webkit) ve toplam 9 denemede ayni hatanin tekrarlanmasi, gecici bir ag sorunundan ziyade HTML yapisinin degismis olduguna isaret ediyor. Login butonu farkli bir ID/class ile yeniden adlandirilmis olabilir. Sayfanin kaynak kodunu manuel inceleyip test dosyasindaki selector'u guncellemek gerekebilir.
 
 ### Gecen Testler
 | Senaryo | Chromium | Firefox | WebKit |
