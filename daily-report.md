@@ -1,28 +1,35 @@
 # Günlük Playwright Test Raporu
-**Tarih:** 2026-06-01T10:37:45.037Z
+**Tarih:** 2026-06-01 11:50 UTC
 
 ## Özet
-- Toplam test: 0
-- Geçen: 0
-- Başarısız: 0
+- Toplam test: 9
+- Geçen: 2
+- Başarısız: 7
 
 ## Sonuç
 
-⚠️ Testler çalıştırılamadı — test dosyasında **derleme hatası** var.
+Testlerin büyük çoğunluğu başarısız oldu. İki farklı hata türü tespit edildi:
 
-### Hatalar
+---
 
-**1. `ReferenceError: test is not defined`**
-- Dosya: `tests/homepage.spec.js`, 1. satır
-- `test.describe(...)` kullanılmış ancak `test` Playwright'tan import edilmemiş.
-- Dosyanın başına şu satır eklenmeli:
-  ```js
-  const { test, expect } = require('@playwright/test');
-  ```
+### Hata 1 — Chromium: "should have a login button" ❌
 
-**2. `Error: No tests found`**
-- Yukarıdaki import hatası nedeniyle hiçbir test keşfedilemedi.
+**Ne oldu:** `button#login` seçicisiyle eşleşen bir element sayfada bulunamadı. 3 deneme (retry) sonunda da aynı hata tekrarlandı.
 
-### Olası Sebep
+**Olası sebep:** Test, example.com ana sayfasında `<button id="login">` elementinin varlığını bekliyor. Ancak bu element sayfada mevcut değil. Büyük ihtimalle selector yanlış yazılmış ya da site bu butonu hiçbir zaman sunmamıştır. Site down değil (diğer Chromium testleri geçti), dolayısıyla sorun **selector ile test kodunda**.
 
-Kod hatası — `@playwright/test` modülünden `test` nesnesi import edilmemiş. Site veya ağ ile ilgili bir sorun değil; test dosyası düzeltilmeden testler çalışmayacak.
+---
+
+### Hata 2 — Firefox ve WebKit: Tüm testler ❌ (6 test)
+
+**Ne oldu:** Firefox ve WebKit tarayıcı yürütülebilir dosyaları CI ortamında bulunamadı.
+- Firefox: `/home/runner/.cache/ms-playwright/firefox-1522/firefox/firefox` bulunamadı
+- WebKit: `/home/runner/.cache/ms-playwright/webkit-2287/pw_run.sh` bulunamadı
+
+**Olası sebep:** GitHub Actions workflow'unda `npx playwright install` adımı eksik veya atlanmış. Chromium'un çalışması, Chromium'un önceden kurulu (ör. `--with-deps` ile) olduğunu gösteriyor; Firefox ve WebKit ise kurulmamış. Düzeltmek için workflow'a `npx playwright install --with-deps` adımı eklenmeli.
+
+---
+
+### Geçen testler ✅
+- Chromium — "should load successfully"
+- Chromium — "should have a heading"
