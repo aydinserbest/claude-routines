@@ -2,29 +2,39 @@
 **Tarih:** 2026-06-01 10:37 UTC
 
 ## Özet
-- Toplam test: 3
+- Toplam test: 0
 - Geçen: 0
-- Başarısız: 3 (testler çalıştırılamadı)
+- Başarısız: 0
+- Çalışamayan (hata): 1 test dosyası
 
 ## Sonuç
 
-Testler iki ayrı altyapı engeli nedeniyle **çalıştırılamadı**:
+Testler **çalışamadı** — test dosyasında bir kod hatası var.
 
-### 1. Chromium indirilemedi — ağ kısıtlaması
-Playwright, tarayıcı binary'sini `playwright.azureedge.net` adresinden indirmeye çalıştı. Bu ortamın ağ politikası bu adrese erişime izin vermiyor (`Host not in allowlist`). Tarayıcı binary olmadan testler başlatılamaz.
+### Hata Detayı
 
-**Olası sebep:** Uzak çalıştırma ortamı (remote execution) kısıtlı bir ağ politikasıyla yapılandırılmış. Playwright browser CDN'i izin listesinde değil.
+**`homepage.spec.js` dosyası yüklenemedi:**
+```
+ReferenceError: test is not defined
+    at homepage.spec.js:1:1
+```
 
-### 2. example.com erişilemiyor — aynı ağ kısıtlaması
-Hedef site `https://example.com` de aynı ağ politikası nedeniyle engellenmiş. Tarayıcı indirilse bile testler bu adrese ulaşamazdı.
+Test dosyası `test.describe(...)` kullanıyor ancak `test` değişkeni import edilmemiş. Bunun yanı sıra Playwright da "No tests found" (hiç test bulunamadı) hatası verdi.
 
-### 3. Test dosyasında import hatası (düzeltildi)
-`tests/homepage.spec.js` dosyasında `require('@playwright/test')` satırı eksikti. Bu `ReferenceError: test is not defined` hatasına yol açıyordu. Bu hata commit'lendi ve düzeltildi.
+### Olası Sebep
 
-## Tahmini Sebep
-**Çevre ortamı (environment) sorunu** — kod veya site kaynaklı değil. Bu ortamın ağ erişim politikası Playwright browser CDN'ini ve test hedefini (example.com) engelliyor. Testlerin çalışabilmesi için ya ortam ağ politikasının güncellenmesi ya da Playwright browser binary'sinin önceden ortama yüklenmesi gerekiyor.
+`homepage.spec.js` dosyasının en üstünde şu import satırı **eksik**:
 
-## Önerilen Adımlar
-1. Claude Code on the Web ortam ayarlarından ağ politikasını gözden geçir (docs: https://code.claude.com/docs/en/claude-code-on-the-web)
-2. `playwright.azureedge.net` ve `example.com` adreslerini izin listesine ekle
-3. Alternatif olarak: Playwright browser binary'sini repo'ya veya Docker image'ına önceden dahil et
+```js
+const { test, expect } = require('@playwright/test');
+```
+
+Bu, site veya ağ sorunu değil; test dosyasındaki **eksik import** nedeniyle oluşan bir yapılandırma hatasıdır.
+
+### Önerilen Düzeltme
+
+`tests/homepage.spec.js` dosyasının ilk satırına şunu ekleyin:
+
+```js
+const { test, expect } = require('@playwright/test');
+```
