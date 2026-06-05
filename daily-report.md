@@ -1,5 +1,5 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-06-03 10:49 UTC (GitHub Actions calistirma zamani)
+**Tarih:** 2026-06-05 09:10 UTC (Test calistirma zamani: 2026-06-04 10:28 UTC)
 
 ## Ozet
 - Toplam test: 9 (3 senaryo x 3 tarayici: Chromium, Firefox, WebKit)
@@ -8,24 +8,24 @@
 
 ## Sonuc
 
-**3 test basarisiz oldu.**
+**1 test senaryosu 3 tarayicida da basarisiz oldu.**
 
-### Basarisiz Testler
+### Basarisiz Test: `Homepage > should have a login button`
 
-**Homepage > should have a login button** — Chromium, Firefox ve WebKit tarayicilarinin hepsinde basarisiz.
-
-- **Hata:** `button#login` elementi sayfada bulunamadi.
-- **Beklenen:** Login butonu gorunur olmali (`toBeVisible`)
-- **Gerceklesen:** Element yok (`element(s) not found`), 3000ms zaman asimina ugradi.
-- **Deneme sayisi:** Her tarayicida 3 deneme yapildi, hepsi basarisiz.
+- **Tarayicilar:** Chromium, Firefox, WebKit
+- **Hata:** `locator('button#login')` ile aranan element sayfada bulunamadi.
+- **Beklenen:** Login butonunun gorunur olmasi (`toBeVisible`)
+- **Gerceklesen:** Element yok (`element(s) not found`), her tarayicida 3000ms zaman asimi.
+- **Deneme sayisi:** Her tarayicida 3 kez yeniden denendi, sonuc degismedi.
+- **Kod satiri:** `tests/homepage.spec.js:19`
 
 ### Olasi Sebep Tahmini
 
-**Selector degismis olmasi kuvvetle muhtemel.** Diger iki test (`should load successfully`, `should have a heading`) tum tarayicilarda basariyla gecti — bu nedenle site erisilebilir durumda, ag sorunu veya site down degil. Yalnizca `button#login` elementinin bulunamamas, sitenin anasayfasinda bir guncelleme yapildigini ve login butonunun HTML yapisinin degistigini gosteriyor. `button#login` ID'li eleman artik sayfada yok; baska bir ID/class ile yeniden adlandirilmis ya da `<a>` etiketine donusturulmus olabilir.
+**Selector yanlis veya degismis (en kuvvetli ihtimal).** Diger iki test (`should load successfully`, `should have a heading`) tum tarayicilarda basariyla gectigi icin site erisilebilir durumda — ag sorunu veya site down degil. Hata yalnizca `button#login` elementinin bulunamamasindan kaynaklaniyor. example.com bir demo/placeholder sitesidir ve gercek bir login butonu icermez; dolayisiyla test muhtemelen yanlis bir URL veya yanlis bir selector ile yazilmis.
 
 ### Onerilen Aksiyon
 
-`homepage.spec.js` satir 18'deki `button#login` selektorunu guncel HTML yapisina gore guncellenmeli.
+`tests/homepage.spec.js` dosyasindaki 18. satirda bulunan `button#login` selectorunu silinmeli ya da example.com icin anlamli bir selector ile degistirilmeli. Alternatif olarak test, login butonu olan gercek bir test ortami URL'sine yonlendirilmeli.
 
 ### Gecen Testler
 | Senaryo | Tarayici | Durum |
