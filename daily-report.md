@@ -1,5 +1,5 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-06-06 09:10 UTC (Test calistirma zamani: 2026-06-05T10:33:07Z)
+**Tarih:** 2026-06-07 UTC (Test calisma zamani: 2026-06-06 09:50 UTC)
 
 ## Ozet
 - Toplam test: 9 (3 senaryo x 3 tarayici: Chromium, Firefox, WebKit)
@@ -16,12 +16,12 @@
 - **Hata:** `locator('button#login')` ile aranan element sayfada bulunamadi.
 - **Beklenen:** Login butonunun gorunur olmasi (`toBeVisible`)
 - **Gerceklesen:** Element yok (`element(s) not found`), her tarayicida 3000ms zaman asimi.
-- **Deneme sayisi:** Her tarayicida 3 kez yeniden denendi, sonuc degismedi.
+- **Deneme sayisi:** Her tarayicida 3 kez yeniden denendi (2 retry), sonuc degismedi.
 - **Kod satiri:** `tests/homepage.spec.js:19`
 
 ### Olasi Sebep Tahmini
 
-**Selector yanlis veya degismis (en kuvvetli ihtimal).** Diger iki test (`should load successfully`, `should have a heading`) tum tarayicilarda basariyla gectigi icin site erisilebilir durumda — ag sorunu veya site down degil. Hata yalnizca `button#login` elementinin bulunamamasindan kaynaklaniyor. example.com bir demo/placeholder sitesidir ve gercek bir login butonu icermez; dolayisiyla test muhtemelen yanlis bir URL veya yanlis bir selector ile yazilmis.
+**Selector yanlis veya degismis (en kuvvetli ihtimal).** Diger iki test (`should load successfully`, `should have a heading`) tum tarayicilarda basariyla gectigi icin site erisilebilir durumda — ag sorunu veya site down degil. Hata yalnizca `button#login` elementinin bulunamamasindan kaynaklaniyor. Bu hata onceki gun de ayni sekilde tekrarlamistir; kalici bir sorun oldugu anlasilmaktadir.
 
 ### Onerilen Aksiyon
 
