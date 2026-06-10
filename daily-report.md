@@ -1,5 +1,5 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-06-09 09:10 UTC
+**Tarih:** 2026-06-10 09:10 UTC
 
 ## Ozet
 - Toplam test: 9 (3 senaryo x 3 tarayici: Chromium, Firefox, WebKit)
@@ -37,4 +37,4 @@
 | should have a heading    | Firefox  | GECTI |
 | should have a heading    | WebKit   | GECTI |
 
-**GitHub Actions Build:** https://github.com/aydinserbest/claude-routines/actions/runs/27132512922
+**GitHub Actions Build:** https://github.com/aydinserbest/claude-routines/actions/runs/27199821567
