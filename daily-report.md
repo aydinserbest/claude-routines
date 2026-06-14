@@ -1,5 +1,5 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-06-13 | Son calisma: 2026-06-12 10:40 UTC
+**Tarih:** 2026-06-14 | Son calisma: 2026-06-13 10:09 UTC
 
 ## Ozet
 - Toplam test: 9 (3 senaryo x 3 tarayici: Chromium, Firefox, WebKit)
@@ -25,7 +25,7 @@
 
 ### Onerilen Aksiyon
 
-`tests/homepage.spec.js` dosyasindaki 18. satirda bulunan `button#login` selectorunu guncellenmeli ya da example.com icin anlamli bir selector ile degistirilmeli.
+`tests/homepage.spec.js` dosyasindaki 18. satirda bulunan `button#login` selectorunu guncelle ya da example.com icin anlamli bir selector ile degistir.
 
 ### Gecen Testler
 | Senaryo | Tarayici | Durum |
@@ -37,4 +37,4 @@
 | should have a heading    | Firefox  | GECTI |
 | should have a heading    | WebKit   | GECTI |
 
-**GitHub Actions Build:** https://github.com/aydinserbest/claude-routines/actions/runs/27410592619
+**GitHub Actions Build:** https://github.com/aydinserbest/claude-routines/actions/runs/27463754311
