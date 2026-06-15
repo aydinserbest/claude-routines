@@ -1,5 +1,5 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-06-14 | Son calisma: 2026-06-13 10:09 UTC
+**Tarih:** 2026-06-15 09:10 UTC
 
 ## Ozet
 - Toplam test: 9 (3 senaryo x 3 tarayici: Chromium, Firefox, WebKit)
@@ -21,7 +21,7 @@
 
 ### Olasi Sebep Tahmini
 
-**Selector yanlis veya degismis (en kuvvetli ihtimal).** Diger iki test (`should load successfully`, `should have a heading`) tum tarayicilarda basariyla gectigi icin site erisilebilir durumda — ag sorunu veya site down degil. Hata yalnizca `button#login` elementinin bulunamamasindan kaynaklanmaktadir. Bu hata birden fazla gundur tekrarlamaktadir; kalici bir sorun oldugu anlasilmaktadir.
+**Selector yanlis veya degismis (en kuvvetli ihtimal).** Diger iki test (`should load successfully`, `should have a heading`) tum tarayicilarda basariyla gectigi icin site erisilebilir durumda — ag sorunu veya site down degil. Hata yalnizca `button#login` elementinin bulunamamasindan kaynaklanmaktadir. **Bu hata art arda ikinci gundur (2026-06-14 ve 2026-06-15) tekrar etmektedir; kalici bir sorun oldugu kesinlesmiştir.**
 
 ### Onerilen Aksiyon
 
@@ -37,4 +37,4 @@
 | should have a heading    | Firefox  | GECTI |
 | should have a heading    | WebKit   | GECTI |
 
-**GitHub Actions Build:** https://github.com/aydinserbest/claude-routines/actions/runs/27463754311
+**GitHub Actions Build:** https://github.com/aydinserbest/claude-routines/actions/runs/27495767321
