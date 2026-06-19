@@ -1,5 +1,5 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-06-18 09:10 UTC
+**Tarih:** 2026-06-19 09:10 UTC
 
 ## Ozet
 - Toplam test: 9 (3 senaryo x 3 tarayici: Chromium, Firefox, WebKit)
@@ -8,7 +8,7 @@
 
 ## Sonuc
 
-**1 test senaryosu 3 tarayicida da basarisiz oldu.**
+**1 test senaryosu 3 tarayicida da basarisiz oldu. Sorun dun de ayni sekilde gorulmustu — kalici bir hata.**
 
 ### Basarisiz Test: `Homepage > should have a login button`
 
@@ -21,7 +21,7 @@
 
 ### Olasi Sebep Tahmini
 
-**Selector yanlis veya degismis (en kuvvetli ihtimal).** Diger iki test (`should load successfully`, `should have a heading`) tum tarayicilarda basariyla gectigi icin site erisilebilir durumda — ag sorunu veya site down degil. Hata yalnizca `button#login` elementinin bulunamamasindan kaynaklanmaktadir. Bu hata birden fazla gundur tekrar etmektedir; kalici bir sorun oldugu anlasilmaktadir.
+**Selector yanlis (en kuvvetli ihtimal).** Diger iki test (`should load successfully`, `should have a heading`) tum tarayicilarda basariyla gectigi icin site erisilebilir durumda — ag sorunu veya site down degil. example.com minimal bir taslak sayfasidir ve `button#login` elementi icermez. Bu hata 2. gunune girmistir.
 
 ### Onerilen Aksiyon
 
@@ -37,5 +37,5 @@
 | should have a heading    | Firefox  | GECTI |
 | should have a heading    | WebKit   | GECTI |
 
-**GitHub Actions Build:** https://github.com/aydinserbest/claude-routines/actions/runs/27683528785
+**GitHub Actions Build:** https://github.com/aydinserbest/claude-routines/actions/runs/27754049632
 **GitHub Issue:** https://github.com/aydinserbest/claude-routines/issues/18
