@@ -1,5 +1,5 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-06-19 09:10 UTC
+**Tarih:** 2026-06-20 UTC (Test calismasi: 2026-06-19T10:47 UTC)
 
 ## Ozet
 - Toplam test: 9 (3 senaryo x 3 tarayici: Chromium, Firefox, WebKit)
@@ -8,7 +8,7 @@
 
 ## Sonuc
 
-**1 test senaryosu 3 tarayicida da basarisiz oldu. Sorun dun de ayni sekilde gorulmustu — kalici bir hata.**
+**1 test senaryosu 3 tarayicida da basarisiz oldu. Bu hata artik birden fazla gundur devam ediyor.**
 
 ### Basarisiz Test: `Homepage > should have a login button`
 
@@ -21,11 +21,11 @@
 
 ### Olasi Sebep Tahmini
 
-**Selector yanlis (en kuvvetli ihtimal).** Diger iki test (`should load successfully`, `should have a heading`) tum tarayicilarda basariyla gectigi icin site erisilebilir durumda — ag sorunu veya site down degil. example.com minimal bir taslak sayfasidir ve `button#login` elementi icermez. Bu hata 2. gunune girmistir.
+**Selector yanlis (en kuvvetli ihtimal).** Diger iki test (`should load successfully`, `should have a heading`) tum tarayicilarda basariyla gectigi icin site erisilebilir durumda — ag sorunu veya site down degil. example.com minimal bir taslak sayfasidir ve `button#login` elementi icermez. Hata birden fazla gundur tekrar ediyor; kalici bir sorun.
 
 ### Onerilen Aksiyon
 
-`tests/homepage.spec.js` dosyasindaki 18. satirda bulunan `button#login` selectorunu guncelle ya da example.com icin anlamli bir selector ile degistir.
+`tests/homepage.spec.js` dosyasindaki 18-19. satirdaki `button#login` selectorunu guncelle ya da example.com uzerinde var olan bir eleman ile degistir.
 
 ### Gecen Testler
 | Senaryo | Tarayici | Durum |
@@ -37,5 +37,4 @@
 | should have a heading    | Firefox  | GECTI |
 | should have a heading    | WebKit   | GECTI |
 
-**GitHub Actions Build:** https://github.com/aydinserbest/claude-routines/actions/runs/27754049632
-**GitHub Issue:** https://github.com/aydinserbest/claude-routines/issues/18
+**GitHub Actions Build:** https://github.com/aydinserbest/claude-routines/actions/runs/27821117412
