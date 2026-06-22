@@ -1,5 +1,5 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-06-20 UTC (Test calismasi: 2026-06-19T10:47 UTC)
+**Tarih:** 2026-06-22 UTC (Test calismasi: 2026-06-21T10:23 UTC)
 
 ## Ozet
 - Toplam test: 9 (3 senaryo x 3 tarayici: Chromium, Firefox, WebKit)
@@ -8,7 +8,7 @@
 
 ## Sonuc
 
-**1 test senaryosu 3 tarayicida da basarisiz oldu. Bu hata artik birden fazla gundur devam ediyor.**
+**1 test senaryosu 3 tarayicida da basarisiz oldu. Bu hata birden fazla gundur devam ediyor.**
 
 ### Basarisiz Test: `Homepage > should have a login button`
 
@@ -37,4 +37,4 @@
 | should have a heading    | Firefox  | GECTI |
 | should have a heading    | WebKit   | GECTI |
 
-**GitHub Actions Build:** https://github.com/aydinserbest/claude-routines/actions/runs/27821117412
+**GitHub Actions Build:** https://github.com/aydinserbest/claude-routines/actions/runs/27901327344
