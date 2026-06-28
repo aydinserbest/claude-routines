@@ -1,6 +1,6 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-06-27 (Test kosu: 2026-06-26T10:18 UTC)
-**Build:** https://github.com/aydinserbest/claude-routines/actions/runs/28231917267
+**Tarih:** 2026-06-28 (Test kosma zamani: 2026-06-27 09:53 UTC)
+**Build:** https://github.com/aydinserbest/claude-routines/actions/runs/28285737121
 
 ## Ozet
 - Toplam test: 9 (3 senaryo x 3 tarayici: Chromium, Firefox, WebKit)
@@ -22,11 +22,11 @@
 
 ### Olasi Sebep Tahmini
 
-**Selector yanlis (kesin ihtimal).** Diger iki test (`should load successfully`, `should have a heading`) tum tarayicilarda basariyla gectigi icin site erisilebilir — ag sorunu veya site down degil. example.com minimal bir taslak sayfasidir ve `button#login` elementi icermez. Hata 2026-06-14'ten bu yana her gun tekrar ediyor; kalici bir sorun, rutin issue olusturmaya devam ediyor.
+**Selector yanlis (kesin ihtimal).** Diger iki test (`should load successfully`, `should have a heading`) tum tarayicilarda basariyla gectigi icin site erisilebilir — ag sorunu veya site down degil. `example.com` minimal bir taslak sayfasidir ve `button#login` elementi icermez. Hata 2026-06-14'ten bu yana her gun tekrar ediyor; kalici bir sorun.
 
 ### Onerilen Aksiyon
 
-`tests/homepage.spec.js` dosyasindaki 18-19. satirdaki `button#login` selectorunu guncelle ya da example.com uzerinde var olan bir eleman ile degistir. Acik issue'lar (#14-#23) kapatilmali.
+`tests/homepage.spec.js` dosyasindaki 18-19. satirlardaki `button#login` selectorunu guncelle ya da `example.com` uzerinde var olan bir eleman ile degistir. Acik issue'lar (#14-#23) kapatilmali.
 
 ### Gecen Testler
 | Senaryo | Tarayici | Durum |
@@ -38,4 +38,4 @@
 | should have a heading    | Firefox  | GECTI |
 | should have a heading    | WebKit   | GECTI |
 
-**Not:** Ilgili acik issue: #23 (ve onceki: #22, #21, #20... toplam 22+ acik issue)
+**Not:** Tekrarlayan hata icin acik issue: #23 (toplam 22+ acik issue)
