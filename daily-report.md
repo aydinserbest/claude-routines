@@ -1,6 +1,6 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-06-28 (Test kosma zamani: 2026-06-27 09:53 UTC)
-**Build:** https://github.com/aydinserbest/claude-routines/actions/runs/28285737121
+**Tarih:** 2026-06-29 (Test Calisma Zamani: 2026-06-28 10:09 UTC)
+**Build:** https://github.com/aydinserbest/claude-routines/actions/runs/28318829880
 
 ## Ozet
 - Toplam test: 9 (3 senaryo x 3 tarayici: Chromium, Firefox, WebKit)
@@ -9,7 +9,7 @@
 
 ## Sonuc
 
-**1 test senaryosu 3 tarayicida da basarisiz oldu. Bu hata 2026-06-14'ten beri her gun tekrar etmektedir (22+ acik issue).**
+**1 test senaryosu 3 tarayicida da basarisiz oldu. Bu hata daha onceki gunlerde de tekrar etmektedir.**
 
 ### Basarisiz Test: `Homepage > should have a login button`
 
@@ -22,11 +22,11 @@
 
 ### Olasi Sebep Tahmini
 
-**Selector yanlis (kesin ihtimal).** Diger iki test (`should load successfully`, `should have a heading`) tum tarayicilarda basariyla gectigi icin site erisilebilir — ag sorunu veya site down degil. `example.com` minimal bir taslak sayfasidir ve `button#login` elementi icermez. Hata 2026-06-14'ten bu yana her gun tekrar ediyor; kalici bir sorun.
+**Selector yanlis (kesin ihtimal).** Diger iki test (`should load successfully`, `should have a heading`) tum tarayicilarda basariyla gectigi icin site erisilebilir durumda — ag sorunu veya site down degil. `example.com` minimal bir taslak sayfasidir ve `button#login` elementi icermez. Bu nedenle hata site degisikliginden degil, testin yanlis bir selector kullanmasindan kaynaklanmaktadir.
 
 ### Onerilen Aksiyon
 
-`tests/homepage.spec.js` dosyasindaki 18-19. satirlardaki `button#login` selectorunu guncelle ya da `example.com` uzerinde var olan bir eleman ile degistir. Acik issue'lar (#14-#23) kapatilmali.
+`tests/homepage.spec.js` dosyasindaki 18-19. satirlardaki `button#login` selectorunu guncelle ya da `example.com` uzerinde var olan bir eleman ile degistir.
 
 ### Gecen Testler
 | Senaryo | Tarayici | Durum |
@@ -37,5 +37,3 @@
 | should have a heading    | Chromium | GECTI |
 | should have a heading    | Firefox  | GECTI |
 | should have a heading    | WebKit   | GECTI |
-
-**Not:** Tekrarlayan hata icin acik issue: #23 (toplam 22+ acik issue)
