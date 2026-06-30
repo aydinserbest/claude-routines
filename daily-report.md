@@ -1,6 +1,5 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-06-29 (Test Calisma Zamani: 2026-06-28 10:09 UTC)
-**Build:** https://github.com/aydinserbest/claude-routines/actions/runs/28318829880
+**Tarih:** 2026-06-30 (Test Calisma Zamani: 2026-06-29 10:48 UTC)
 
 ## Ozet
 - Toplam test: 9 (3 senaryo x 3 tarayici: Chromium, Firefox, WebKit)
@@ -9,7 +8,7 @@
 
 ## Sonuc
 
-**1 test senaryosu 3 tarayicida da basarisiz oldu. Bu hata daha onceki gunlerde de tekrar etmektedir.**
+**1 test senaryosu 3 tarayicida da basarisiz oldu. Bu hata 2026-06-02'den beri kesintisiz her gun tekrar etmektedir (29 gun).**
 
 ### Basarisiz Test: `Homepage > should have a login button`
 
@@ -17,16 +16,17 @@
 - **Hata:** `locator('button#login')` ile aranan element sayfada bulunamadi.
 - **Beklenen:** Login butonunun gorunur olmasi (`toBeVisible`)
 - **Gerceklesen:** Element yok (`element(s) not found`), her tarayicida 3000ms zaman asimi.
-- **Deneme sayisi:** Her tarayicida 3 kez yeniden denendi (2 retry), sonuc degismedi.
 - **Kod satiri:** `tests/homepage.spec.js:19`
 
 ### Olasi Sebep Tahmini
 
-**Selector yanlis (kesin ihtimal).** Diger iki test (`should load successfully`, `should have a heading`) tum tarayicilarda basariyla gectigi icin site erisilebilir durumda — ag sorunu veya site down degil. `example.com` minimal bir taslak sayfasidir ve `button#login` elementi icermez. Bu nedenle hata site degisikliginden degil, testin yanlis bir selector kullanmasindan kaynaklanmaktadir.
+**Selector yanlis (kesin ihtimal) — site veya ag sorunu degil.** Diger iki test (`should load successfully`, `should have a heading`) tum tarayicilarda basariyla gectigi icin site erisilebilir durumda. Ayrica test dosyasindaki yorum satiri bu testin **kasitli olarak basarisiz birakildigini** belirtiyor ("Bu test kasıtlı olarak başarısız — rutinin yakalaması için"). Yani bu, rutinin calistigini dogrulamak icin eklenmis bilinen/beklenen bir hata.
 
-### Onerilen Aksiyon
+### GitHub Issue
 
-`tests/homepage.spec.js` dosyasindaki 18-19. satirlardaki `button#login` selectorunu guncelle ya da `example.com` uzerinde var olan bir eleman ile degistir.
+Yeni issue ACILMADI — ayni hata icin halihazirda **23 acik duplicate issue** mevcut (#2'den #24'e kadar, 2026-06-02 - 2026-06-29 arasi), en sonuncusu (#24) dun acilmis ve hala cozulmemis. Tekrar issue acmak yerine mevcut issue'lara (ozellikle #24) atif yapiliyor.
+
+**Onerilen Aksiyon:** Bu kasitli test gercek bir bug degilse, gelecekteki gurultuyu onlemek icin testi `test.skip` ile isaretlemek ya da rutin talimatlarini (CLAUDE.md / bu rutin) guncelleyerek bu bilinen hatayi her gun yeni issue acmadan raporlamak faydali olabilir. Issue #2-#24 arasindaki 23 duplicate'in kapatilmasi/birlestirilmesi de degerlendirilebilir.
 
 ### Gecen Testler
 | Senaryo | Tarayici | Durum |
