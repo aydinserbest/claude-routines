@@ -1,5 +1,5 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-06-30 (Test Calisma Zamani: 2026-06-29 10:48 UTC)
+**Tarih:** 2026-07-01 (Test Calisma Zamani: 2026-06-30 10:21 UTC)
 
 ## Ozet
 - Toplam test: 9 (3 senaryo x 3 tarayici: Chromium, Firefox, WebKit)
@@ -8,7 +8,7 @@
 
 ## Sonuc
 
-**1 test senaryosu 3 tarayicida da basarisiz oldu. Bu hata 2026-06-02'den beri kesintisiz her gun tekrar etmektedir (29 gun).**
+**1 test senaryosu 3 tarayicida da basarisiz oldu. Bu hata 2026-06-02'den beri kesintisiz her gun tekrar etmektedir (30 gun).**
 
 ### Basarisiz Test: `Homepage > should have a login button`
 
@@ -24,7 +24,7 @@
 
 ### GitHub Issue
 
-Yeni issue ACILMADI — ayni hata icin halihazirda **23 acik duplicate issue** mevcut (#2'den #24'e kadar, 2026-06-02 - 2026-06-29 arasi), en sonuncusu (#24) dun acilmis ve hala cozulmemis. Tekrar issue acmak yerine mevcut issue'lara (ozellikle #24) atif yapiliyor.
+Yeni issue ACILMADI — ayni hata icin halihazirda **23 acik duplicate issue** mevcut (#2'den #24'e kadar, 2026-06-02 - 2026-06-29 arasi). Bunun yerine mevcut **issue #24**'e yorum eklendi: https://github.com/aydinserbest/claude-routines/issues/24#issuecomment-4852780483
 
 **Onerilen Aksiyon:** Bu kasitli test gercek bir bug degilse, gelecekteki gurultuyu onlemek icin testi `test.skip` ile isaretlemek ya da rutin talimatlarini (CLAUDE.md / bu rutin) guncelleyerek bu bilinen hatayi her gun yeni issue acmadan raporlamak faydali olabilir. Issue #2-#24 arasindaki 23 duplicate'in kapatilmasi/birlestirilmesi de degerlendirilebilir.
 
