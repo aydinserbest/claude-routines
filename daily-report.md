@@ -1,5 +1,5 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-07-01 (Test Calisma Zamani: 2026-06-30 10:21 UTC)
+**Tarih:** 2026-07-02 (Test calisma zamani: 2026-07-01 10:34 UTC)
 
 ## Ozet
 - Toplam test: 9 (3 senaryo x 3 tarayici: Chromium, Firefox, WebKit)
@@ -8,25 +8,26 @@
 
 ## Sonuc
 
-**1 test senaryosu 3 tarayicida da basarisiz oldu. Bu hata 2026-06-02'den beri kesintisiz her gun tekrar etmektedir (30 gun).**
+**1 test senaryosu 3 tarayicida da basarisiz oldu.**
 
 ### Basarisiz Test: `Homepage > should have a login button`
 
 - **Tarayicilar:** Chromium, Firefox, WebKit
-- **Hata:** `locator('button#login')` ile aranan element sayfada bulunamadi.
+- **Hata:** `locator('button#login')` ile aranan element sayfada bulunamiyor.
 - **Beklenen:** Login butonunun gorunur olmasi (`toBeVisible`)
 - **Gerceklesen:** Element yok (`element(s) not found`), her tarayicida 3000ms zaman asimi.
 - **Kod satiri:** `tests/homepage.spec.js:19`
+- **Yeniden deneme:** Her tarayicida 2 kez retry yapildi (toplam 9 deneme), hicbiri gecmedi.
 
 ### Olasi Sebep Tahmini
 
-**Selector yanlis (kesin ihtimal) — site veya ag sorunu degil.** Diger iki test (`should load successfully`, `should have a heading`) tum tarayicilarda basariyla gectigi icin site erisilebilir durumda. Ayrica test dosyasindaki yorum satiri bu testin **kasitli olarak basarisiz birakildigini** belirtiyor ("Bu test kasıtlı olarak başarısız — rutinin yakalaması için"). Yani bu, rutinin calistigini dogrulamak icin eklenmis bilinen/beklenen bir hata.
+**Selector yanlis — site veya ag sorunu degil.** Diger iki test (`should load successfully`, `should have a heading`) tum tarayicilarda basariyla gectigi icin site erisilebilir durumda. `button#login` ID'li element example.com sayfasinda bulunmuyor. Bu hata 2026-06-02'den beri her gun kesintisiz tekrarlaniyor.
 
 ### GitHub Issue
 
-Yeni issue ACILMADI — ayni hata icin halihazirda **23 acik duplicate issue** mevcut (#2'den #24'e kadar, 2026-06-02 - 2026-06-29 arasi). Bunun yerine mevcut **issue #24**'e yorum eklendi: https://github.com/aydinserbest/claude-routines/issues/24#issuecomment-4852780483
+Bu sorun icin zaten 23 acik issue mevcut (#2-#24). Yeni duplicate acilmadi; mevcut issue #24'e bugun icin yorum eklendi.
 
-**Onerilen Aksiyon:** Bu kasitli test gercek bir bug degilse, gelecekteki gurultuyu onlemek icin testi `test.skip` ile isaretlemek ya da rutin talimatlarini (CLAUDE.md / bu rutin) guncelleyerek bu bilinen hatayi her gun yeni issue acmadan raporlamak faydali olabilir. Issue #2-#24 arasindaki 23 duplicate'in kapatilmasi/birlestirilmesi de degerlendirilebilir.
+**Onerilen Aksiyon:** `tests/homepage.spec.js` satir 18-19'daki `button#login` selectorunu guncelle veya testi `test.skip` ile isaretle.
 
 ### Gecen Testler
 | Senaryo | Tarayici | Durum |
