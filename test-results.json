@@ -12,24 +12,24 @@
     "maxFailures": 0,
     "metadata": {
       "ci": {
-        "commitHref": "https://github.com/aydinserbest/claude-routines/commit/3dd6bbe9e6de640d5484bad7523f10fd01ff10b6",
-        "commitHash": "3dd6bbe9e6de640d5484bad7523f10fd01ff10b6",
-        "buildHref": "https://github.com/aydinserbest/claude-routines/actions/runs/28582422531"
+        "commitHref": "https://github.com/aydinserbest/claude-routines/commit/e53b51e32bf78b8b96a0e5cefb8ce6451fc88506",
+        "commitHash": "e53b51e32bf78b8b96a0e5cefb8ce6451fc88506",
+        "buildHref": "https://github.com/aydinserbest/claude-routines/actions/runs/28653755995"
       },
       "gitCommit": {
-        "shortHash": "3dd6bbe",
-        "hash": "3dd6bbe9e6de640d5484bad7523f10fd01ff10b6",
-        "subject": "report: 2026-07-02",
-        "body": "report: 2026-07-02\n",
+        "shortHash": "e53b51e",
+        "hash": "e53b51e32bf78b8b96a0e5cefb8ce6451fc88506",
+        "subject": "report: 2026-07-03",
+        "body": "report: 2026-07-03\n",
         "author": {
           "name": "claude-routine",
           "email": "claude-routine@noreply",
-          "time": 1782985209000
+          "time": 1783071585000
         },
         "committer": {
           "name": "claude-routine",
           "email": "claude-routine@noreply",
-          "time": 1782985209000
+          "time": 1783071585000
         },
         "branch": "master"
       },
@@ -43,24 +43,24 @@
         "retries": 2,
         "metadata": {
           "ci": {
-            "commitHref": "https://github.com/aydinserbest/claude-routines/commit/3dd6bbe9e6de640d5484bad7523f10fd01ff10b6",
-            "commitHash": "3dd6bbe9e6de640d5484bad7523f10fd01ff10b6",
-            "buildHref": "https://github.com/aydinserbest/claude-routines/actions/runs/28582422531"
+            "commitHref": "https://github.com/aydinserbest/claude-routines/commit/e53b51e32bf78b8b96a0e5cefb8ce6451fc88506",
+            "commitHash": "e53b51e32bf78b8b96a0e5cefb8ce6451fc88506",
+            "buildHref": "https://github.com/aydinserbest/claude-routines/actions/runs/28653755995"
           },
           "gitCommit": {
-            "shortHash": "3dd6bbe",
-            "hash": "3dd6bbe9e6de640d5484bad7523f10fd01ff10b6",
-            "subject": "report: 2026-07-02",
-            "body": "report: 2026-07-02\n",
+            "shortHash": "e53b51e",
+            "hash": "e53b51e32bf78b8b96a0e5cefb8ce6451fc88506",
+            "subject": "report: 2026-07-03",
+            "body": "report: 2026-07-03\n",
             "author": {
               "name": "claude-routine",
               "email": "claude-routine@noreply",
-              "time": 1782985209000
+              "time": 1783071585000
             },
             "committer": {
               "name": "claude-routine",
               "email": "claude-routine@noreply",
-              "time": 1782985209000
+              "time": 1783071585000
             },
             "branch": "master"
           },
@@ -81,24 +81,24 @@
         "retries": 2,
         "metadata": {
           "ci": {
-            "commitHref": "https://github.com/aydinserbest/claude-routines/commit/3dd6bbe9e6de640d5484bad7523f10fd01ff10b6",
-            "commitHash": "3dd6bbe9e6de640d5484bad7523f10fd01ff10b6",
-            "buildHref": "https://github.com/aydinserbest/claude-routines/actions/runs/28582422531"
+            "commitHref": "https://github.com/aydinserbest/claude-routines/commit/e53b51e32bf78b8b96a0e5cefb8ce6451fc88506",
+            "commitHash": "e53b51e32bf78b8b96a0e5cefb8ce6451fc88506",
+            "buildHref": "https://github.com/aydinserbest/claude-routines/actions/runs/28653755995"
           },
           "gitCommit": {
-            "shortHash": "3dd6bbe",
-            "hash": "3dd6bbe9e6de640d5484bad7523f10fd01ff10b6",
-            "subject": "report: 2026-07-02",
-            "body": "report: 2026-07-02\n",
+            "shortHash": "e53b51e",
+            "hash": "e53b51e32bf78b8b96a0e5cefb8ce6451fc88506",
+            "subject": "report: 2026-07-03",
+            "body": "report: 2026-07-03\n",
             "author": {
               "name": "claude-routine",
               "email": "claude-routine@noreply",
-              "time": 1782985209000
+              "time": 1783071585000
             },
             "committer": {
               "name": "claude-routine",
               "email": "claude-routine@noreply",
-              "time": 1782985209000
+              "time": 1783071585000
             },
             "branch": "master"
           },
@@ -119,24 +119,24 @@
         "retries": 2,
         "metadata": {
           "ci": {
-            "commitHref": "https://github.com/aydinserbest/claude-routines/commit/3dd6bbe9e6de640d5484bad7523f10fd01ff10b6",
-            "commitHash": "3dd6bbe9e6de640d5484bad7523f10fd01ff10b6",
-            "buildHref": "https://github.com/aydinserbest/claude-routines/actions/runs/28582422531"
+            "commitHref": "https://github.com/aydinserbest/claude-routines/commit/e53b51e32bf78b8b96a0e5cefb8ce6451fc88506",
+            "commitHash": "e53b51e32bf78b8b96a0e5cefb8ce6451fc88506",
+            "buildHref": "https://github.com/aydinserbest/claude-routines/actions/runs/28653755995"
           },
           "gitCommit": {
-            "shortHash": "3dd6bbe",
-            "hash": "3dd6bbe9e6de640d5484bad7523f10fd01ff10b6",
-            "subject": "report: 2026-07-02",
-            "body": "report: 2026-07-02\n",
+            "shortHash": "e53b51e",
+            "hash": "e53b51e32bf78b8b96a0e5cefb8ce6451fc88506",
+            "subject": "report: 2026-07-03",
+            "body": "report: 2026-07-03\n",
             "author": {
               "name": "claude-routine",
               "email": "claude-routine@noreply",
-              "time": 1782985209000
+              "time": 1783071585000
             },
             "committer": {
               "name": "claude-routine",
               "email": "claude-routine@noreply",
-              "time": 1782985209000
+              "time": 1783071585000
             },
             "branch": "master"
           },
@@ -207,12 +207,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 140,
+                      "duration": 185,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-02T10:14:36.104Z",
+                      "startTime": "2026-07-03T10:11:33.268Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -241,12 +241,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 106,
+                      "duration": 146,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-02T10:14:36.827Z",
+                      "startTime": "2026-07-03T10:11:35.474Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -275,7 +275,7 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 3083,
+                      "duration": 3127,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button#login')\nExpected: visible\nTimeout: 3000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 3000ms\u001b[22m\n\u001b[2m  - waiting for locator('button#login')\u001b[22m\n",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button#login')\nExpected: visible\nTimeout: 3000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 3000ms\u001b[22m\n\u001b[2m  - waiting for locator('button#login')\u001b[22m\n\n    at /home/runner/work/claude-routines/claude-routines/tests/homepage.spec.js:19:28",
@@ -299,7 +299,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-02T10:14:36.945Z",
+                      "startTime": "2026-07-03T10:11:35.634Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -318,7 +318,7 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 3160,
+                      "duration": 3198,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button#login')\nExpected: visible\nTimeout: 3000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 3000ms\u001b[22m\n\u001b[2m  - waiting for locator('button#login')\u001b[22m\n",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button#login')\nExpected: visible\nTimeout: 3000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 3000ms\u001b[22m\n\u001b[2m  - waiting for locator('button#login')\u001b[22m\n\n    at /home/runner/work/claude-routines/claude-routines/tests/homepage.spec.js:19:28",
@@ -342,7 +342,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 1,
-                      "startTime": "2026-07-02T10:14:40.567Z",
+                      "startTime": "2026-07-03T10:11:39.321Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -366,7 +366,7 @@
                       "workerIndex": 2,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 3111,
+                      "duration": 3156,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button#login')\nExpected: visible\nTimeout: 3000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 3000ms\u001b[22m\n\u001b[2m  - waiting for locator('button#login')\u001b[22m\n",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button#login')\nExpected: visible\nTimeout: 3000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 3000ms\u001b[22m\n\u001b[2m  - waiting for locator('button#login')\u001b[22m\n\n    at /home/runner/work/claude-routines/claude-routines/tests/homepage.spec.js:19:28",
@@ -390,7 +390,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 2,
-                      "startTime": "2026-07-02T10:14:44.378Z",
+                      "startTime": "2026-07-03T10:11:43.188Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -430,12 +430,12 @@
                       "workerIndex": 3,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 960,
+                      "duration": 1018,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-02T10:14:48.110Z",
+                      "startTime": "2026-07-03T10:11:46.997Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -464,12 +464,12 @@
                       "workerIndex": 3,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 338,
+                      "duration": 391,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-02T10:14:49.549Z",
+                      "startTime": "2026-07-03T10:11:48.601Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -498,7 +498,7 @@
                       "workerIndex": 3,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 3263,
+                      "duration": 3273,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button#login')\nExpected: visible\nTimeout: 3000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 3000ms\u001b[22m\n\u001b[2m  - waiting for locator('button#login')\u001b[22m\n",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button#login')\nExpected: visible\nTimeout: 3000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 3000ms\u001b[22m\n\u001b[2m  - waiting for locator('button#login')\u001b[22m\n\n    at /home/runner/work/claude-routines/claude-routines/tests/homepage.spec.js:19:28",
@@ -522,7 +522,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-02T10:14:49.906Z",
+                      "startTime": "2026-07-03T10:11:49.007Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -541,7 +541,7 @@
                       "workerIndex": 4,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 3907,
+                      "duration": 3941,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button#login')\nExpected: visible\nTimeout: 3000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 3000ms\u001b[22m\n\u001b[2m  - waiting for locator('button#login')\u001b[22m\n",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button#login')\nExpected: visible\nTimeout: 3000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 3000ms\u001b[22m\n\u001b[2m  - waiting for locator('button#login')\u001b[22m\n\n    at /home/runner/work/claude-routines/claude-routines/tests/homepage.spec.js:19:28",
@@ -565,7 +565,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 1,
-                      "startTime": "2026-07-02T10:14:54.040Z",
+                      "startTime": "2026-07-03T10:11:53.145Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -589,7 +589,7 @@
                       "workerIndex": 5,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 3820,
+                      "duration": 3851,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button#login')\nExpected: visible\nTimeout: 3000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 3000ms\u001b[22m\n\u001b[2m  - waiting for locator('button#login')\u001b[22m\n",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button#login')\nExpected: visible\nTimeout: 3000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 3000ms\u001b[22m\n\u001b[2m  - waiting for locator('button#login')\u001b[22m\n\n    at /home/runner/work/claude-routines/claude-routines/tests/homepage.spec.js:19:28",
@@ -613,7 +613,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 2,
-                      "startTime": "2026-07-02T10:14:59.202Z",
+                      "startTime": "2026-07-03T10:11:58.397Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -653,12 +653,12 @@
                       "workerIndex": 6,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3357,
+                      "duration": 9520,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-02T10:15:04.248Z",
+                      "startTime": "2026-07-03T10:12:03.493Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -687,12 +687,12 @@
                       "workerIndex": 6,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 312,
+                      "duration": 305,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-02T10:15:08.115Z",
+                      "startTime": "2026-07-03T10:12:13.874Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -721,7 +721,7 @@
                       "workerIndex": 6,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 3239,
+                      "duration": 3315,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button#login')\nExpected: visible\nTimeout: 3000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 3000ms\u001b[22m\n\u001b[2m  - waiting for locator('button#login')\u001b[22m\n",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button#login')\nExpected: visible\nTimeout: 3000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 3000ms\u001b[22m\n\u001b[2m  - waiting for locator('button#login')\u001b[22m\n\n    at /home/runner/work/claude-routines/claude-routines/tests/homepage.spec.js:19:28",
@@ -745,7 +745,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-02T10:15:08.442Z",
+                      "startTime": "2026-07-03T10:12:14.197Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -764,7 +764,7 @@
                       "workerIndex": 7,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 3337,
+                      "duration": 3379,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button#login')\nExpected: visible\nTimeout: 3000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 3000ms\u001b[22m\n\u001b[2m  - waiting for locator('button#login')\u001b[22m\n",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button#login')\nExpected: visible\nTimeout: 3000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 3000ms\u001b[22m\n\u001b[2m  - waiting for locator('button#login')\u001b[22m\n\n    at /home/runner/work/claude-routines/claude-routines/tests/homepage.spec.js:19:28",
@@ -788,7 +788,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 1,
-                      "startTime": "2026-07-02T10:15:12.225Z",
+                      "startTime": "2026-07-03T10:12:18.067Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -812,7 +812,7 @@
                       "workerIndex": 8,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 3298,
+                      "duration": 3338,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button#login')\nExpected: visible\nTimeout: 3000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 3000ms\u001b[22m\n\u001b[2m  - waiting for locator('button#login')\u001b[22m\n",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('button#login')\nExpected: visible\nTimeout: 3000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 3000ms\u001b[22m\n\u001b[2m  - waiting for locator('button#login')\u001b[22m\n\n    at /home/runner/work/claude-routines/claude-routines/tests/homepage.spec.js:19:28",
@@ -836,7 +836,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 2,
-                      "startTime": "2026-07-02T10:15:16.216Z",
+                      "startTime": "2026-07-03T10:12:22.126Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -867,8 +867,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-07-02T10:14:35.582Z",
-    "duration": 44088.676,
+    "startTime": "2026-07-03T10:11:32.724Z",
+    "duration": 52900.472,
     "expected": 6,
     "skipped": 0,
     "unexpected": 3,
