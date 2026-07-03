@@ -1,5 +1,5 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-07-02 (Test calisma zamani: 2026-07-01 10:34 UTC)
+**Tarih:** 2026-07-03 09:10 UTC
 
 ## Ozet
 - Toplam test: 9 (3 senaryo x 3 tarayici: Chromium, Firefox, WebKit)
@@ -18,14 +18,15 @@
 - **Gerceklesen:** Element yok (`element(s) not found`), her tarayicida 3000ms zaman asimi.
 - **Kod satiri:** `tests/homepage.spec.js:19`
 - **Yeniden deneme:** Her tarayicida 2 kez retry yapildi (toplam 9 deneme), hicbiri gecmedi.
+- **Build:** https://github.com/aydinserbest/claude-routines/actions/runs/28582422531
 
 ### Olasi Sebep Tahmini
 
-**Selector yanlis — site veya ag sorunu degil.** Diger iki test (`should load successfully`, `should have a heading`) tum tarayicilarda basariyla gectigi icin site erisilebilir durumda. `button#login` ID'li element example.com sayfasinda bulunmuyor. Bu hata 2026-06-02'den beri her gun kesintisiz tekrarlaniyor.
+**Selector yanlis — site veya ag sorunu degil.** Diger iki test (`should load successfully`, `should have a heading`) tum tarayicilarda basariyla gectigi icin site erisilebilir durumda. `button#login` ID'li element example.com sayfasinda bulunmuyor. Bu hata haftalardir kesintisiz tekrarlaniyor.
 
 ### GitHub Issue
 
-Bu sorun icin zaten 23 acik issue mevcut (#2-#24). Yeni duplicate acilmadi; mevcut issue #24'e bugun icin yorum eklendi.
+Bu sorun icin zaten 23 acik issue mevcut (#2-#24). Yeni duplicate acilmadi; mevcut issue #24'e yorum eklendi.
 
 **Onerilen Aksiyon:** `tests/homepage.spec.js` satir 18-19'daki `button#login` selectorunu guncelle veya testi `test.skip` ile isaretle.
 
