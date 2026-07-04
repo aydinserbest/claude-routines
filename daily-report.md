@@ -1,5 +1,5 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-07-03 09:10 UTC
+**Tarih:** 2026-07-04 09:10 UTC
 
 ## Ozet
 - Toplam test: 9 (3 senaryo x 3 tarayici: Chromium, Firefox, WebKit)
@@ -18,17 +18,17 @@
 - **Gerceklesen:** Element yok (`element(s) not found`), her tarayicida 3000ms zaman asimi.
 - **Kod satiri:** `tests/homepage.spec.js:19`
 - **Yeniden deneme:** Her tarayicida 2 kez retry yapildi (toplam 9 deneme), hicbiri gecmedi.
-- **Build:** https://github.com/aydinserbest/claude-routines/actions/runs/28582422531
+- **Build:** https://github.com/aydinserbest/claude-routines/actions/runs/28653755995
 
 ### Olasi Sebep Tahmini
 
-**Selector yanlis — site veya ag sorunu degil.** Diger iki test (`should load successfully`, `should have a heading`) tum tarayicilarda basariyla gectigi icin site erisilebilir durumda. `button#login` ID'li element example.com sayfasinda bulunmuyor. Bu hata haftalardir kesintisiz tekrarlaniyor.
-
-### GitHub Issue
-
-Bu sorun icin zaten 23 acik issue mevcut (#2-#24). Yeni duplicate acilmadi; mevcut issue #24'e yorum eklendi.
+**Selector yanlis — site veya ag sorunu degil.** Diger iki test (`should load successfully`, `should have a heading`) tum tarayicilarda basariyla gectigi icin site erisilebilir durumda. `button#login` ID'li element example.com sayfasinda bulunmuyor; ya hic eklenmemis ya da ID degismis.
 
 **Onerilen Aksiyon:** `tests/homepage.spec.js` satir 18-19'daki `button#login` selectorunu guncelle veya testi `test.skip` ile isaretle.
+
+### GitHub Issue
+23 acik issue zaten mevcut (#2-#24), yeni duplicate acilmadi. Issue #24'e yorum eklendi:
+https://github.com/aydinserbest/claude-routines/issues/24#issuecomment-4881494570
 
 ### Gecen Testler
 | Senaryo | Tarayici | Durum |
