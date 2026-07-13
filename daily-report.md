@@ -1,8 +1,8 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-07-12 09:48 UTC
+**Tarih:** 2026-07-13 UTC (Test calisma zamani: 2026-07-12 09:48 UTC)
 
 ## Ozet
-- Toplam test: 9 (3 senaryo × 3 tarayici: chromium, firefox, webkit)
+- Toplam test: 9 (3 senaryo x 3 tarayici: chromium, firefox, webkit)
 - Gecen: 6
 - Basarisiz: 3
 
