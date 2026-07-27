@@ -1,5 +1,5 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-07-26 UTC (Test çalışma zamanı: 2026-07-25T09:47 UTC)
+**Tarih:** 2026-07-27 UTC (Test çalışma zamanı: 2026-07-26T09:49 UTC)
 
 ## Ozet
 - Toplam test: 9 (3 senaryo x 3 tarayici: chromium, firefox, webkit)
@@ -18,7 +18,7 @@
 - **Gerceklesen:** Element yok (`element(s) not found`), her tarayicida 3000ms zaman asimi.
 - **Kod satiri:** `tests/homepage.spec.js:19`
 - **Yeniden deneme:** Her tarayicida 2 kez retry yapildi (toplam 9 deneme), hicbiri gecmedi.
-- **Build:** https://github.com/aydinserbest/claude-routines/actions/runs/30153330328
+- **Build:** https://github.com/aydinserbest/claude-routines/actions/runs/30197127091
 
 ### Olasi Sebep Tahmini
 
