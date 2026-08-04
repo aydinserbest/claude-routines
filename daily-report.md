@@ -1,5 +1,5 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-08-03 09:10 UTC
+**Tarih:** 2026-08-04 09:38 UTC
 
 ## Ozet
 - Toplam test: 9 (3 senaryo x 3 tarayici: chromium, firefox, webkit)
@@ -24,7 +24,7 @@ Her tarayicida 3 deneme yapilmis (ilk deneme + 2 retry), hicbirinde buton buluna
 
 - **Tarayicilar:** Chromium, Firefox, WebKit
 - **Kod satiri:** `tests/homepage.spec.js:19`
-- **Build:** https://github.com/aydinserbest/claude-routines/actions/runs/30742476299
+- **Build:** https://github.com/aydinserbest/claude-routines/actions/runs/30805538740
 
 ### Olasi Sebep Tahmini
 
