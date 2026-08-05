@@ -1,5 +1,5 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-08-04 09:38 UTC
+**Tarih:** 2026-08-05 09:10 UTC
 
 ## Ozet
 - Toplam test: 9 (3 senaryo x 3 tarayici: chromium, firefox, webkit)
@@ -24,11 +24,11 @@ Her tarayicida 3 deneme yapilmis (ilk deneme + 2 retry), hicbirinde buton buluna
 
 - **Tarayicilar:** Chromium, Firefox, WebKit
 - **Kod satiri:** `tests/homepage.spec.js:19`
-- **Build:** https://github.com/aydinserbest/claude-routines/actions/runs/30805538740
+- **Build:** https://github.com/aydinserbest/claude-routines/actions/runs/30899058138
 
 ### Olasi Sebep Tahmini
 
-**Selector yanlis — site veya ag sorunu degil.** Diger iki test (`should load successfully`, `should have a heading`) tum tarayicilarda basariyla gectigi icin site erisilebilir durumda. `button#login` ID'li element example.com anasayfasinda bulunmuyor; ya hic eklenmemis ya da ID degismis. Bu hata **en az 2 gundur** devam ediyor — acilen selector guncellenmeli.
+**Selector yanlis — site veya ag sorunu degil.** Diger iki test (`should load successfully`, `should have a heading`) tum tarayicilarda basariyla gectigi icin site erisilebilir durumda. `button#login` ID'li element example.com anasayfasinda bulunmuyor; ya hic eklenmemis ya da ID degismis. Bu hata **birden fazla gundur** devam ediyor — acilen selector guncellenmeli.
 
 **Onerilen Aksiyon:** `tests/homepage.spec.js` satir 18-19'daki `button#login` selectorunu guncelle veya testi `test.skip` ile isaretle.
 
