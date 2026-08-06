@@ -1,46 +1,23 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-08-05 09:10 UTC
+**Tarih:** 2026-08-06 09:10 UTC
 
 ## Ozet
-- Toplam test: 9 (3 senaryo x 3 tarayici: chromium, firefox, webkit)
+- Toplam test: 9
 - Gecen: 6
 - Basarisiz: 3
 
 ## Sonuc
 
-**1 test senaryosu tum tarayicilarda basarisiz oldu: "should have a login button"**
+**Basarisiz Test: "should have a login button"** — Chromium, Firefox ve WebKit tarayicilarinda basarisiz.
 
-### Hata Aciklamasi
+**Hata:** `locator('button#login')` elementi sayfada bulunamadi.
+- Beklenen: `button#login` secicisiyle eslesen bir buton gorunur olmali
+- Gerceklesen: Element bulunamadi (3 sn zaman asimi)
+- Konum: `tests/homepage.spec.js` satir 19
+- Her tarayicida 2 kez yeniden denendi, sonuc degismedi.
 
-Test, `button#login` selector'iyle bir "Login" butonu aramis ancak bulamadi.
+**Olasi Sebep:** `example.com` ana sayfasinda `button#login` id'sine sahip bir buton bulunmuyor. Bu durum iki anlama gelebilir:
+1. **Selector degismis olabilir** — Sayfanin HTML yapisi guncellenmis, login butonu artik farkli bir id veya etiketle mevcut.
+2. **Test yanlis yazilmis olabilir** — `example.com` hic login butonu icermiyor; test bu siteye uygun degildir.
 
-```
-Locator: locator('button#login')
-Expected: visible
-Error: element(s) not found
-```
-
-Her tarayicida 3 deneme yapilmis (ilk deneme + 2 retry), hicbirinde buton bulunamamistir.
-
-- **Tarayicilar:** Chromium, Firefox, WebKit
-- **Kod satiri:** `tests/homepage.spec.js:19`
-- **Build:** https://github.com/aydinserbest/claude-routines/actions/runs/30899058138
-
-### Olasi Sebep Tahmini
-
-**Selector yanlis — site veya ag sorunu degil.** Diger iki test (`should load successfully`, `should have a heading`) tum tarayicilarda basariyla gectigi icin site erisilebilir durumda. `button#login` ID'li element example.com anasayfasinda bulunmuyor; ya hic eklenmemis ya da ID degismis. Bu hata **birden fazla gundur** devam ediyor — acilen selector guncellenmeli.
-
-**Onerilen Aksiyon:** `tests/homepage.spec.js` satir 18-19'daki `button#login` selectorunu guncelle veya testi `test.skip` ile isaretle.
-
-### Gecen Testler
-| Senaryo | Tarayici | Durum |
-|---------|----------|-------|
-| should load successfully | Chromium | GECTI |
-| should load successfully | Firefox  | GECTI |
-| should load successfully | WebKit   | GECTI |
-| should have a heading    | Chromium | GECTI |
-| should have a heading    | Firefox  | GECTI |
-| should have a heading    | WebKit   | GECTI |
-
----
-_Rapor otomatik olarak Claude rutini tarafindan olusturulmustur._
+Diger testler (sayfa yukleme ve baslik varligi) 3 tarayicida da sorunsuz gectigi icin site down degil.
