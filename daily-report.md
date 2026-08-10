@@ -1,36 +1,31 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-08-09 09:10 UTC
+**Tarih:** 2026-08-10 (test çalışma zamanı: 2026-08-09T09:52:55Z)
 
 ## Ozet
-- Toplam test: 9
+- Toplam test: 9 (3 senaryo × 3 tarayıcı: Chromium, Firefox, WebKit)
 - Gecen: 6
 - Basarisiz: 3
 
 ## Sonuc
 
-**1 test 3 farkli tarayicida (Chromium, Firefox, WebKit) basarisiz oldu.**
+**Basarisiz Test:** `should have a login button` — tüm tarayıcılarda (Chromium, Firefox, WebKit) başarısız.
 
-### Basarisiz Test: `should have a login button`
+### Hata Detayi
 
-**Hata:** `locator('button#login')` selektoru sayfada bulunamadi.
+Test, ana sayfada `button#login` CSS seçicisiyle bir giriş düğmesi aradı, ancak hiçbir tarayıcıda bulunamadı:
 
 ```
-Error: expect(locator).toBeVisible() failed
 Locator: locator('button#login')
 Expected: visible
-Timeout: 3000ms
 Error: element(s) not found
 ```
 
-Her tarayicida 2 yeniden deneme yapildi, hicbirinde gecmedi (3 retry x 3 browser = 9 basarisiz deneme).
+3 deneme (retry) yapıldı, her seferinde aynı hata alındı.
 
-### Olasi Sebep
+### Olasi Sebep Tahmini
 
-**Selector degismis olmasi cok muhtemel.** Test `button#login` ID'li bir buton ariyor ancak sayfa bu elemani icermiyor. Olasiliklar:
-- Giris butonu farkli bir HTML etiketi veya ID ile yeniden tasarlandi (ornegin `a.login`, `button[data-testid="login"]` vb.)
-- Giris butonu anasayfadan kaldirildi ya da baska bir sayfaya tasindi
-- example.com sitesinde login butonu hic bulunmamaktadir, test yanlis bir sayfa hedefliyor olabilir
+**En yuksek ihtimal: Selector degismis.** Hata ağ sorunu veya site kesintisi değil — sayfa yükleniyor (`should load successfully` testi geçti) ve başlık da doğru görünüyor (`should have a heading` testi geçti). Sorun spesifik olarak `button#login` seçicisinde. Muhtemelen:
+- Login butonunun HTML'deki `id` değeri `login`'den başka bir şeye değişti (örn. `btn-login`, `sign-in` vb.), ya da
+- Buton `<button>` yerine `<a>` veya `<div>` gibi farklı bir HTML etiketiyle işaretlendi.
 
-### Gecen Testler
-- `should load successfully` - Chromium, Firefox, WebKit (3/3)
-- `should have a heading` - Chromium, Firefox, WebKit (3/3)
+**Tavsiye:** `homepage.spec.js` satır 18'deki `page.locator('button#login')` seçicisini güncel sayfa yapısına göre güncelleyin.
