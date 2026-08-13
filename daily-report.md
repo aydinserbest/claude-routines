@@ -1,22 +1,23 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-08-12 (Test calisma zamani: 2026-08-11T10:09:36Z)
+**Tarih:** 2026-08-13 (Test calistirma zamani: 2026-08-12T10:19:03Z)
 
 ## Ozet
-- Toplam test: 9 (3 tarayici x 3 senaryo)
+- Toplam test: 9 (3 test x 3 tarayici)
 - Gecen: 6
 - Basarisiz: 3
 
-## Basarisiz Testler
-
-### "should have a login button" - Chromium, Firefox, Webkit
-
-**Hata:** `locator('button#login')` - element bulunamadi
-
-**Aciklama:** Test, sayfada `button#login` secicisiyle bir giris dugmesi aradi fakat bu element sayfada mevcut degil. Her tarayicida 2 yeniden deneme dahil toplam 3 kez denendi, hepsi basarisiz oldu.
-
-**Olasi sebep:** Selector degismis olmasi muhtemel. Test `button#login` ID'li bir buton bekliyor ancak example.com anasayfasinda boyle bir element bulunmuyor. Site tasarimi degismis ya da test yanlis bir selector kullanarak yazilmis olabilir. Sitenin down olmadigi anlasilmaktadir cunku diger testler ("should load successfully" ve "should have a heading") tum tarayicilarda basariyla gecmistir.
-
-**Onerim:** `homepage.spec.js` dosyasinin 19. satirindaki `button#login` selectorunu guncellemeniz gerekiyor. Sayfanin mevcut HTML yapisi incelenerek dogru selector bulunmali.
-
 ## Sonuc
-1 test senaryosu (3 tarayicida) basarisiz oldu. Diger 2 senaryo tum tarayicilarda basariyla gercti. Sorun buyuk ihtimalle bir selector uyumsuzlugundan kaynaklanmaktadir.
+
+**"should have a login button"** testi 3 tarayicide da basarisiz oldu (Chromium, Firefox, WebKit). Her tarayicide 2 yeniden deneme yapildi, sonuc degismedi.
+
+### Hata Detayi
+
+- **Basarisiz test:** `should have a login button` (homepage.spec.js, satir 16)
+- **Hata:** `button#login` selectoruyle eşleşen element sayfada bulunamadi
+- **Hata mesaji:** `locator('button#login') - element(s) not found (timeout: 3000ms)`
+
+### Olasi Sebep
+
+Sorun butun tarayicilerde ayni sekilde tekrarlaniyor, bu nedenle ag sorunu veya tarayici ozgun bir hata degil. En muhtemel sebep:
+
+**Selector degismis veya element hic mevcut degil.** `example.com` statik bir demo sayfasidir ve genellikle `button#login` kimlikli bir giris butonu barindirmaz. Test ya yanlis bir selector kullaniyor, ya da `example.com` sayfasinda daha once var olan bu element kaldirildı/degistirildi. Testi guncelleyip sitenin gercek HTML yapisini kontrol etmek gerekiyor.
