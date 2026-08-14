@@ -1,23 +1,28 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-08-13 (Test calistirma zamani: 2026-08-12T10:19:03Z)
+**Tarih:** 2026-08-14 (Test calistirma zamani: 2026-08-13T10:19:44Z)
 
 ## Ozet
-- Toplam test: 9 (3 test x 3 tarayici)
+- Toplam test: 9 (3 test x 3 tarayici: chromium, firefox, webkit)
 - Gecen: 6
 - Basarisiz: 3
 
 ## Sonuc
 
-**"should have a login button"** testi 3 tarayicide da basarisiz oldu (Chromium, Firefox, WebKit). Her tarayicide 2 yeniden deneme yapildi, sonuc degismedi.
+**Basarisiz test: "should have a login button"** — Chromium, Firefox ve WebKit tarayicilarinin ucunda da basarisiz oldu. Her tarayici 2 kez yeniden denedi, toplam 9 deneme yapildi, hepsi basarisiz.
 
 ### Hata Detayi
 
-- **Basarisiz test:** `should have a login button` (homepage.spec.js, satir 16)
-- **Hata:** `button#login` selectoruyle eşleşen element sayfada bulunamadi
-- **Hata mesaji:** `locator('button#login') - element(s) not found (timeout: 3000ms)`
+```
+Locator: locator('button#login')
+Beklenen: element gorune olarak mevcut
+Hata: element bulunamadi (timeout: 3000ms)
+Dosya: tests/homepage.spec.js satir 19
+```
+
+Test, sayfada `button#login` ID'li bir login butonu aradi ancak bu element sayfada bulunmuyor.
 
 ### Olasi Sebep
 
-Sorun butun tarayicilerde ayni sekilde tekrarlaniyor, bu nedenle ag sorunu veya tarayici ozgun bir hata degil. En muhtemel sebep:
+**Selector/element kaybolmus ya da hic olmamis olabilir.** Diger iki test (`should load successfully` ve `should have a heading`) tum tarayicilarda basariyla gecti; bu da sitenin (example.com) erisilebiliginin sorunlu olmadigini gosteriyor. Sorun yalnizca `button#login` elementinin sayfada var olmamasi. example.com standart bir demo sayfasidir ve login butonu icermez — testin yanlis bir siteye ya da artik degismis bir selector'e karsi yazilmis olmasi muhtemel.
 
-**Selector degismis veya element hic mevcut degil.** `example.com` statik bir demo sayfasidir ve genellikle `button#login` kimlikli bir giris butonu barindirmaz. Test ya yanlis bir selector kullaniyor, ya da `example.com` sayfasinda daha once var olan bu element kaldirildı/degistirildi. Testi guncelleyip sitenin gercek HTML yapisini kontrol etmek gerekiyor.
+**Onerilen eylem:** `tests/homepage.spec.js` dosyasini inceleyerek `button#login` selector'unun guncel sayfa yapisindan kaynaklanip kaynaklanmadigini kontrol edin.
