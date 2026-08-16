@@ -1,29 +1,29 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-08-15 09:37 UTC
+**Tarih:** 2026-08-16 (Test calisma zamani: 2026-08-15 09:36 UTC)
 
 ## Ozet
-- Toplam test: 9 (3 senaryo × 3 tarayici: Chromium, Firefox, WebKit)
+- Toplam test: 9 (3 benzersiz test × 3 tarayici: Chromium, Firefox, Webkit)
 - Gecen: 6
 - Basarisiz: 3
 
 ## Sonuc
 
-**"should have a login button" testi 3 tarayicide da basarisiz oldu.**
+**Basarisiz test:** `should have a login button` — Chromium, Firefox ve Webkit tarayicilarinin hepsinde basarisiz.
 
-### Hata Mesaji
-Test, `button#login` selectorunu sayfada bulamadi:
+### Hata Ozeti
+Test, sayfada `button#login` secicisiyle eslesen bir "Login" butonu aranmaktadir. Ancak bu element hic bir tarayicida bulunamadi:
+
 ```
-locator('button#login') - element(s) not found
+Locator: locator('button#login')
+Beklenen: gorunur olmasi
+Hata: element(s) bulunamadi
+Zaman asimi: 3000ms
 ```
-Her tarayicida 2 kez yeniden denendi, toplam 9 denemenin tamami basarisiz oldu.
+
+Her tarayicida 2 kez yeniden denenmis (toplam 3 deneme) ancak sonuc degismemistir.
 
 ### Olasi Sebep
-Diger iki test (`should load successfully`, `should have a heading`) tum tarayicilarda basariyla gectigi icin **site down degil**. Sorun buyuk olasilikla:
+**Buyuk olasilikla selector degismis veya hic var olmamis.** `example.com` sitesinde bir login butonu bulunmamaktadir. Test muhtemelen farkli bir site icin yazilmistir ya da sitenin HTML yapisi degismistir. `button#login` secicisi artik gecerli bir elemente eslesmiyor. Diger iki test (`should load successfully` ve `should have a heading`) tum tarayicilarda basariyla gecmistir; bu da sitenin erislebilir oldugunu ve genel sorun olmadigini gostermektedir.
 
-- Giris butonu artik `<button id="login">` degil, farkli bir HTML elementiyle (`<a>` etiketi, farkli bir ID veya CSS sinifi) implement edilmis olabilir.
-- Yani **selector degismis** olmali. Test dosyasindaki `page.locator('button#login')` sorgusu guncellenmeli.
-
-### Etkilenen Test
-- **Dosya:** `tests/homepage.spec.js` satir 19
-- **Test:** `Homepage > should have a login button`
-- **Tarayicilar:** Chromium, Firefox, WebKit (hepsi)
+### Onerilen Aksiyon
+`tests/homepage.spec.js` dosyasindaki 16-20. satirlarda yer alan login butonu testini guncelleyin veya kaldirin. Eger login butonu eklenecekse, dogru seciciyi (`button#login`) kullanilacak HTML ile eslestirin.
