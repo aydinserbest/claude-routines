@@ -1,24 +1,17 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-08-17 (Test çalışma zamanı: 2026-08-16T09:37:54Z)
+**Tarih:** 2026-08-18 09:10 UTC
 
 ## Ozet
-- Toplam test: 9 (3 senaryo × 3 tarayıcı: chromium, firefox, webkit)
+- Toplam test: 9
 - Gecen: 6
 - Basarisiz: 3
 
 ## Sonuc
 
-**Basarisiz test:** `should have a login button` — Chromium, Firefox ve WebKit tarayıcılarının tümünde başarısız. Her tarayıcıda 2 yeniden deneme dahil toplam 3 kez denendi, hepsi aynı hatayla bitti.
+**Basarisiz test:** `should have a login button` — Chromium, Firefox ve WebKit tarayicilarinin ucunde de basarisiz.
 
-**Hata ozeti:**
-Test, `button#login` seçicisiyle bir giriş düğmesi arıyor ancak sayfada bu eleman bulunamıyor:
-```
-locator('button#login') — element(s) not found (3000ms timeout)
-```
+**Hata:** `button#login` secicisiyle eslesen eleman sayfada bulunamadi. Test 3 deneme sonunda da gecemedi.
 
-**Olası sebep:**
-Hata üç farklı tarayıcıda da tutarlı şekilde tekrarlandığından ağ sorunu ya da geçici bir aksaklık değil. `button#login` seçicisi sayfada yok — büyük ihtimalle sitenin HTML yapısı değişti ve giriş düğmesinin `id` özelliği ya da eleman tipi güncellendi (örn. `<a>` veya başka bir `id` kullanıyor olabilir). Test selectorünün güncellenmesi gerekiyor.
+**Olasi sebep:** Selector degismis olmasi en muhtemel neden. `example.com` anasayfasinda `button#login` id'sine sahip bir giris butonu bulunmuyor; sitenin HTML yapisi degismis ya da bu eleman hic var olmamis olabilir. Site erisilebilir durumda (diger testler gecti), dolayisiyla site down degil.
 
-**Gecen testler:**
-- `should load successfully` — Chromium, Firefox, WebKit ✅
-- `should have a heading` — Chromium, Firefox, WebKit ✅
+**Onerilen aksiyon:** `tests/homepage.spec.js` dosyasindaki login butonu selektorunu gozden gecirin; gercek HTML'deki elemana gore guncelleyin.
