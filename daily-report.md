@@ -1,17 +1,23 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-08-18 09:10 UTC
+**Tarih:** 2026-08-19 (Test calisma zamani: 2026-08-18T09:45:37Z)
 
 ## Ozet
-- Toplam test: 9
+- Toplam test: 9 (3 tarayici x 3 test)
 - Gecen: 6
 - Basarisiz: 3
 
 ## Sonuc
 
-**Basarisiz test:** `should have a login button` — Chromium, Firefox ve WebKit tarayicilarinin ucunde de basarisiz.
+**Basarisiz Test:** `Homepage > should have a login button`
+- Etkilenen tarayicilar: Chromium, Firefox, WebKit
+- Test 2 kez yeniden denendi (toplam 3 deneme), hepsi basarisiz oldu
 
-**Hata:** `button#login` secicisiyle eslesen eleman sayfada bulunamadi. Test 3 deneme sonunda da gecemedi.
+**Hata mesaji (sade Turkce):**
+`button#login` secici ile aranan "login" butonu sayfada bulunamadi.
+Test, `<button id="login">` elementinin goruntu alani icinde gorunur (visible) olmasini bekliyordu, ancak bu element sayfada mevcut degil.
 
-**Olasi sebep:** Selector degismis olmasi en muhtemel neden. `example.com` anasayfasinda `button#login` id'sine sahip bir giris butonu bulunmuyor; sitenin HTML yapisi degismis ya da bu eleman hic var olmamis olabilir. Site erisilebilir durumda (diger testler gecti), dolayisiyla site down degil.
+**Olasi sebep:**
+Site down degil (diger 2 test — sayfa yuklenme ve baslik kontrolu — tum tarayicilarda basariyla gecti).
+En muhtemel neden: **Selector degismis veya login butonu hic eklenmemis.** example.com uzerinde bir login butonu bulunmuyor; test, var olmayan bir elementi arıyor. Test kodunun (`homepage.spec.js`, satir 19) guncellenmesi ya da bu testin kaldirilmasi gerekiyor.
 
-**Onerilen aksiyon:** `tests/homepage.spec.js` dosyasindaki login butonu selektorunu gozden gecirin; gercek HTML'deki elemana gore guncelleyin.
+**GitHub Actions calistirma:** https://github.com/aydinserbest/claude-routines/actions/runs/32123199396
