@@ -1,23 +1,32 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-08-20 09:46 UTC
+**Tarih:** 2026-08-21 (Test kosma zamani: 2026-08-20T09:47 UTC)
 
 ## Ozet
-- Toplam test: 9
+- Toplam test: 9 (3 senaryo x 3 tarayici: chromium, firefox, webkit)
 - Gecen: 6
 - Basarisiz: 3
 
 ## Sonuc
 
-**3 test basarisiz oldu** — hepsi ayni test senaryosu, 3 farkli tarayicida (Chromium, Firefox, WebKit).
+**Basarisiz test: "should have a login button"** — Chromium, Firefox ve WebKit tarayicilarinin hepsinde basarisiz oldu.
 
-### Basarisiz Test: "should have a login button"
+### Hata Aciklamasi
+Test, anasayfada `button#login` secicisiyle bir giris butonu aradı fakat bulamadi:
 
-**Hata:** `locator('button#login')` seçicisiyle eşleşen element sayfada bulunamadi.
-Test, ana sayfada `<button id="login">` etiketli bir giris butonu bekliyor, ancak bu element mevcut degil.
-2 yeniden denemeye ragmen hata devam etti (yani gecici bir ag sorunu degil).
+```
+locator('button#login')
+Expected: visible
+Error: element(s) not found
+```
 
-**Olasi Sebep:** Sayfanin HTML yapisi degismis olmali. Site erisilebilir durumda (diger testler basariyla gecti), bu yuzden site down degil. Buyuk ihtimalle:
-- Login butonunun HTML etiketi veya ID'si degistirilmis (`<a>` etiketi veya farkli bir ID kullaniliyor olabilir)
-- Veya giris butonu artik farkli bir URL altinda bulunuyor
+Her tarayicide 2 kez yeniden denendi (toplam 3 deneme), hepsinde ayni hata alindi.
 
-**Onerim:** `tests/homepage.spec.js` dosyasindaki `button#login` seçicisini guncelle.
+### Olasi Sebep
+`button#login` HTML secicisi artik sayfada yok. Muhtemel nedenler:
+
+1. **Selector degismis olabilir** — Butonun ID'si veya tag'i degistirilmis olabilir (ornegin `a#login`, `button.login-btn` gibi).
+2. **Giris butonu anasayfadan kaldirilmis olabilir** — Site yeniden tasarlanmis ve login butonu baska bir konuma tasinmis ya da tamamen kaldiriilmis olabilir.
+3. **Site down degil** — Diger iki test ("should load successfully" ve "should have a heading") tum tarayicilarda gecti, yani site erisilebilir durumda.
+
+### Onerilen Aksiyon
+`tests/homepage.spec.js` dosyasindaki 19. satirdaki `button#login` secicisini guncelle. Sitenin gercek HTML yapisi incelenerek dogru selector belirlenmeli.
