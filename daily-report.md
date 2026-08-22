@@ -1,32 +1,34 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-08-21 (Test kosma zamani: 2026-08-20T09:47 UTC)
+**Tarih:** 2026-08-22 (GitHub Actions calismasi: 2026-08-21 09:49 UTC)
 
 ## Ozet
-- Toplam test: 9 (3 senaryo x 3 tarayici: chromium, firefox, webkit)
+- Toplam test: 9 (3 test x 3 tarayici: Chromium, Firefox, WebKit)
 - Gecen: 6
 - Basarisiz: 3
 
 ## Sonuc
 
-**Basarisiz test: "should have a login button"** — Chromium, Firefox ve WebKit tarayicilarinin hepsinde basarisiz oldu.
+**"should have a login button"** testi 3 tarayicida da basarisiz oldu (her biri 2 yeniden deneme dahil 3 kez denendi).
 
-### Hata Aciklamasi
-Test, anasayfada `button#login` secicisiyle bir giris butonu aradı fakat bulamadi:
+### Hata Detayi
 
 ```
-locator('button#login')
+Locator: locator('button#login')
 Expected: visible
+Timeout: 3000ms
 Error: element(s) not found
 ```
 
-Her tarayicide 2 kez yeniden denendi (toplam 3 deneme), hepsinde ayni hata alindi.
+Test, sayfada `button#login` secicisiyle bir giris butonu aramakta, ancak bu element sayfada bulunmamaktadir.
 
 ### Olasi Sebep
-`button#login` HTML secicisi artik sayfada yok. Muhtemel nedenler:
 
-1. **Selector degismis olabilir** — Butonun ID'si veya tag'i degistirilmis olabilir (ornegin `a#login`, `button.login-btn` gibi).
-2. **Giris butonu anasayfadan kaldirilmis olabilir** — Site yeniden tasarlanmis ve login butonu baska bir konuma tasinmis ya da tamamen kaldiriilmis olabilir.
-3. **Site down degil** — Diger iki test ("should load successfully" ve "should have a heading") tum tarayicilarda gecti, yani site erisilebilir durumda.
+**Selector degismis veya element hic mevcut degil.** Test edilen adres muhtemelen `example.com` olup bu sayfa basit bir yer tutucu sayfadir ve gercek bir giris butonu icermez. Secici (`button#login`) sayfanin HTML yapisiyla eslesmemektedir. Cozum: Test secicisini sayfanin gercek HTML yapisina gore guncellemek ya da test adresini duzeltmek gerekir.
 
-### Onerilen Aksiyon
-`tests/homepage.spec.js` dosyasindaki 19. satirdaki `button#login` secicisini guncelle. Sitenin gercek HTML yapisi incelenerek dogru selector belirlenmeli.
+### Etkilenen Tarayicilar
+- Chromium - BASARISIZ (3 deneme)
+- Firefox - BASARISIZ (3 deneme)
+- WebKit - BASARISIZ (3 deneme)
+
+### Actions Calistirmasi
+[Build #32469671208](https://github.com/aydinserbest/claude-routines/actions/runs/32469671208)
