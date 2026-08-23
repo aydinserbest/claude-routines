@@ -1,34 +1,20 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-08-22 (GitHub Actions calismasi: 2026-08-21 09:49 UTC)
+**Tarih:** 2026-08-23 09:10 UTC
 
 ## Ozet
-- Toplam test: 9 (3 test x 3 tarayici: Chromium, Firefox, WebKit)
+- Toplam test: 9 (3 tarayici x 3 test)
 - Gecen: 6
 - Basarisiz: 3
 
 ## Sonuc
 
-**"should have a login button"** testi 3 tarayicida da basarisiz oldu (her biri 2 yeniden deneme dahil 3 kez denendi).
+**Basarisiz test:** `Homepage > should have a login button` — Chromium, Firefox ve WebKit tarayicilarinin tamaminda basarisiz oldu (her birinde 2 yeniden deneme de dahil).
 
-### Hata Detayi
+**Hata:** `locator('button#login')` — Sayfada `button#login` secicisiyle eslesen bir eleman bulunamadi. Test, ana sayfada gorунур bir giris butonunun varligini bekliyor; ancak bu eleman sayfada mevcut degil.
 
-```
-Locator: locator('button#login')
-Expected: visible
-Timeout: 3000ms
-Error: element(s) not found
-```
+**Olasi sebep:** Selector degismis olmasi en muhtemel neden. `example.com` anasayfasinda hicbir zaman `button#login` kimlikli bir buton bulunmamaktadir. Testin yanlis bir selector kullandigini ya da baska bir URL hedeflemesi gerektigini dusunmek yerinde olacaktir. Site erisiminde bir sorun oldugu ihtimali dusuk; zira "should load successfully" ve "should have a heading" testleri tum tarayicilarda basariyla gecmektedir.
 
-Test, sayfada `button#login` secicisiyle bir giris butonu aramakta, ancak bu element sayfada bulunmamaktadir.
+**Onerim:** `homepage.spec.js` satir 18'deki `'button#login'` selectorunu guncellemeyi veya testi doğru sayfaya yonlendirmeyi dusunun.
 
-### Olasi Sebep
-
-**Selector degismis veya element hic mevcut degil.** Test edilen adres muhtemelen `example.com` olup bu sayfa basit bir yer tutucu sayfadir ve gercek bir giris butonu icermez. Secici (`button#login`) sayfanin HTML yapisiyla eslesmemektedir. Cozum: Test secicisini sayfanin gercek HTML yapisina gore guncellemek ya da test adresini duzeltmek gerekir.
-
-### Etkilenen Tarayicilar
-- Chromium - BASARISIZ (3 deneme)
-- Firefox - BASARISIZ (3 deneme)
-- WebKit - BASARISIZ (3 deneme)
-
-### Actions Calistirmasi
-[Build #32469671208](https://github.com/aydinserbest/claude-routines/actions/runs/32469671208)
+---
+_CI calistirmasi: [GitHub Actions #32565420217](https://github.com/aydinserbest/claude-routines/actions/runs/32565420217)_
