@@ -1,5 +1,5 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-08-23 09:10 UTC
+**Tarih:** 2026-08-23 09:39 UTC
 
 ## Ozet
 - Toplam test: 9 (3 tarayici x 3 test)
@@ -8,13 +8,22 @@
 
 ## Sonuc
 
-**Basarisiz test:** `Homepage > should have a login button` — Chromium, Firefox ve WebKit tarayicilarinin tamaminda basarisiz oldu (her birinde 2 yeniden deneme de dahil).
+**Basarisiz Test:** `should have a login button` (Chromium, Firefox, WebKit - 3 tarayicide de basarisiz)
 
-**Hata:** `locator('button#login')` — Sayfada `button#login` secicisiyle eslesen bir eleman bulunamadi. Test, ana sayfada gorунур bir giris butonunun varligini bekliyor; ancak bu eleman sayfada mevcut degil.
+### Hata Ozeti
+Test, ana sayfada `button#login` ID'li bir giris butonu aranmasini bekliyor, ancak bu element sayfada bulunamadi. Hata 3 retry sonrasinda da devam etti.
 
-**Olasi sebep:** Selector degismis olmasi en muhtemel neden. `example.com` anasayfasinda hicbir zaman `button#login` kimlikli bir buton bulunmamaktadir. Testin yanlis bir selector kullandigini ya da baska bir URL hedeflemesi gerektigini dusunmek yerinde olacaktir. Site erisiminde bir sorun oldugu ihtimali dusuk; zira "should load successfully" ve "should have a heading" testleri tum tarayicilarda basariyla gecmektedir.
+```
+Locator: locator('button#login')
+Expected: visible
+Error: element(s) not found
+```
 
-**Onerim:** `homepage.spec.js` satir 18'deki `'button#login'` selectorunu guncellemeyi veya testi doğru sayfaya yonlendirmeyi dusunun.
+### Olasi Sebep
+**Selector degismis olmasi en muhtemel neden.** Test `button#login` selectorunu arıyor, ancak example.com anasayfasinda boyle bir buton bulunmuyor. Bu muhtemelen:
+- Test yanlis bir site veya sayfa icin yazilmis (example.com'da login butonu yoktur)
+- Ya da sitenin HTML yapisi degismis ve login elementinin ID veya tag'i farklilasmis olabilir
 
----
-_CI calistirmasi: [GitHub Actions #32565420217](https://github.com/aydinserbest/claude-routines/actions/runs/32565420217)_
+### Gecen Testler
+- `should load successfully` - Chromium, Firefox, WebKit (3/3)
+- `should have a heading` - Chromium, Firefox, WebKit (3/3)
