@@ -1,29 +1,27 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-08-23 09:39 UTC
+**Tarih:** 2026-08-25 09:10 UTC
 
 ## Ozet
-- Toplam test: 9 (3 tarayici x 3 test)
+- Toplam test: 9
 - Gecen: 6
 - Basarisiz: 3
 
 ## Sonuc
 
-**Basarisiz Test:** `should have a login button` (Chromium, Firefox, WebKit - 3 tarayicide de basarisiz)
+**Basarisiz Test:** `Homepage > should have a login button`
 
-### Hata Ozeti
-Test, ana sayfada `button#login` ID'li bir giris butonu aranmasini bekliyor, ancak bu element sayfada bulunamadi. Hata 3 retry sonrasinda da devam etti.
+**Hata:** Test, ana sayfada `button#login` secicisiyle bir giris butonu aramaktadir ancak bu element sayfada bulunamadi.
 
 ```
+Error: expect(locator).toBeVisible() failed
 Locator: locator('button#login')
 Expected: visible
+Timeout: 3000ms
 Error: element(s) not found
 ```
 
-### Olasi Sebep
-**Selector degismis olmasi en muhtemel neden.** Test `button#login` selectorunu arıyor, ancak example.com anasayfasinda boyle bir buton bulunmuyor. Bu muhtemelen:
-- Test yanlis bir site veya sayfa icin yazilmis (example.com'da login butonu yoktur)
-- Ya da sitenin HTML yapisi degismis ve login elementinin ID veya tag'i farklilasmis olabilir
+**Olasi Sebep:** Sitenin HTML yapisi degismis olmali — `button#login` elementi ya kaldirildi ya da farkli bir seciciyle (ornegin `a.login`, `#loginBtn`, vb.) yeniden isimlendirdi. Site down oldugunda genellikle farkli hatalar gorulur (connection refused, timeout); buradaki hata spesifik olarak element bulunamadigini soyluyor, bu da **selector degisikligi** ihtimalini guclu kilmaktadir.
 
-### Gecen Testler
-- `should load successfully` - Chromium, Firefox, WebKit (3/3)
-- `should have a heading` - Chromium, Firefox, WebKit (3/3)
+Test 3 kez yeniden denenmis (retry) ve her seferinde ayni hatayı vermistir.
+
+**Onerilen Eylem:** Sitenin kaynak kodunu inceleyerek login butonunun guncellenmis secicisini tespit edin ve `tests/` klasorundeki ilgili test dosyasini guncelleyin.
