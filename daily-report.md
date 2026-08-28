@@ -1,17 +1,31 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-08-27 (Testler 2026-08-26T09:54 UTC'de calistirildi)
+**Tarih:** 2026-08-28 09:38 UTC
 
 ## Ozet
-- Toplam test: 9 (3 senaryo x 3 tarayici)
+- Toplam test: 9 (3 senaryo × 3 tarayici: Chromium, Firefox, Webkit)
 - Gecen: 6
 - Basarisiz: 3
 
 ## Sonuc
 
-**Basarisiz Test:** `should have a login button` — Chromium, Firefox ve WebKit tarayicilarinin hepsinde basarisiz oldu.
+**Basarisiz Test:** `should have a login button` — Chromium, Firefox ve Webkit tarayicilarinin hepsinde basarisiz.
 
-**Hata:** `button#login` secicisiyle eslesen bir eleman sayfada bulunamadi (3000ms beklendi, 2 yeniden deneme yapildi, sonuc degismedi).
+### Hata Aciklamasi
+Test, sayfada `button#login` secicisiyle bir giris butonu aramakta ancak bu element sayfada bulunamamaktadir:
 
-**Olasi Sebep:** example.com anasayfasinda `<button id="login">` etiketli bir buton bulunmuyor. Site bir yer tutucu (placeholder) sayfasidir ve hicbir zaman gercek bir giris butonu icermemistir. Test, gercekte var olmayan bir HTML elemanini aradi. Bu bir **selector hatasi** — test kodu guncellenmeli ya da test kaldirilmali.
+```
+Error: expect(locator).toBeVisible() failed
+Locator: locator('button#login')
+Expected: visible
+Error: element(s) not found
+```
 
-**Etkilenen Dosya:** `tests/homepage.spec.js` satir 19
+Test 2 yeniden deneme hakkiyla her tarayicida 3 kez denendi ve hepsinde basarisiz oldu. Diger testler (`should load successfully` ve `should have a heading`) tum tarayicilarda basariyla gecti, yani site ayakta.
+
+### Olasi Sebep
+**Selector degismis olabilir.** Site sayfasi yukleniyor ve baslik mevcut, dolayisiyla site down degil. Buyuk ihtimalle:
+- Login butonunun HTML'deki `id="login"` ozelligi kaldirilmis veya degistirilmis,
+- Ya da `button` elementi yerine farkli bir HTML elementi kullanilmaya baslanmis (ornegin `<a>` veya `<div>`).
+
+### Onerim
+`tests/homepage.spec.js` dosyasindaki 18. satirdaki `'button#login'` secicisini guncellemeniz gerekebilir. Oncelikle tarayici gelistirici araclariyla mevcut login butonu elementini inceleyip dogru seciciyi belirleyin.
