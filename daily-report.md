@@ -1,31 +1,29 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-08-28 09:38 UTC
+**Tarih:** 2026-08-29 (Test koşumu: 2026-08-28T20:50:36Z)
 
 ## Ozet
-- Toplam test: 9 (3 senaryo × 3 tarayici: Chromium, Firefox, Webkit)
+- Toplam test: 9 (3 senaryo × 3 tarayici: chromium, firefox, webkit)
 - Gecen: 6
 - Basarisiz: 3
 
-## Sonuc
+## Basarisiz Testler
 
-**Basarisiz Test:** `should have a login button` — Chromium, Firefox ve Webkit tarayicilarinin hepsinde basarisiz.
+### "should have a login button" — Chromium, Firefox, WebKit
 
-### Hata Aciklamasi
-Test, sayfada `button#login` secicisiyle bir giris butonu aramakta ancak bu element sayfada bulunamamaktadir:
+**Hata:** `button#login` seçicisiyle eşleşen bir buton sayfada bulunamadı.
 
 ```
-Error: expect(locator).toBeVisible() failed
 Locator: locator('button#login')
 Expected: visible
 Error: element(s) not found
 ```
 
-Test 2 yeniden deneme hakkiyla her tarayicida 3 kez denendi ve hepsinde basarisiz oldu. Diger testler (`should load successfully` ve `should have a heading`) tum tarayicilarda basariyla gecti, yani site ayakta.
+Test 3 deneme (retry) hakkını da kullandı ve her seferinde aynı hatayı verdi.
 
-### Olasi Sebep
-**Selector degismis olabilir.** Site sayfasi yukleniyor ve baslik mevcut, dolayisiyla site down degil. Buyuk ihtimalle:
-- Login butonunun HTML'deki `id="login"` ozelligi kaldirilmis veya degistirilmis,
-- Ya da `button` elementi yerine farkli bir HTML elementi kullanilmaya baslanmis (ornegin `<a>` veya `<div>`).
+## Olasi Sebep
 
-### Onerim
-`tests/homepage.spec.js` dosyasindaki 18. satirdaki `'button#login'` secicisini guncellemeniz gerekebilir. Oncelikle tarayici gelistirici araclariyla mevcut login butonu elementini inceleyip dogru seciciyi belirleyin.
+Selector (`button#login`) tüm tarayıcılarda ve her denemede tutarlı biçimde başarısız oluyor; bu durum ağ sorunu veya geçici bir aksaklık ihtimalini ekarte eder.
+
+**En muhtemel sebep:** Sayfanın HTML yapısı değişmiş olabilir — login butonu artık farklı bir `id` veya farklı bir HTML etiketi (örn. `<a>`, `<div>`) kullanıyor olabilir. Alternatif olarak login butonu sayfadan tamamen kaldırılmış ya da sadece giriş yapılmış kullanıcılara gösteriliyor olabilir.
+
+**Önerilen aksiyon:** `tests/homepage.spec.js` (satır 18-19) içindeki `button#login` selektorunu gerçek sayfanın HTML yapısıyla karşılaştırarak güncelleyin.
