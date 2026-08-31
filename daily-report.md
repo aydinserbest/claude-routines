@@ -1,32 +1,20 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-08-30 (Test çalışma zamanı: 2026-08-29 14:26 UTC)
+**Tarih:** 2026-08-31 (Test calistirma: 2026-08-30 14:24 UTC)
 
 ## Ozet
-- Toplam test: 9
+- Toplam test: 9 (3 test x 3 tarayici: chromium, firefox, webkit)
 - Gecen: 6
 - Basarisiz: 3
 
-## Sonuc
+## Basarisiz Test
 
-**Basarisiz test: "should have a login button"** — Chromium, Firefox ve WebKit tarayicilarin ucunde de basarisiz oldu.
+### "should have a login button" — Tum tarayicilarda basarisiz
 
-### Hata ozeti
-Test, `button#login` secicisiyle (selector) bir giris butonu aramis ancak sayfada bu elementi bulamamistir. Hata 2 deneme (retry) sonrasinda da tekrarlamis, gecici bir sorun olmadigi dogrulanmistir.
+**Hata:** `locator('button#login')` elemani sayfada bulunamadi.
 
-```
-locator('button#login') → element(s) not found
-Beklenen: gorunur (visible)
-Zaman asimi: 3000ms
-Dosya: tests/homepage.spec.js, satir 19
-```
+Test, `button#login` CSS secicisiyle bir giris butonu aramakta; ancak element her 3 tarayicida da (chromium, firefox, webkit) bulunamadi. Her tarayicida 2 yeniden deneme yapildi, sonuc degismedi.
 
-### Olasi sebep tahmini
-Bu hata **selector degisikliginden** kaynakliyor olmasi kuvvetle muhtemeldir. Sitenin HTML yapisi degismis ve login butonu artik `button#login` ID'siyle erisilebilir durumda degil. Muhtemel senaryolar:
-- Butonun ID'si degistirilmis (ornegin `#loginBtn`, `#signin` gibi)
-- Buton elementi `<button>` yerine `<a>` veya baska bir etiketle degistirilmis
-- Login butonu farkli bir sayfaya ya da modal'a tasinmis
+**Olasi Sebep:**
+Sayfa yukleniyor ve diger elementler (baslik vs.) bulunuyor. Bu nedenle site down degil. Buyuk ihtimalle **selector degismis**: login butonunun HTML'i guncellenmis olabilir (orn. `id="login"` kaldirilmis, `a` ya da baska bir element tipiyle degistirilmis). Testin `button#login` secicisini guncel HTML yapisiyla eslestirmesi gerekiyor.
 
-Site tamamen down olsaydi diger testler de ("should load successfully", "should have a heading") basarisiz olurdu — ancak bunlar tum tarayicilarda basarili gecti. Bu nedenle **site down degil, sadece selector eskimis** olabilir.
-
-### Onerilen aksiyon
-`tests/homepage.spec.js` dosyasindaki 18-19. satirlari inceleyerek `button#login` secicisini sitenin guncel HTML yapisina gore guncelleyin.
+**Etkilenen tarayicilar:** Chromium, Firefox, WebKit
