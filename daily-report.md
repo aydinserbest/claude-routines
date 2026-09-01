@@ -1,20 +1,30 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-08-31 (Test calistirma: 2026-08-30 14:24 UTC)
+**Tarih:** 2026-09-01 09:10 UTC
 
 ## Ozet
-- Toplam test: 9 (3 test x 3 tarayici: chromium, firefox, webkit)
+- Toplam test: 9 (3 senaryo × 3 tarayici: Chromium, Firefox, WebKit)
 - Gecen: 6
 - Basarisiz: 3
 
-## Basarisiz Test
+## Sonuc
 
-### "should have a login button" — Tum tarayicilarda basarisiz
+**Basarisiz Test: "should have a login button"** — 3 tarayicida da basarisiz
 
-**Hata:** `locator('button#login')` elemani sayfada bulunamadi.
+### Hata Aciklamasi
+Test, ana sayfada `button#login` secicisiyle bir giris butonu ariyor. Ancak bu element sayfada bulunamadi. Hata, 3 farkli tarayicida da (Chromium, Firefox, WebKit) ayni sekilde tekrarlandi ve her birinde 2 yeniden deneme yapilmasina ragmen duzelmedi.
 
-Test, `button#login` CSS secicisiyle bir giris butonu aramakta; ancak element her 3 tarayicida da (chromium, firefox, webkit) bulunamadi. Her tarayicida 2 yeniden deneme yapildi, sonuc degismedi.
+**Hata mesaji:** `locator('button#login') — element(s) not found` (3000ms zaman asimi)
 
-**Olasi Sebep:**
-Sayfa yukleniyor ve diger elementler (baslik vs.) bulunuyor. Bu nedenle site down degil. Buyuk ihtimalle **selector degismis**: login butonunun HTML'i guncellenmis olabilir (orn. `id="login"` kaldirilmis, `a` ya da baska bir element tipiyle degistirilmis). Testin `button#login` secicisini guncel HTML yapisiyla eslestirmesi gerekiyor.
+### Olasi Sebepler
+1. **Selector degismis olabilir:** Sitedeki giris butonu `button#login` yerine farkli bir HTML yapisina (ornegin `a.login`, `button[data-action="login"]`) tasınmis olabilir.
+2. **Sayfa yapisi degismis olabilir:** Giris butonu artik ana sayfada gosterilmiyor olabilir (oturum acilmis kullanicilara farkli icerik sunuluyor gibi bir senaryo).
+3. **Site guncellemesi:** example.com'da yapisal bir degisiklik yapilmis olabilir.
 
-**Etkilenen tarayicilar:** Chromium, Firefox, WebKit
+### Gecen Testler
+- should load successfully (Chromium, Firefox, WebKit) ✅
+- should have a heading (Chromium, Firefox, WebKit) ✅
+
+### GitHub Actions Bilgisi
+- Calistirma: [#33417302232](https://github.com/aydinserbest/claude-routines/actions/runs/33417302232)
+- Commit: `186d62e` (report: 2026-08-31)
+- Test suresi: ~42 saniye
