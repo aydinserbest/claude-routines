@@ -1,30 +1,32 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-09-01 09:10 UTC
+**Tarih:** 2026-09-02 09:10 UTC
 
 ## Ozet
-- Toplam test: 9 (3 senaryo × 3 tarayici: Chromium, Firefox, WebKit)
+- Toplam test: 9 (3 senaryo × 3 tarayici: chromium, firefox, webkit)
 - Gecen: 6
 - Basarisiz: 3
 
 ## Sonuc
 
-**Basarisiz Test: "should have a login button"** — 3 tarayicida da basarisiz
+**Basarisiz test: "should have a login button"** — 3 tarayicide da (chromium, firefox, webkit) basarisiz.
 
-### Hata Aciklamasi
-Test, ana sayfada `button#login` secicisiyle bir giris butonu ariyor. Ancak bu element sayfada bulunamadi. Hata, 3 farkli tarayicida da (Chromium, Firefox, WebKit) ayni sekilde tekrarlandi ve her birinde 2 yeniden deneme yapilmasina ragmen duzelmedi.
+### Hata Detayi
 
-**Hata mesaji:** `locator('button#login') — element(s) not found` (3000ms zaman asimi)
+Test, ana sayfada `button#login` secicisiyle bir "Login" dugmesi aramaktadir. Ancak element sayfada bulunamadi:
 
-### Olasi Sebepler
-1. **Selector degismis olabilir:** Sitedeki giris butonu `button#login` yerine farkli bir HTML yapisina (ornegin `a.login`, `button[data-action="login"]`) tasınmis olabilir.
-2. **Sayfa yapisi degismis olabilir:** Giris butonu artik ana sayfada gosterilmiyor olabilir (oturum acilmis kullanicilara farkli icerik sunuluyor gibi bir senaryo).
-3. **Site guncellemesi:** example.com'da yapisal bir degisiklik yapilmis olabilir.
+```
+Locator: locator('button#login')
+Expected: visible
+Timeout: 3000ms
+Error: element(s) not found
+```
 
-### Gecen Testler
-- should load successfully (Chromium, Firefox, WebKit) ✅
-- should have a heading (Chromium, Firefox, WebKit) ✅
+Her tarayicide 2 yeniden deneme yapildi (toplam 3 deneme), hepsi basarisiz.
 
-### GitHub Actions Bilgisi
-- Calistirma: [#33417302232](https://github.com/aydinserbest/claude-routines/actions/runs/33417302232)
-- Commit: `186d62e` (report: 2026-08-31)
-- Test suresi: ~42 saniye
+### Olasi Sebep
+
+**Selector degismis olabilir.** `example.com` sitesinde login dugmesi yoktur veya `button#login` ID'siyle etiketlenmemistir. Test muhtemelen yanlis bir hedef URL veya yanlis bir selector ile yazilmistir. Site down degil (diger 2 test — sayfa yukleme ve baslik kontrolu — tum tarayicilarda basariyla gecti).
+
+### Onerilen Cozum
+
+`tests/homepage.spec.js` dosyasinin 18. satirindaki selector guncellenmeli ya da test, `example.com`'da var olmayan bir ozellik icin yazilmissa kaldirilmalidir.
