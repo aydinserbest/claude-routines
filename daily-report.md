@@ -1,32 +1,17 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-09-02 09:10 UTC
+**Tarih:** 2026-09-03 09:10 UTC (Test calisma zamani: 2026-09-02 13:35 UTC)
 
 ## Ozet
-- Toplam test: 9 (3 senaryo × 3 tarayici: chromium, firefox, webkit)
+- Toplam test: 9 (3 tarayici x 3 test)
 - Gecen: 6
 - Basarisiz: 3
 
 ## Sonuc
 
-**Basarisiz test: "should have a login button"** — 3 tarayicide da (chromium, firefox, webkit) basarisiz.
+**Basarisiz test:** `should have a login button` — Chromium, Firefox ve WebKit tarayicilarinin hepsinde basarisiz oldu.
 
-### Hata Detayi
+**Hata mesaji:** `locator('button#login')` elementi sayfada bulunamadi. Her tarayicide 2 yeniden deneme yapildi, sonuc degismedi.
 
-Test, ana sayfada `button#login` secicisiyle bir "Login" dugmesi aramaktadir. Ancak element sayfada bulunamadi:
+**Olasi sebep:** Sayfadaki login butonunun ID'si degismis olabilir (`button#login` artik mevcut degil), ya da buton tamamen kaldirilmis olabilir. Diger iki test (`should load successfully` ve `should have a heading`) tum tarayicilarda gecti, dolayisiyla site erisimi normal — sadece bu spesifik selector artik sayfada eslesmiyordur.
 
-```
-Locator: locator('button#login')
-Expected: visible
-Timeout: 3000ms
-Error: element(s) not found
-```
-
-Her tarayicide 2 yeniden deneme yapildi (toplam 3 deneme), hepsi basarisiz.
-
-### Olasi Sebep
-
-**Selector degismis olabilir.** `example.com` sitesinde login dugmesi yoktur veya `button#login` ID'siyle etiketlenmemistir. Test muhtemelen yanlis bir hedef URL veya yanlis bir selector ile yazilmistir. Site down degil (diger 2 test — sayfa yukleme ve baslik kontrolu — tum tarayicilarda basariyla gecti).
-
-### Onerilen Cozum
-
-`tests/homepage.spec.js` dosyasinin 18. satirindaki selector guncellenmeli ya da test, `example.com`'da var olmayan bir ozellik icin yazilmissa kaldirilmalidir.
+**Onerim:** `tests/homepage.spec.js` dosyasinin 18. satirindaki `button#login` selectorunu kontrol et ve guncelle.
