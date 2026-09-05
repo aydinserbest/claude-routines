@@ -1,31 +1,30 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-09-04 09:10 UTC
+**Tarih:** 2026-09-05 09:10 UTC
 
 ## Ozet
-- Toplam test: 9
+- Toplam test: 9 (3 spec × 3 tarayici: chromium, firefox, webkit)
 - Gecen: 6
 - Basarisiz: 3
 
 ## Sonuc
 
-**Basarisiz Test:** `Homepage > should have a login button`
-**Etkilenen Tarayicilar:** Chromium, Firefox, WebKit (her 3 tarayici)
+**BASARISIZ TEST TESPIT EDILDI**
 
-### Hata Ozeti
-Test, `example.com` ana sayfasinda `button#login` CSS secicisiyle bir giris dugmesi aradi. Eleman 3 saniye boyunca beklendi ancak sayfada bulunamadi. Her tarayicide 2 yeniden deneme (retry) yapildi, hepsi basarisiz oldu.
+### Basarisiz Test: `should have a login button`
+- **Dosya:** `tests/homepage.spec.js` (satir 19)
+- **Tarayicilar:** Chromium, Firefox, Webkit (her ucunde de basarisiz)
+- **Hata:** `locator('button#login')` elementi sayfada bulunamadi
 
-```
-Locator: locator('button#login')
-Beklenen: gorunur olmasi
-Hata: element(s) not found
-```
+**Hata mesaji (ozetlenmis):**
+> `button#login` secicisi ile aranan login butonu sayfada goruntulenemedi. Element 3000ms icinde bulunamadi.
 
 ### Olasi Sebep
-**Selector degismis veya sayfa yanlislikla secilmis.** `example.com` yalnizca basit bir yer tutucu sayfadir; iceriginde hicbir zaman `button#login` elementi bulunmamistir. Bu test muhtemelen yanlis URL veya yanlis CSS secicisiyle yazilmistir.
+Test kodu `button#login` CSS secicisini kullaniyor. Bu hata **tum tarayicilarda** tutarli sekilde tekrarladi ve her deneme (retry) basarisiz oldu. Bu durum gecici bir ag sorunu degil, kalici bir selector degisikligine isaret ediyor.
 
-**Onerim:** Testi gozden gecirerek ya dogru URL'yi (login butonu iceren bir sayfa) ya da dogru CSS secicisini guncellemeniz gerekiyor.
+**En muhtemel sebep:** Sayfada `<button id="login">` elementi artik mevcut degil. Muhtemelen:
+1. Login butonunun HTML etiketi degisti (orn. `<button>` yerine `<a>` kullanilmaya baslandi)
+2. Butonun `id` ozelligi degistirildi veya kaldirildi
+3. Login butonu anasayfadan kaldirildi
 
-### Test Kosusu Bilgisi
-- Test zamani: 2026-09-03 13:32 UTC
-- GitHub Actions: [Run #33761602795](https://github.com/aydinserbest/claude-routines/actions/runs/33761602795)
-- Commit: `9c95023`
+### Onerim
+`tests/homepage.spec.js` dosyasindaki selector'i guncel HTML yapisina gore guncelleyin.
