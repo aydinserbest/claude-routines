@@ -1,28 +1,25 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-09-06 09:10 UTC
+**Tarih:** 2026-09-07 09:10 UTC
 
 ## Ozet
-- Toplam test: 9 (3 test senaryosu × 3 tarayici: chromium, firefox, webkit)
+- Toplam test: 9
 - Gecen: 6
 - Basarisiz: 3
 
 ## Sonuc
 
-**Basarisiz Test: "should have a login button"** — 3 tarayicide da basarisiz (chromium, firefox, webkit)
+**1 test senaryosu 3 tarayicida da basarisiz oldu.**
 
-### Hata Aciklamasi
-Test, ana sayfada `button#login` selector'u ile bir giris butonu aradi ancak bulamadi. Hata mesaji:
+### Basarisiz Test: `should have a login button`
+- **Dosya:** `tests/homepage.spec.js`, satir 19
+- **Tarayicilar:** Chromium, Firefox, Webkit (her birinde 2 tekrar dahil 3 deneme yapildi, hepsi basarisiz)
+- **Hata:** `locator('button#login')` elementi sayfada bulunamadi (`element(s) not found`)
 
-> `locator('button#login')` — element(s) not found (3000ms timeout)
+### Hata Ozeti (Turkce)
+Test, anasayfada `<button id="login">` selectorunu aramakta, ancak bu element sayfada mevcut degil. 3 farkli tarayicida tutarli bicimde basarisiz olmasi ve her denemede ayni hatayi vermesi tesaduf degil — element gercekten sayfada yok.
 
-Her tarayicide 2 yeniden deneme (retry) yapildi, hicbirinde basarimadi.
-
-### Olasi Sebep Tahmini
-**Selector degismis olmasi en muhtemel sebep.** "should load successfully" ve "should have a heading" testleri tum tarayicilarda basariyla gecti, yani site erisimde; sadece `button#login` elementi bulunamadi. Bu durum su anlama gelebilir:
-
-- Giris butonu HTML'de farkli bir id/class ile tanimlanmis (ornegin `button#signin`, `.login-btn`)
-- Giris butonu sayfadan kaldirilmis ya da baska bir sayfaya tasimis olabilir
-- example.com'un HTML yapisi degismis olabilir
-
-### Onerim
-`tests/homepage.spec.js` satir 18-19'u kontrol et. `button#login` selector'unu guncellemeyi ya da test senaryosunu example.com'un guncel yapisiyla uyumlu hale getirmeyi dusun.
+### Olasi Sebep
+**Selector degismis olabilir.** example.com statik bir demo sayfasidir ve uzerinde `button#login` gibi bir element bulunmaz. Test muhtemelen yanlis bir selector hedef alıyor ya da test, farkli bir sitenin arayuzune gore yazilmis. Onerilen kontroller:
+1. Tarayicida anasayfa acilarak gercekten boyle bir buton olup olmadigi kontrol edilmeli.
+2. Selector `button#login` yerine gercek sayfadaki login elementinin selectoruyla guncellenmeli.
+3. Test yanlis URL'e gitmiyor mu kontrol edilmeli.
