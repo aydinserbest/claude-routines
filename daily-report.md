@@ -1,25 +1,34 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-09-07 09:10 UTC
+**Tarih:** 2026-09-08 09:10 UTC
 
 ## Ozet
-- Toplam test: 9
+- Toplam test: 9 (3 senaryo × 3 tarayici: Chromium, Firefox, WebKit)
 - Gecen: 6
 - Basarisiz: 3
 
 ## Sonuc
 
-**1 test senaryosu 3 tarayicida da basarisiz oldu.**
+**Basarisiz test: "should have a login button"** — Chromium, Firefox ve WebKit tarayicilarinin ucunde de basarisiz oldu.
 
-### Basarisiz Test: `should have a login button`
-- **Dosya:** `tests/homepage.spec.js`, satir 19
-- **Tarayicilar:** Chromium, Firefox, Webkit (her birinde 2 tekrar dahil 3 deneme yapildi, hepsi basarisiz)
-- **Hata:** `locator('button#login')` elementi sayfada bulunamadi (`element(s) not found`)
+### Hata Ozeti
 
-### Hata Ozeti (Turkce)
-Test, anasayfada `<button id="login">` selectorunu aramakta, ancak bu element sayfada mevcut degil. 3 farkli tarayicida tutarli bicimde basarisiz olmasi ve her denemede ayni hatayi vermesi tesaduf degil — element gercekten sayfada yok.
+Test, ana sayfada `button#login` secicisiyle bir giris butonu aradi ancak bu element hicbir tarayicide bulunamadi:
+
+```
+locator('button#login') beklenen: gorunur
+Zaman asimi: 3000ms — element(s) not found
+```
+
+Her tarayici icin 2 yeniden deneme yapildi (toplam 3 deneme), hepsi ayni hatayla basarisiz oldu.
 
 ### Olasi Sebep
-**Selector degismis olabilir.** example.com statik bir demo sayfasidir ve uzerinde `button#login` gibi bir element bulunmaz. Test muhtemelen yanlis bir selector hedef alıyor ya da test, farkli bir sitenin arayuzune gore yazilmis. Onerilen kontroller:
-1. Tarayicida anasayfa acilarak gercekten boyle bir buton olup olmadigi kontrol edilmeli.
-2. Selector `button#login` yerine gercek sayfadaki login elementinin selectoruyla guncellenmeli.
-3. Test yanlis URL'e gitmiyor mu kontrol edilmeli.
+
+**Selector degismis olmasi yuksek ihtimal.** example.com sayfasinda `id="login"` olan bir `<button>` elementi bulunmuyor. Test, bu butonun var oldugunu varsaymis ancak sayfa yapisi bunu karsilamiyor. Olasiliklar:
+
+1. **Selector yanlis yazilmis** — Sayfada `button#login` yerine farkli bir id/sinif kullaniliyor olabilir (orn. `a#login`, `button.login`, `[data-testid="login"]`).
+2. **example.com'da login butonu yok** — example.com zaten login icermeyen basit bir demo sayfasidir; test yanlis hedefe yazilmis olabilir.
+3. **Sayfa yapisi degismis** — Eger bu test daha once gectiyse, site son zamanlarda HTML yapisini guncellenmis olabilir.
+
+### Onerim
+
+`homepage.spec.js` dosyasindaki 16-20. satiri inceleyin ve `button#login` secicisini sayfadaki gercek elementi yansitacak sekilde guncelleyin ya da bu testi hedef siteye gore yeniden tanimlayin.
