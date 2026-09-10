@@ -1,19 +1,24 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-09-09 09:10 UTC
+**Tarih:** 2026-09-10 09:10 UTC
 
 ## Ozet
-- Toplam test: 9 (3 senaryo x 3 tarayici)
+- Toplam test: 9
 - Gecen: 6
 - Basarisiz: 3
 
-## Basarisiz Testler
+## Sonuc
 
-### "should have a login button" — Chromium, Firefox, Webkit
+**3 test basarisiz oldu.**
 
-**Hata:** `locator('button#login')` elementi sayfada bulunamadi.
+### Basarisiz Test: `should have a login button` (Homepage)
 
-Test, ana sayfada `button#login` selectoruyle bir giris butonu aramaktadir. Bu element 3 tarayicida da 3 deneme (retry) sonrasinda hic gorulmedi.
+**Hata:** `button#login` selector'u ile etiketlenen "Login" butonu sayfada bulunamadi.
 
-**Olasi Sebep:** Sitenin HTML yapisi degismis olmali — giris butonu ya kaldirilmis, ya ID'si degistirilmis (`#login` yerine baska bir ID/class), ya da farkli bir etiketle (`<a>`, `<input>` gibi) gosteriliyor. Site down olsaydi "sayfa yuklendi" ve "baslik var" testleri de basarisiz olurdu; ama onlar gecti. Bu nedenle **selector degisikligi** en olasiliklı sebeptir.
+**Olasi Sebep:** Selector degismis olmasi en muhtemel neden. Site anasayfasindaki login butonu ya:
+- ID'si degistirilmis (`#login` yerine baska bir ID veya class kullaniliyor olabilir),
+- Farkli bir HTML elemani turune gecilmis olabilir (`<a>` veya `<div>` gibi),
+- Buton dinamik olarak yukleniyor ve 3 saniye timeout yetmiyor olabilir.
 
-**Onerilecek Eylem:** `tests/homepage.spec.js` satir 18'deki `button#login` selectorunu sitenin guncel HTML yapisiyla eslestirin.
+Test 2 yeniden deneme (retry) ile 3 kez calistirilmis ve hepsi basarisiz olmustur. Bu durumun gecici bir ag sorunundan degil, kalici bir selector uyumsuzlugundan kaynaklandigina isaret eder.
+
+**Onerilen Aksiyon:** Canli sitede `button#login` selector'unun varligini tarayici gelistirici araciyla kontrol edin ve testi guncelleyin.
