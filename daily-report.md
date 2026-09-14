@@ -1,32 +1,19 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-09-13 09:10 UTC
+**Tarih:** 2026-09-14 09:10 UTC
 
 ## Ozet
-- Toplam test: 9
+- Toplam test: 9 (3 test × 3 tarayıcı)
 - Gecen: 6
 - Basarisiz: 3
 
 ## Sonuc
 
-**"should have a login button" testi 3 tarayicide da (Chromium, Firefox, Webkit) basarisiz oldu.**
+**Basarisiz Test:** `should have a login button` — Chromium, Firefox ve WebKit tarayıcılarının tamamında başarısız.
 
-### Hata Aciklamasi
-Test, sayfada `button#login` secicisiyle bir giris butonu aramaktadir. Ancak bu element sayfada bulunamiyor:
-
+**Hata:** `button#login` seçicisi sayfada bulunamadı.
 ```
-Locator: locator('button#login')
-Expected: visible
-Timeout: 3000ms
-Error: element(s) not found
+locator('button#login') için element bulunamadı (timeout: 3000ms)
 ```
+Test 2 kez yeniden denendi, her seferinde aynı hata alındı.
 
-Her tarayicida 2 yeniden deneme (retry) yapilmis, toplam 9 basarisiz deneme gerceklesmistir.
-
-### Olasi Sebep
-**Selector degismis olmasi kuvvetle muhtemel.** Sayfa yuklenip baslik (`h1`) ve genel icerik testleri gecmekte, sadece login butonu bulunamiyor. Bu durum sitenin cevrimdisi olmadigini gosteriyor. Muhtemelen:
-- Butonun HTML'deki `id` veya `tag` degeri degismis (ornegin `button#login` yerine `a.login-btn` gibi bir sekle donusmus olabilir)
-- Buton farkli bir yere tasınmis veya kaldırılmis olabilir
-
-### Eylem Onerileri
-1. Sitenin guncel HTML yapisını inceleyip `button#login` selectorunun hala gecerli olup olmadigini kontrol edin
-2. Gerekirse `homepage.spec.js` dosyasindaki (satir 18-19) selector'u guncellеyin
+**Olası Sebep:** example.com sayfasında `button#login` ID'sine sahip bir giriş butonu yok. Site yüklenip heading testi geçiyor; dolayısıyla site erişilebilir durumda. Büyük olasılıkla **selector değişmiş veya yanlış tanımlanmış** — test, üzerinde login butonu olmayan bir placeholder sayfayı (example.com) test ediyor. Testin güncellenerek gerçek bir login sayfasına yönlendirilmesi veya selector'ın sayfanın mevcut HTML yapısına göre düzeltilmesi gerekiyor.
