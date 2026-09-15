@@ -1,19 +1,19 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-09-14 09:10 UTC
+**Tarih:** 2026-09-15 09:30 UTC
 
 ## Ozet
-- Toplam test: 9 (3 test × 3 tarayıcı)
+- Toplam test: 9 (3 tarayici x 3 test)
 - Gecen: 6
 - Basarisiz: 3
 
+## Basarisiz Testler
+
+### `should have a login button` — Chromium, Firefox, WebKit
+
+**Hata:** `locator('button#login')` bulunamadi. Test, anasayfada `button#login` selectorlu bir giris butonu arar; ancak element sayfada mevcut degil.
+
+**Olasi Sebep:** Selector degismis olmali. Sayfa basariyla yukleniyor ve baslik testi geciyor, yani site down degil. Buyuk ihtimalle login butonunun HTML'i degismis: ornegin `<button id="login">` yerine `<a id="login">` veya farkli bir id kullaniliyor olabilir. Testin selector'unu guncellemek gerekiyor.
+
 ## Sonuc
 
-**Basarisiz Test:** `should have a login button` — Chromium, Firefox ve WebKit tarayıcılarının tamamında başarısız.
-
-**Hata:** `button#login` seçicisi sayfada bulunamadı.
-```
-locator('button#login') için element bulunamadı (timeout: 3000ms)
-```
-Test 2 kez yeniden denendi, her seferinde aynı hata alındı.
-
-**Olası Sebep:** example.com sayfasında `button#login` ID'sine sahip bir giriş butonu yok. Site yüklenip heading testi geçiyor; dolayısıyla site erişilebilir durumda. Büyük olasılıkla **selector değişmiş veya yanlış tanımlanmış** — test, üzerinde login butonu olmayan bir placeholder sayfayı (example.com) test ediyor. Testin güncellenerek gerçek bir login sayfasına yönlendirilmesi veya selector'ın sayfanın mevcut HTML yapısına göre düzeltilmesi gerekiyor.
+**Basarisiz testler tespit edildi.** `should have a login button` testi Chromium, Firefox ve WebKit tarayicilarinin hepsinde 2 yeniden denemeyle birlikte toplam 3 kez basarisiz oldu. Sayfanin kendisi calisiyor; sorun buyuk olasilikla degisen bir HTML selector.
