@@ -1,28 +1,32 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-09-16 09:25 UTC
+**Tarih:** 2026-09-17 09:27 UTC
 
 ## Ozet
-- Toplam test: 9 (3 test x 3 tarayici: chromium, firefox, webkit)
+- Toplam test: 9 (3 senaryo × 3 tarayici: chromium, firefox, webkit)
 - Gecen: 6
 - Basarisiz: 3
 
 ## Sonuc
 
-**Basarisiz Test:** `should have a login button` — Chromium, Firefox ve WebKit tarayicilarinin ucunde de basarisiz oldu.
+**Basarisiz test:** `should have a login button` — Chromium, Firefox ve WebKit tarayicilarinin hepsinde basarisiz.
 
-**Hata:** `button#login` secicisiyle eslesen bir element sayfada bulunamadi.
+### Hata Aciklamasi
+Test, ana sayfada `button#login` secicisiyle bir giris butonu aradi ancak bu eleman sayfada bulunamadi.
 
 ```
-expect(locator).toBeVisible() failed
 Locator: locator('button#login')
 Expected: visible
 Error: element(s) not found
 ```
 
-Test, 3 kez yeniden denenmesine ragmen (retry: 2) her tarayicide basarisiz oldu.
+Test 2 yeniden denemeyle 3 kez calistirildi (toplam 9 deneme) ve hic biri gecmedi. Hata tutarli ve agi sorunundan degil, elemanin gercekten sayfada olmamsindan kaynaklanmaktadir.
 
-**Olasi Sebep:** `button#login` ID'li bir giris butonu `example.com` anasayfasinda bulunmuyor. Muhtemelen:
-- Site yapisi degismis ve login butonunun HTML selectoru guncellenms (`button#login` → baska bir ID ya da sinif)
-- Veya test yanlis bir sayfa/selector icin yazilmis
+### Olasi Sebep
+**Selector degismis olmasi (en muhtemel):** Sitede yapilan bir degisiklikle giris butonu `button#login` ID'sini ya da eleman turunu kaybetmis olabilir. Ornegin buton `<a>` linkine donusturulmus ya da `id="login"` yerine farkli bir ID/class almis olabilir.
 
-**Onerim:** `tests/homepage.spec.js` dosyasindaki 16-20. satirlari kontrol edip gercek sayfadaki buton selectoru ile guncelleyin.
+Diger olasiliklar:
+- Giris butonu sayfadan kaldirilmis / farkli bir sayfaya tasinmis olabilir.
+- Sayfa yapisi yeniden duzenlenmis ve buton artik farkli bir konumda/selector altinda olabilir.
+
+### Onerilen Adim
+`homepage.spec.js` satir 18'deki `'button#login'` secicisini guncellenmis HTML yapisina gore duzeltmek gerekiyor.
