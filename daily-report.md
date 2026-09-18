@@ -1,5 +1,5 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-09-17 09:27 UTC
+**Tarih:** 2026-09-18 09:26 UTC
 
 ## Ozet
 - Toplam test: 9 (3 senaryo × 3 tarayici: chromium, firefox, webkit)
@@ -8,25 +8,24 @@
 
 ## Sonuc
 
-**Basarisiz test:** `should have a login button` — Chromium, Firefox ve WebKit tarayicilarinin hepsinde basarisiz.
+**1 senaryo, 3 tarayicide de basarisiz oldu.**
 
-### Hata Aciklamasi
-Test, ana sayfada `button#login` secicisiyle bir giris butonu aradi ancak bu eleman sayfada bulunamadi.
+### Basarisiz Test: `should have a login button` (homepage.spec.js:16)
+
+**Hata:** `locator('button#login')` elementi sayfada bulunamadi.
 
 ```
+Error: expect(locator).toBeVisible() failed
 Locator: locator('button#login')
 Expected: visible
+Timeout: 3000ms
 Error: element(s) not found
 ```
 
-Test 2 yeniden denemeyle 3 kez calistirildi (toplam 9 deneme) ve hic biri gecmedi. Hata tutarli ve agi sorunundan degil, elemanin gercekten sayfada olmamsindan kaynaklanmaktadir.
+Test, her tarayicide 2 yeniden denemeyle birlikte toplam 3 kez denendi ve hepsinde basarisiz oldu. Bu durum gecici bir ag sorunu olmadigini gosteriyor.
 
 ### Olasi Sebep
-**Selector degismis olmasi (en muhtemel):** Sitede yapilan bir degisiklikle giris butonu `button#login` ID'sini ya da eleman turunu kaybetmis olabilir. Ornegin buton `<a>` linkine donusturulmus ya da `id="login"` yerine farkli bir ID/class almis olabilir.
 
-Diger olasiliklar:
-- Giris butonu sayfadan kaldirilmis / farkli bir sayfaya tasinmis olabilir.
-- Sayfa yapisi yeniden duzenlenmis ve buton artik farkli bir konumda/selector altinda olabilir.
+**Selector degismis olabilir.** Test, `button#login` id'li bir butonu ariyor. `example.com` IANA'nin tanitim sayfasidir ve gercekte bir giris butonu icermez — test ya yanlis bir siteye yaziyor, ya da sitenin HTML yapisi degismis ve `#login` id'li buton artik mevcut degil ya da farkli bir selector kullaniyor.
 
-### Onerilen Adim
-`homepage.spec.js` satir 18'deki `'button#login'` secicisini guncellenmis HTML yapisina gore duzeltmek gerekiyor.
+**Onerilen eylem:** `tests/homepage.spec.js:18` satirindaki selector'u guncelle ya da testin dogru URL'yi test ettigini dogrula.
