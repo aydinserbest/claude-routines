@@ -1,31 +1,19 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-09-18 09:26 UTC
+**Tarih:** 2026-09-19 09:22 UTC
 
 ## Ozet
-- Toplam test: 9 (3 senaryo × 3 tarayici: chromium, firefox, webkit)
+- Toplam test: 9 (3 senaryo x 3 tarayici)
 - Gecen: 6
 - Basarisiz: 3
 
 ## Sonuc
 
-**1 senaryo, 3 tarayicide de basarisiz oldu.**
+**Basarisiz test:** `should have a login button` — Chromium, Firefox ve WebKit tarayicilarinin hepsinde basarisiz oldu.
 
-### Basarisiz Test: `should have a login button` (homepage.spec.js:16)
+**Hata mesaji:** `locator('button#login')` elementi bulunamadi. Test, anasayfada `<button id="login">` etiketinin gorunur olmasi beklentisiyle calisti; ancak bu element sayfada mevcut degil.
 
-**Hata:** `locator('button#login')` elementi sayfada bulunamadi.
+**Olasi sebep:** example.com statik bir tanitim sayfasidir ve icinde login butonu bulunmaz. Test `button#login` gibi olmayan bir selector'u arıyor. Buyuk ihtimalle:
+- Test yanlis bir selector kullanıyor (ornegin buton baska bir id/class ile tanimlanmis olabilir), veya
+- Test example.com icin degil baska bir site icin yazilmis ve hedef URL guncellenmemis.
 
-```
-Error: expect(locator).toBeVisible() failed
-Locator: locator('button#login')
-Expected: visible
-Timeout: 3000ms
-Error: element(s) not found
-```
-
-Test, her tarayicide 2 yeniden denemeyle birlikte toplam 3 kez denendi ve hepsinde basarisiz oldu. Bu durum gecici bir ag sorunu olmadigini gosteriyor.
-
-### Olasi Sebep
-
-**Selector degismis olabilir.** Test, `button#login` id'li bir butonu ariyor. `example.com` IANA'nin tanitim sayfasidir ve gercekte bir giris butonu icermez — test ya yanlis bir siteye yaziyor, ya da sitenin HTML yapisi degismis ve `#login` id'li buton artik mevcut degil ya da farkli bir selector kullaniyor.
-
-**Onerilen eylem:** `tests/homepage.spec.js:18` satirindaki selector'u guncelle ya da testin dogru URL'yi test ettigini dogrula.
+**Onerim:** `tests/homepage.spec.js` dosyasindaki selector'u inceleyin. example.com'da login butonu olmadigından bu test kalici olarak basarisiz kalacaktir.
