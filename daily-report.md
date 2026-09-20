@@ -1,19 +1,25 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-09-19 09:22 UTC
+**Tarih:** 2026-09-20 09:22 UTC
 
 ## Ozet
-- Toplam test: 9 (3 senaryo x 3 tarayici)
+- Toplam test: 9 (3 tarayici × 3 test)
 - Gecen: 6
 - Basarisiz: 3
 
 ## Sonuc
 
-**Basarisiz test:** `should have a login button` — Chromium, Firefox ve WebKit tarayicilarinin hepsinde basarisiz oldu.
+**Basarisiz test:** `should have a login button` — Chromium, Firefox ve WebKit tarayicilarinin hepsinde basarisiz.
 
-**Hata mesaji:** `locator('button#login')` elementi bulunamadi. Test, anasayfada `<button id="login">` etiketinin gorunur olmasi beklentisiyle calisti; ancak bu element sayfada mevcut degil.
+### Hata Ozeti
+Test, ana sayfada `button#login` ID'li bir giris butonu aramaktadir. Ancak bu eleman sayfada bulunamadi:
 
-**Olasi sebep:** example.com statik bir tanitim sayfasidir ve icinde login butonu bulunmaz. Test `button#login` gibi olmayan bir selector'u arıyor. Buyuk ihtimalle:
-- Test yanlis bir selector kullanıyor (ornegin buton baska bir id/class ile tanimlanmis olabilir), veya
-- Test example.com icin degil baska bir site icin yazilmis ve hedef URL guncellenmemis.
+```
+locator('button#login') — element(s) not found
+```
 
-**Onerim:** `tests/homepage.spec.js` dosyasindaki selector'u inceleyin. example.com'da login butonu olmadigından bu test kalici olarak basarisiz kalacaktir.
+Her uc tarayicide da 2 yeniden deneme yapildi; sonuc degismedi. Hata tutarli ve tekrarlanabilir.
+
+### Olasi Sebep
+**Selector degismis olmasi kuvvetle muhtemel.** Sayfanin HTML yapisi guncellenmis ve login butonunun ID'si ya degismis (`#login` yerine baska bir ID veya sinif) ya da buton kaldirilmis olabilir. Site yukleniyor ve diger testler (`should load successfully`, `should have a heading`) geciyor; dolayisiyla site down degil. Ag sorunu da dislanabilir.
+
+**Onerim:** Sayfanin kaynak kodunu inceleyin ve login butonu icin gercek selector'u bulun, ardından `tests/homepage.spec.js:18` satirini guncelleyin.
