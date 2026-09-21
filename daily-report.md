@@ -1,25 +1,32 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-09-20 09:22 UTC
+**Tarih:** 2026-09-21 09:33 UTC
 
 ## Ozet
-- Toplam test: 9 (3 tarayici × 3 test)
+- Toplam test: 9 (3 senaryo × 3 tarayici: chromium, firefox, webkit)
 - Gecen: 6
 - Basarisiz: 3
 
 ## Sonuc
 
-**Basarisiz test:** `should have a login button` — Chromium, Firefox ve WebKit tarayicilarinin hepsinde basarisiz.
+**Basarisiz Test:** `should have a login button` (Chromium, Firefox, Webkit)
 
 ### Hata Ozeti
-Test, ana sayfada `button#login` ID'li bir giris butonu aramaktadir. Ancak bu eleman sayfada bulunamadi:
+
+Her uc tarayicide de ayni hata: `button#login` secicisiyle eslesen bir eleman sayfada bulunamadi.
 
 ```
-locator('button#login') — element(s) not found
+locator('button#login') beklendi: gorunur
+Hata: element(s) not found
+Dosya: tests/homepage.spec.js satir 19
 ```
 
-Her uc tarayicide da 2 yeniden deneme yapildi; sonuc degismedi. Hata tutarli ve tekrarlanabilir.
+Test 3 kez yeniden denendi (retry 0, 1, 2), her seferinde ayni sonuc.
 
 ### Olasi Sebep
-**Selector degismis olmasi kuvvetle muhtemel.** Sayfanin HTML yapisi guncellenmis ve login butonunun ID'si ya degismis (`#login` yerine baska bir ID veya sinif) ya da buton kaldirilmis olabilir. Site yukleniyor ve diger testler (`should load successfully`, `should have a heading`) geciyor; dolayisiyla site down degil. Ag sorunu da dislanabilir.
 
-**Onerim:** Sayfanin kaynak kodunu inceleyin ve login butonu icin gercek selector'u bulun, ardından `tests/homepage.spec.js:18` satirini guncelleyin.
+Sitenin kendisi erisilebiyor (sayfa yuklenme ve baslik testleri gecti), yani site down degil. En buyuk ihtimalle **login butonunun HTML selectoru degismis**:
+- Butonun ID'si `login` yerine baska bir sey olmus olabilir (orn. `btn-login`, `sign-in`)
+- Eleman artik `<button>` degil baska bir HTML elemani olabilir (orn. `<a>`)
+- Login butonu anasayfadan kaldirilmis/gizlenmis olabilir
+
+**Onerim:** example.com anasayfasini acip login butonunun mevcut HTML yapisi kontrol edilmeli, ardından `homepage.spec.js` satir 18 guncellenmeli.
