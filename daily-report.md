@@ -1,32 +1,25 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-09-21 09:33 UTC
+**Tarih:** 2026-09-22 09:24 UTC
 
 ## Ozet
-- Toplam test: 9 (3 senaryo × 3 tarayici: chromium, firefox, webkit)
+- Toplam test: 9 (3 test senaryosu × 3 tarayici: chromium, firefox, webkit)
 - Gecen: 6
 - Basarisiz: 3
 
 ## Sonuc
 
-**Basarisiz Test:** `should have a login button` (Chromium, Firefox, Webkit)
+**Basarisiz test:** `should have a login button` — tum tarayicilarda (chromium, firefox, webkit) basarisiz.
 
-### Hata Ozeti
-
-Her uc tarayicide de ayni hata: `button#login` secicisiyle eslesen bir eleman sayfada bulunamadi.
+**Hata:** `locator('button#login')` elementi sayfada bulunamadi.
 
 ```
-locator('button#login') beklendi: gorunur
-Hata: element(s) not found
-Dosya: tests/homepage.spec.js satir 19
+expect(locator).toBeVisible() failed
+Locator: locator('button#login')
+Expected: visible
+Timeout: 3000ms
+Error: element(s) not found
 ```
 
-Test 3 kez yeniden denendi (retry 0, 1, 2), her seferinde ayni sonuc.
+**Olasi sebep:** Selector degisimi. Test `button#login` id'li bir buton ariyor, ancak example.com anasayfasinda bu element yok. Site down degil (diger testler basariyla gecti — sayfa yuklenip baslik bulundu). Buyuk ihtimalle ya test yanlis bir sayfayi hedefliyor ya da example.com uzerinde hic login butonu bulunmuyor ve test hatali yazilmis. Selector'un guncellenmesi veya testin gozden gecirilmesi gerekiyor.
 
-### Olasi Sebep
-
-Sitenin kendisi erisilebiyor (sayfa yuklenme ve baslik testleri gecti), yani site down degil. En buyuk ihtimalle **login butonunun HTML selectoru degismis**:
-- Butonun ID'si `login` yerine baska bir sey olmus olabilir (orn. `btn-login`, `sign-in`)
-- Eleman artik `<button>` degil baska bir HTML elemani olabilir (orn. `<a>`)
-- Login butonu anasayfadan kaldirilmis/gizlenmis olabilir
-
-**Onerim:** example.com anasayfasini acip login butonunun mevcut HTML yapisi kontrol edilmeli, ardından `homepage.spec.js` satir 18 guncellenmeli.
+**Etkilenen dosya:** `tests/homepage.spec.js` satir 19
