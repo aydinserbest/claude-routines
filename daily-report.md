@@ -1,38 +1,23 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-09-23 09:27 UTC
+**Tarih:** 2026-09-24 09:27 UTC
 
 ## Ozet
-- Toplam test: 9
+- Toplam test: 9 (3 tarayici x 3 test)
 - Gecen: 6
 - Basarisiz: 3
 
 ## Sonuc
 
-**1 test 3 tarayicide da basarisiz oldu.**
+**Basarisiz Test:** `should have a login button` — Chromium, Firefox ve WebKit tarayicilarinin hepsinde basarisiz oldu.
 
-### Basarisiz Test: `should have a login button` (Homepage)
+**Hata:** `locator('button#login')` elementi sayfada bulunamadi. Test, `button#login` secicisiyle bir giris butonu aradi fakat element sayfada mevcut degil.
 
-**Etkilenen tarayicilar:** Chromium, Firefox, Webkit
+**Olasi Sebep:** example.com anasayfasinda `id="login"` olan bir buton bulunmuyor. Bu durum su sebeplerden kaynaklanabilir:
+1. **Selector degismis olabilir** — Site guncellenerek butonun ID'si veya etiketi degismis olabilir.
+2. **Test yanlis yazilmis olabilir** — example.com zaten bir login butonu icermeyen statik bir demo sitesidir; test muhtemelen yanlis bir URL ya da yanlis bir selector kullaniyor.
 
-**Hata:** `locator('button#login')` elementi sayfada bulunamadi.
+**Gecen Testler:**
+- `should load successfully` — Tum tarayicilarda gecti (site erisebilir)
+- `should have a heading` — Tum tarayicilarda gecti (baslik mevcut)
 
-```
-Locator: locator('button#login')
-Expected: visible
-Error: element(s) not found
-```
-
-Test, `button#login` CSS secicisiyle bir giris butonu aramaktadir. 3 denemeye (retry) ragmen hicbir tarayicide element bulunamadi.
-
-### Olasi Sebep Tahmini
-
-**En muhtemel neden: Selector degismis veya element hic mevcut degil.**
-
-- example.com, basit bir yer tutucu (placeholder) sayfasidir ve gercek bir "Login" butonu icermez.
-- `button#login` secicisi sayfadaki herhangi bir elemente eslesmemektedir.
-- Diger 2 test (sayfa yuklenme ve baslik kontrolu) basariyla gectigi icin site erismekte sorun yok; sadece bu spesifik element eksik.
-- Testin yanlis bir sayfayi veya yanlis bir selectoru hedefledigini dusunmek mantiklidir.
-
-### Onerilen Aksiyon
-
-Test dosyasindaki `button#login` selectoru gozden gecirilmeli ve example.com'da gercekten var olan bir elemente guncellenmelidir.
+**Onerim:** `homepage.spec.js` dosyasindaki login butonu testini inceleyin. example.com'da boyle bir element yok; test ya farkli bir siteye aitmis ya da selector guncellenmeli.
