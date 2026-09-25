@@ -1,23 +1,17 @@
-# Gunluk Playwright Test Raporu
-**Tarih:** 2026-09-24 09:27 UTC
+# Günlük Playwright Test Raporu
+**Tarih:** 2026-09-25 09:41 UTC
 
-## Ozet
-- Toplam test: 9 (3 tarayici x 3 test)
-- Gecen: 6
-- Basarisiz: 3
+## Özet
+- Toplam test: 9 (3 test dosyası × 3 browser)
+- Geçen: 6
+- Başarısız: 3
 
-## Sonuc
+## Sonuç
 
-**Basarisiz Test:** `should have a login button` — Chromium, Firefox ve WebKit tarayicilarinin hepsinde basarisiz oldu.
+**Başarısız test:** `Homepage > should have a login button` — 3 browser'da da başarısız (chromium, firefox, webkit).
 
-**Hata:** `locator('button#login')` elementi sayfada bulunamadi. Test, `button#login` secicisiyle bir giris butonu aradi fakat element sayfada mevcut degil.
+**Hata:** `button#login` seçicisi sayfada bulunamadı (3000ms timeout).
 
-**Olasi Sebep:** example.com anasayfasinda `id="login"` olan bir buton bulunmuyor. Bu durum su sebeplerden kaynaklanabilir:
-1. **Selector degismis olabilir** — Site guncellenerek butonun ID'si veya etiketi degismis olabilir.
-2. **Test yanlis yazilmis olabilir** — example.com zaten bir login butonu icermeyen statik bir demo sitesidir; test muhtemelen yanlis bir URL ya da yanlis bir selector kullaniyor.
+**Olası sebep:** `example.com` anasayfasında `id="login"` olan bir buton hiçbir zaman bulunmamaktadır. Büyük ihtimalle bu test, gerçek bir login butonu olan farklı bir siteye yazılmış, ancak yanlışlıkla `example.com` üzerinde çalıştırılmaktadır. Alternatif olarak, sitenin yapısı değişmiş ve login butonu kaldırılmış ya da ID'si değiştirilmiş olabilir.
 
-**Gecen Testler:**
-- `should load successfully` — Tum tarayicilarda gecti (site erisebilir)
-- `should have a heading` — Tum tarayicilarda gecti (baslik mevcut)
-
-**Onerim:** `homepage.spec.js` dosyasindaki login butonu testini inceleyin. example.com'da boyle bir element yok; test ya farkli bir siteye aitmis ya da selector guncellenmeli.
+**Önerilen aksiyon:** Test dosyasındaki URL ve selector'ın doğru siteyi ve doğru elementi hedef aldığı kontrol edilmelidir.
