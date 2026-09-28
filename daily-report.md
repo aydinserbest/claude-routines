@@ -1,5 +1,5 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-09-27 09:10 UTC
+**Tarih:** 2026-09-28 09:38 UTC
 
 ## Ozet
 - Toplam test: 9
@@ -8,17 +8,21 @@
 
 ## Sonuc
 
-Asagidaki test 3 tarayicida (muhtemelen Chromium, Firefox, WebKit) basarisiz oldu:
+**Basarisiz test: "should have a login button"** — 3 tarayicide da (Chromium, Firefox, WebKit) basarisiz.
 
-### Basarisiz Test: "should have a login button" (Homepage)
+### Hata Mesaji
+```
+locator('button#login') bulunamadi.
+Beklenen: gorunur olmasi
+Zaman asimi: 3000ms
+Hata: element(s) not found
+```
 
-**Hata:** `button#login` elementi sayfada bulunamadi.
+### Olasi Sebep
+Test, ana sayfada `button#login` CSS selektoru ile bir login dugmesi ariyor. Hata **3 tarayicide de tutarli bicimde** ve **2'ser yeniden denemeye ragmen** tekrarlandigina gore, bu gecici bir ag sorunu degil. Buyuk ihtimalle:
 
-**Teknik detay:** Test, `locator('button#login')` ile sayfada bir login butonu arar ancak element 3000ms timeout suresi icerisinde goruntulenemedi.
+- **Selector degismis**: Login dugmesinin HTML'i degistirilmis olabilir (ornegin `<a>` veya farkli bir `id`/`class` kullanilmis).
+- Site hala yukleniyor (diger testler gecti, bu nedenle site down degil).
 
-**Olasi Sebepler:**
-- **Selector degismis olabilir:** `example.com` sitesi `button#login` id'sini kaldirmis veya degistirmis olabilir. Ornegin butonun id'si `btn-login`, `login-btn` gibi farkli bir isim almis olabilir.
-- **HTML yapisi degismis olabilir:** Login butonu artik farkli bir etiket altinda (orn. `<a>` linki, `<input type="submit">`) bulunuyor olabilir.
-- **Site down veya yanit vermiyor olabilir:** Sayfaya erisim sorunu nedeniyle element yuklenmemis olabilir, ancak diger 6 testin gecmesi bu ihtimali dusuk kilmaktadir.
-
-**Oneri:** `example.com` anasayfasini manuel kontrol ederek login butonunun mevcut selector'unu tespit edin ve testi guncelleyin.
+### Etkilenen Dosya
+`tests/homepage.spec.js` satir 19
