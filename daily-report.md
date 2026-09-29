@@ -1,28 +1,21 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-09-28 09:38 UTC
+**Tarih:** 2026-09-29 09:29 UTC
 
 ## Ozet
-- Toplam test: 9
-- Gecen: 6
-- Basarisiz: 3
+- Toplam test: 9 (3 test × 3 tarayici: chromium, firefox, webkit)
+- Gecen: 3
+- Basarisiz: 6
 
 ## Sonuc
 
-**Basarisiz test: "should have a login button"** — 3 tarayicide da (Chromium, Firefox, WebKit) basarisiz.
+2 test 3 tarayicida da basarisiz oldu:
 
-### Hata Mesaji
-```
-locator('button#login') bulunamadi.
-Beklenen: gorunur olmasi
-Zaman asimi: 3000ms
-Hata: element(s) not found
-```
+### 1. `should have a heading` (homepage.spec.js:9)
+- **Hata:** `h1` elementi sayfada bulunamadi (5000ms beklendi).
+- **Olasi sebep:** Test dosyasinda "kasitli olarak basarisiz" notu var — example.com anasayfasinda `<h1>` etiketi bulunmuyor. Bu test rutinin calismasi icin kasitli olarak eklenmiş.
 
-### Olasi Sebep
-Test, ana sayfada `button#login` CSS selektoru ile bir login dugmesi ariyor. Hata **3 tarayicide de tutarli bicimde** ve **2'ser yeniden denemeye ragmen** tekrarlandigina gore, bu gecici bir ag sorunu degil. Buyuk ihtimalle:
+### 2. `should have a login button` (homepage.spec.js:16)
+- **Hata:** `button#login` elementi sayfada bulunamadi (3000ms beklendi).
+- **Olasi sebep:** example.com anasayfasinda `button#login` secicisiyle eslesen bir element yok. Selector yanlis ya da sayfa yapisi degismis olabilir.
 
-- **Selector degismis**: Login dugmesinin HTML'i degistirilmis olabilir (ornegin `<a>` veya farkli bir `id`/`class` kullanilmis).
-- Site hala yukleniyor (diger testler gecti, bu nedenle site down degil).
-
-### Etkilenen Dosya
-`tests/homepage.spec.js` satir 19
+Her iki test de 3 tarayicida (chromium, firefox, webkit) 2'ser yeniden denemeyle toplam 3'er kez calistirildi ve her seferinde basarisiz oldu. "should load successfully" testi 3 tarayicida da gecti.
