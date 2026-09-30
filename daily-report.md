@@ -1,21 +1,26 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-09-29 09:29 UTC
+**Tarih:** 2026-09-30 09:28 UTC
 
 ## Ozet
-- Toplam test: 9 (3 test × 3 tarayici: chromium, firefox, webkit)
+- Toplam test: 9 (3 spec × 3 tarayici)
 - Gecen: 3
 - Basarisiz: 6
 
+## Basarisiz Testler
+
+### 1. `should have a heading` (3 tarayicida da basarisiz)
+- **Hata:** `h1` elementi 5 saniye icinde bulunamadi (`locator('h1')` → element(s) not found)
+
+### 2. `should have a login button` (3 tarayicida da basarisiz)
+- **Hata:** `button#login` elementi 3 saniye icinde bulunamadi (`locator('button#login')` → element(s) not found)
+
 ## Sonuc
 
-2 test 3 tarayicida da basarisiz oldu:
+**2 test senaryosu basarisiz** — her iki test de tum tarayicilarda (Chromium, Firefox, WebKit) hata verdi.
 
-### 1. `should have a heading` (homepage.spec.js:9)
-- **Hata:** `h1` elementi sayfada bulunamadi (5000ms beklendi).
-- **Olasi sebep:** Test dosyasinda "kasitli olarak basarisiz" notu var — example.com anasayfasinda `<h1>` etiketi bulunmuyor. Bu test rutinin calismasi icin kasitli olarak eklenmiş.
+**Olasi sebep tahmini:**
+- Hedef site (`example.com` veya test edilen URL) yapi degisikligi yapilmis olabilir — `h1` etiketi ve `button#login` selector'leri artik mevcut degil.
+- Alternatif: Site erisilebilir durumda ama sayfa yapisi degismis (eski selector'lar calismıyor).
+- Daha az olasilik: Site gecici olarak down ya da ag sorunu var, ancak "element not found" hatasi sayfanin yuklendigini gosteriyor (yoksa "net::ERR_" gibi bir hata gorulurdu).
 
-### 2. `should have a login button` (homepage.spec.js:16)
-- **Hata:** `button#login` elementi sayfada bulunamadi (3000ms beklendi).
-- **Olasi sebep:** example.com anasayfasinda `button#login` secicisiyle eslesen bir element yok. Selector yanlis ya da sayfa yapisi degismis olabilir.
-
-Her iki test de 3 tarayicida (chromium, firefox, webkit) 2'ser yeniden denemeyle toplam 3'er kez calistirildi ve her seferinde basarisiz oldu. "should load successfully" testi 3 tarayicida da gecti.
+**Onerim:** Test dosyasindaki selector'leri guncellenmis sayfa yapisina gore duzeltmek gerekiyor.
