@@ -1,32 +1,22 @@
-# Günlük Playwright Test Raporu
-**Tarih:** 2026-10-01 09:10 UTC
+# Gunluk Playwright Test Raporu
+**Tarih:** 2026-10-02 09:10 UTC
 
-## Özet
-- Toplam test: 9
-- Geçen: 3
-- Başarısız: 6
+## Ozet
+- Toplam test: 9 (3 test × 3 tarayici: chromium, firefox, webkit)
+- Gecen: 3
+- Basarisiz: 6
 
-## Sonuç
+## Basarisiz Testler
 
-### Başarısız Testler
+### 1. `should have a heading` (chromium, firefox, webkit)
+**Hata:** `locator('h1')` elementi sayfada bulunamadi. 5 saniye beklenmesine ragmen `h1` etiketi gorunur hale gelmedi.
+**Olasi sebep:** Sayfanin HTML yapisi degismis olabilir — `h1` elementi kaldirilmis ya da farkli bir etiketle (orn. `h2`, `div`) degistirilmis olabilir. Test kasitli olarak basarisiz birakilmis (kod yorumu: "rutinin yakalaması için").
 
-**1. Homepage > should have a heading** (3 tarayıcıda başarısız)
-- Hata: `h1` elementi sayfada bulunamadı (`element(s) not found`, 5000ms timeout)
-- Etkilenen tarayıcılar: Chromium, Firefox, WebKit
+### 2. `should have a login button` (chromium, firefox, webkit)
+**Hata:** `locator('button#login')` elementi sayfada bulunamadi. 3 saniye beklenmesine ragmen `button#login` goruntu alamadi.
+**Olasi sebep:** Giris dugmesinin ID'si veya etiket tipi degismis olabilir (orn. `a#login` veya `button.login`). Bu test de kasitli olarak basarisiz birakilmis.
 
-**2. Homepage > should have a login button** (3 tarayıcıda başarısız)
-- Hata: `button#login` elementi sayfada bulunamadı (`element(s) not found`, 3000ms timeout)
-- Etkilenen tarayıcılar: Chromium, Firefox, WebKit
+## Sonuc
+2 farkli test senaryosu, 3 tarayicide de basarisiz oldu (toplam 6 basarisiz calistirma). Her iki test de test dosyasindaki yoruma gore **kasitli olarak basarisiz** birakilmis (`// Bu test kasıtlı olarak başarısız — rutinin yakalaması için`). Ancak uretim ortaminda bu selectorlerin calismasi bekleniyor; gercek bir sorun olup olmadigi kontrol edilmeli.
 
-### Olası Sebep Tahmini
-
-Her iki test de aynı anda, tüm tarayıcılarda başarısız olmuştur. Bu durum tek bir tarayıcı sorununa işaret etmez; muhtemel sebepler:
-
-- **Selector değişmiş olabilir:** Site yeniden yapılandırılmış ve `h1` ya da `button#login` elementlerinin yapısı/id'si değişmiş olabilir.
-- **Site yapısı değişmiş olabilir:** example.com sayfasında ana başlık ve giriş butonu artık mevcut olmayabilir veya farklı bir HTML yapısıyla sunuluyor olabilir.
-- **Site geçici olarak erişilemez durumda olabilir:** Tüm elementlerin aynı anda bulunamadığı durum, sayfanın tam yüklenemediğine işaret edebilir.
-
-Geçen testler (3 adet) büyük ihtimalle bağlantı ve başlık (title) testleridir; bu da sitenin tamamen down olmadığına, sadece belirli elementlerin artık beklenen biçimde bulunmadığına işaret eder.
-
-### Önerilen Aksiyon
-Testlerin selector'larını güncel site yapısına göre gözden geçirin.
+CI calistirmasi: https://github.com/aydinserbest/claude-routines/actions/runs/36843040610
