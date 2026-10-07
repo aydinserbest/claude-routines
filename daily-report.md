@@ -1,28 +1,22 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-10-06 (UTC)
+**Tarih:** 2026-10-07 09:10 UTC
 
 ## Ozet
-- Toplam test: 9
+- Toplam test: 9 (3 tarayici × 3 test)
 - Gecen: 3
 - Basarisiz: 6
 
 ## Basarisiz Testler
 
-| Test | Hata |
-|------|------|
-| Homepage > should have a heading | `h1` elementi bulunamadi (3 tarayicida) |
-| Homepage > should have a login button | `button#login` elementi bulunamadi (3 tarayicida) |
+### 1. `should have a heading` (Chromium, Firefox, WebKit)
+- **Hata:** `h1` elementi sayfada bulunamadi (5 saniye beklendi)
+- **Selector:** `locator('h1')`
+- **Olasi sebep:** Test kodu `h1` elementi bekliyor ancak example.com bu elementi icermiyor. Test dosyasindaki yorum "kasitli olarak basarisiz" yazdigini belirtiyor — muhtemelen rutinin calismasi icin yazilmis bir demo test.
+
+### 2. `should have a login button` (Chromium, Firefox, WebKit)
+- **Hata:** `button#login` elementi sayfada bulunamadi (3 saniye beklendi)
+- **Selector:** `locator('button#login')`
+- **Olasi sebep:** example.com uzerinde boyle bir giris butonu yok. Selector yanlis ya da test kasitli olarak basarisiz birakilmis.
 
 ## Sonuc
-
-**6 test basarisiz.** Iki farkli test chromium, firefox ve webkit tarayicilarinin ucunde de ayni sekilde basarisiz oluyor:
-
-1. **`should have a heading`** — `locator('h1')` ile aranan baslik elementi sayfada yok. 5000ms beklenmis, element hic goruntulenmemis.
-2. **`should have a login button`** — `locator('button#login')` ile aranan giris butonu sayfada yok. 3000ms beklenmis, element hic goruntulenmemis.
-
-### Olasi Sebepler
-- **Sayfa yapisi degismis olabilir:** `should load successfully` testleri 3 tarayicida da gectigi icin site erisilebilir durumda. Ancak `h1` ve `button#login` elementleri artik sayfada bulunmuyor. Buyuk ihtimalle HTML yapisi degismis ya da bu elementlerin selector'leri guncellenmis olmali.
-- **Testte kullanilan selector'ler eskimis:** Sitenin yeni surumunde `h1` yerine farkli bir tag/class kullaniliyor olabilir, login butonu da farkli bir ID/class almis olabilir.
-
-### Onerilen Aksiyon
-Test dosyalarindaki selector'lerin guncellenmesi gerekiyor. Oncelikle example.com sayfasinin HTML yapisi incelenmeli ve `h1` ile login butonunun guncel selector'leri tespit edilmeli.
+2 test 3 tarayicide de basarisiz oldu (toplam 6 basarisizlik). Site erisimi normal calisıyor (should load successfully 3 tarayicide de gecti). Sorun selector hatasi — `h1` ve `button#login` elementleri example.com'da mevcut degil.
