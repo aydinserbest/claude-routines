@@ -1,26 +1,24 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-10-08 09:10 UTC
+**Tarih:** 2026-10-09 09:42 UTC
 
 ## Ozet
-- Toplam test: 9 (3 tarayici x 3 test)
-- Gecen: 3
-- Basarisiz: 6
+- Toplam test: 9 (3 test senaryosu × 3 tarayici: chromium, firefox, webkit)
+- Gecen: 3 (her tarayicide "should load successfully")
+- Basarisiz: 6 (her tarayicide "should have a heading" ve "should have a login button")
 
 ## Sonuc
 
-2 test, tum tarayicilarda (Chromium, Firefox, WebKit) basarisiz oldu:
+Iki farkli test senaryosu, uc tarayicide de (chromium, firefox, webkit) basarisiz oldu.
 
-### 1. "should have a heading" — `h1` elementi bulunamadi
-- **Hata:** `locator('h1').toBeVisible()` beklentisi karsilanmadi; 5 saniye beklemesine ragmen `h1` sayfada gorunmedi.
-- **Olasi sebep:** `example.com` anasayfasinda `<h1>` etiketi bulunmuyor veya test `baseURL` olarak farkli bir sayfa kullaniyor. Test dosyasindaki yorum "kasitli olarak basarisiz" olarak isaretlenmis, dolayisiyla bu bilinen bir durum olabilir.
+### Basarisiz Test 1: "should have a heading"
+- **Hata:** `locator('h1')` ile arama yapildi, element sayfada bulunamadi.
+- **Detay:** 5 saniye beklendi, `h1` etiketi hic gorulmedi.
+- **Olasi Sebep:** Test dosyasindaki yorum bu testin *kasitli olarak basarisiz birakildigi*ni acikliyor (`// Bu test kasitli olarak basarisiz — rutinin yakalaması icin`). example.com anasayfasinda standart HTML `h1` elementi bulunmuyor ya da farkli bir selector kullanilmasi gerekiyor.
 
-### 2. "should have a login button" — `button#login` elementi bulunamadi
-- **Hata:** `locator('button#login').toBeVisible()` beklentisi karsilanmadi; `button#login` secicisine uyan bir element sayfada yok.
-- **Olasi sebep:** `example.com` uzerinde boyle bir buton hic olmadi. Selector degismis ya da test yanlis bir URL hedefliyor olabilir. Test dosyasindaki yorum bu testin de kasitli olarak basarisiz birakildigini gosteriyor.
+### Basarisiz Test 2: "should have a login button"
+- **Hata:** `locator('button#login')` ile arama yapildi, element sayfada bulunamadi.
+- **Detay:** 3 saniye beklendi, `button#login` etiketi hic gorulmedi.
+- **Olasi Sebep:** example.com adresinde login butonu bulunmuyor. Selector yanlis ya da test kasitli olarak basarisiz yapilmis (rutin testleri icin).
 
-### Gecen Testler
-- `should load successfully` — Chromium, Firefox, WebKit uzerinde basarili (sayfa aciliyor).
-
-### CI Bilgisi
-- GitHub Actions calistirmasi: https://github.com/aydinserbest/claude-routines/actions/runs/37651551467
-- Commit: `5fdeda0` — report: 2026-10-07
+### Genel Degerlendirme
+Her iki test de 2 yeniden deneme (retry) sonrasinda bile basarisiz oldu. Sayfa yuklenme testi (`should load successfully`) tum tarayicilerde basariyla gecti, bu nedenle site down degil. Sorun buyuk ihtimalle selector'lerin yanlis olmasi veya kasitli basarisizlik senaryosu.
