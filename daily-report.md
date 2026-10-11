@@ -1,29 +1,30 @@
-# Gunluk Playwright Test Raporu
-**Tarih:** 2026-10-10 09:10 UTC
+# Günlük Playwright Test Raporu
+**Tarih:** 2026-10-11 (UTC)
 
-## Ozet
-- Toplam test: 3
-- Gecen: 1
-- Basarisiz: 2
+## Özet
+- Toplam test: 9
+- Geçen: 3
+- Başarısız: 6
 
-## Sonuc
+## Sonuç
+**6 test başarısız oldu.** Aynı 2 senaryo 3 farklı tarayıcıda (Chromium, Firefox, WebKit) çalıştı.
 
-**2 test basarisiz oldu.**
+### Başarısız Testler
 
-### Basarisiz Testler
+**1. should have a heading** (3 tarayıcıda başarısız)
+- Hata: `h1` elementi sayfada bulunamadı (5 saniye beklendi, 2 deneme yapıldı)
+- Beklenen: Sayfada bir başlık (h1) görünür olmalı
 
-**1. `should have a heading` (homepage.spec.js:9)**
-- Hata: `locator('h1')` ile aranan baslik elementi sayfada bulunamadi (5000ms beklenip zaman asimi yasandi).
-- Tum tarayicilarda (Chromium, Firefox, WebKit) tekrar deneme (2 retry) ile de basarisiz oldu.
-- **Olasi sebep:** Testin kendi yorumuna gore (`// Bu test kasitli olarak basarisiz`) bu test rutinin calismasi icin kasitli olarak basarisizlastirilmis. Aksi halde site yapisi degismis veya `h1` elementi kaldirilmis olabilir.
+**2. should have a login button** (3 tarayıcıda başarısız)
+- Hata: `button#login` elementi sayfada bulunamadı (3 saniye beklendi, 2 deneme yapıldı)
+- Beklenen: Login butonu görünür olmalı
 
-**2. `should have a login button` (homepage.spec.js:16)**
-- Hata: `locator('button#login')` ile aranan giris butonu elementi sayfada bulunamadi (3000ms beklenip zaman asimi yasandi).
-- Tum tarayicilarda (Chromium, Firefox, WebKit) tekrar deneme (2 retry) ile de basarisiz oldu.
-- **Olasi sebep:** `button#login` selector'u degismis olmali ya da buton farkli bir ID/class ile render ediliyordur. Site tasariminda login butonunun HTML yapisi guncellenmis olabilir.
+### Olası Sebep Tahmini
+Her iki test de farklı selector (`h1` ve `button#login`) için aynı hatayı veriyor ve tüm tarayıcılarda başarısız oldu. Bu durum şunlara işaret ediyor:
 
-### Gecen Test
-- `should load successfully` — Sayfa basariyla yuklendi (tum 3 tarayicide).
+- **En olası:** Hedef site (example.com veya test edilen site) yapısını değiştirdi. `h1` elementi artık yok ya da farklı bir tag kullanılıyor; login butonu kaldırılmış, CSS sınıfı değişmiş ya da farklı bir element ID'sine taşınmış olabilir.
+- **İkinci ihtimal:** Site geçici olarak erişilemez durumda (down) ve sayfa hiç yüklenmedi, dolayısıyla hiçbir element bulunamadı.
+- **Düşük ihtimal:** Ağ sorunu — ancak üç farklı tarayıcı da etkilendiğinden bu ihtimal daha az olası.
 
----
-*Rapor otomatik olarak olusturuldu. Ayrintilar icin test-results.json dosyasina bakiniz.*
+### Önerilen Eylem
+Test dosyalarındaki selector'ları güncel site yapısına göre güncelle: `h1` yerine gerçek başlık tag/sınıfını, `button#login` yerine mevcut login butonunun selector'ını kullan.
