@@ -1,24 +1,24 @@
-# Günlük Playwright Test Raporu
-**Tarih:** 2026-10-12 09:10 UTC
+# Gunluk Playwright Test Raporu
+**Tarih:** 2026-10-13 09:10 UTC
 
-## Özet
-- Toplam test: 9 (3 senaryo × 3 tarayıcı: chromium, firefox, webkit)
-- Geçen: 3
-- Başarısız: 6
+## Ozet
+- Toplam test: 9 (3 test senaryosu x 3 tarayici)
+- Gecen: 3
+- Basarisiz: 6
 
-## Sonuç
+## Sonuc
 
-İki test senaryosu üç tarayıcıda da başarısız oldu:
+2 test senaryosu 3 tarayicida da (chromium, firefox, webkit) basarisiz oldu:
 
-### 1. `should have a heading` — BAŞARISIZ (chromium, firefox, webkit)
-- **Hata:** `locator('h1')` elementi 5 saniye içinde bulunamadı.
-- **Olası sebep:** Sayfada `<h1>` etiketi yok ya da selector değişmiş. Test dosyasında "Bu test kasıtlı olarak başarısız — rutinin yakalaması için" yorumu mevcut; bu demo amaçlı intentional bir hata olabilir.
+### 1. should have a heading
+- **Hata:** `locator('h1')` elementi sayfada bulunamadi (5000ms zaman asimi)
+- **Basarisiz tarayicilar:** Chromium, Firefox, WebKit
+- **Olasi sebep:** Sayfa `h1` HTML etiketi icermeyebilir; farkli bir baslik yapisi (ornegin `h2` veya ozel bir component) kullaniliyor olabilir. *Not: Test dosyasinda bu testin kasitli olarak basarisiz birakildigi belirtilmistir.*
 
-### 2. `should have a login button` — BAŞARISIZ (chromium, firefox, webkit)
-- **Hata:** `locator('button#login')` elementi 3 saniye içinde bulunamadı.
-- **Olası sebep:** Login butonu sayfada mevcut değil ya da `button#login` selektörü eski kalmış; sitenin HTML yapısı değişmiş olabilir.
+### 2. should have a login button
+- **Hata:** `locator('button#login')` elementi sayfada bulunamadi (3000ms zaman asimi)
+- **Basarisiz tarayicilar:** Chromium, Firefox, WebKit
+- **Olasi sebep:** Giris butonu `button#login` selector'i ile eslesmeyebilir; farkli bir ID veya element tipi (orn. `<a id="login">`) kullaniliyor olabilir. *Not: Test dosyasinda bu testin kasitli olarak basarisiz birakildigi belirtilmistir.*
 
-### Geçen Test
-- `should load successfully` — Tüm tarayıcılarda başarılı (site erişilebilir durumda).
-
-**Not:** Site açılıyor ancak beklenen `h1` başlığı ve `button#login` login butonu DOM'da bulunamıyor. Her iki test de 2 deneme hakkı ile (retry: 2) yeniden çalıştırıldı, sonuç değişmedi.
+### Gecen testler
+- `should load successfully` — Chromium, Firefox, WebKit (hepsi basarili)
