@@ -1,24 +1,33 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-10-13 09:10 UTC
+**Tarih:** 2026-10-14 09:10 UTC
 
 ## Ozet
-- Toplam test: 9 (3 test senaryosu x 3 tarayici)
+- Toplam test: 9
 - Gecen: 3
 - Basarisiz: 6
 
 ## Sonuc
 
-2 test senaryosu 3 tarayicida da (chromium, firefox, webkit) basarisiz oldu:
+**6 basarisiz test tespit edildi.**
 
-### 1. should have a heading
-- **Hata:** `locator('h1')` elementi sayfada bulunamadi (5000ms zaman asimi)
-- **Basarisiz tarayicilar:** Chromium, Firefox, WebKit
-- **Olasi sebep:** Sayfa `h1` HTML etiketi icermeyebilir; farkli bir baslik yapisi (ornegin `h2` veya ozel bir component) kullaniliyor olabilir. *Not: Test dosyasinda bu testin kasitli olarak basarisiz birakildigi belirtilmistir.*
+### Basarisiz Testler
 
-### 2. should have a login button
-- **Hata:** `locator('button#login')` elementi sayfada bulunamadi (3000ms zaman asimi)
-- **Basarisiz tarayicilar:** Chromium, Firefox, WebKit
-- **Olasi sebep:** Giris butonu `button#login` selector'i ile eslesmeyebilir; farkli bir ID veya element tipi (orn. `<a id="login">`) kullaniliyor olabilir. *Not: Test dosyasinda bu testin kasitli olarak basarisiz birakildigi belirtilmistir.*
+**1. Homepage > should have a heading**
+- Selector: `h1`
+- Hata: `h1` elementi sayfada bulunamadi (5000ms beklendi, bulunamadi)
+- 3 farkli tarayici/proje konfigurasyonunda basarisiz (her birinde 3 deneme yapildi)
 
-### Gecen testler
-- `should load successfully` — Chromium, Firefox, WebKit (hepsi basarili)
+**2. Homepage > should have a login button**
+- Selector: `button#login`
+- Hata: `button#login` elementi sayfada bulunamadi (3000ms beklendi, bulunamadi)
+- 3 farkli tarayici/proje konfigurasyonunda basarisiz (her birinde 3 deneme yapildi)
+
+### Olasi Sebep Tahmini
+
+Her iki test de farkli selector'lar arasa da ayni sekilde "element bulunamadi" hatasi veriyor. Bu durum su ihtimallere isaret ediyor:
+
+- **En olasi:** Site yapisi degismis. `button#login` id'li bir buton standart `example.com` sayfasinda bulunmuyor; bu selector muhtemelen gercek bir login butonu icin tasarlanmis ancak test edilen site bunu sunmuyor.
+- **Diger ihtimal:** Site geciici olarak down veya farkli bir sayfa donduruyor (h1 elementi bile bulunamadigi icin).
+- **Dusuk ihtimal:** Ag sorunu - ancak retries (3 deneme) boyunca ayni hata devam etmis.
+
+**Oneri:** Test dosyalarindaki selector'larin test edilen sitenin mevcut yapisiyla uyumlu olup olmadigi kontrol edilmeli.
