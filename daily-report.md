@@ -1,33 +1,26 @@
-# Gunluk Playwright Test Raporu
-**Tarih:** 2026-10-14 09:10 UTC
+# Günlük Playwright Test Raporu
+**Tarih:** 2026-10-15 09:10 UTC
 
-## Ozet
+## Özet
 - Toplam test: 9
-- Gecen: 3
-- Basarisiz: 6
+- Geçen: 3
+- Başarısız: 6
 
-## Sonuc
+## Sonuç
 
-**6 basarisiz test tespit edildi.**
+**2 farklı test başarısız oldu** (her biri 3 tarayıcıda tekrarlandı):
 
-### Basarisiz Testler
+### 1. `should have a heading` — H1 elementi bulunamadı
+- **Seçici:** `h1`
+- **Hata:** Element sayfada görünür değil (5000ms zaman aşımı)
+- **Olası sebep:** Sitenin HTML yapısı değişmiş olabilir (`h1` etiketi kaldırılmış ya da farklı bir etiketle değiştirilmiş). Alternatif olarak site geçici olarak erişilemeyor olabilir.
 
-**1. Homepage > should have a heading**
-- Selector: `h1`
-- Hata: `h1` elementi sayfada bulunamadi (5000ms beklendi, bulunamadi)
-- 3 farkli tarayici/proje konfigurasyonunda basarisiz (her birinde 3 deneme yapildi)
+### 2. `should have a login button` — Giriş butonu bulunamadı
+- **Seçici:** `button#login`
+- **Hata:** Element sayfada görünür değil (3000ms zaman aşımı)
+- **Olası sebep:** Giriş butonunun ID'si değişmiş (`#login` yerine farklı bir ID kullanılıyor olabilir) ya da buton farklı bir bileşenle değiştirilmiş. Site tasarımı güncellenmiş olabilir.
 
-**2. Homepage > should have a login button**
-- Selector: `button#login`
-- Hata: `button#login` elementi sayfada bulunamadi (3000ms beklendi, bulunamadi)
-- 3 farkli tarayici/proje konfigurasyonunda basarisiz (her birinde 3 deneme yapildi)
+### Genel Değerlendirme
+Her iki test de tüm tarayıcılarda aynı şekilde başarısız oldu. Bu durum **ağ sorunundan ziyade site içeriğinin değiştiğine** işaret ediyor. example.com adresinin HTML yapısı güncellenmiş ya da testlerin beklediği elementler artık sayfada bulunmuyor olabilir.
 
-### Olasi Sebep Tahmini
-
-Her iki test de farkli selector'lar arasa da ayni sekilde "element bulunamadi" hatasi veriyor. Bu durum su ihtimallere isaret ediyor:
-
-- **En olasi:** Site yapisi degismis. `button#login` id'li bir buton standart `example.com` sayfasinda bulunmuyor; bu selector muhtemelen gercek bir login butonu icin tasarlanmis ancak test edilen site bunu sunmuyor.
-- **Diger ihtimal:** Site geciici olarak down veya farkli bir sayfa donduruyor (h1 elementi bile bulunamadigi icin).
-- **Dusuk ihtimal:** Ag sorunu - ancak retries (3 deneme) boyunca ayni hata devam etmis.
-
-**Oneri:** Test dosyalarindaki selector'larin test edilen sitenin mevcut yapisiyla uyumlu olup olmadigi kontrol edilmeli.
+**Önerilen aksiyon:** Testlerdeki seçicileri (`h1`, `button#login`) güncel site yapısına göre güncellemeyi değerlendirin.
