@@ -1,26 +1,29 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-10-16 09:25 UTC
+**Tarih:** 2026-10-17 09:22 UTC
 
 ## Ozet
-- Toplam test: 9
+- Toplam test: 9 (3 senaryo × 3 tarayici: chromium, firefox, webkit)
 - Gecen: 3
 - Basarisiz: 6
 
 ## Sonuc
 
-**2 farkli test, 3 tarayicida (chromium, firefox, webkit) basarisiz oldu.**
+**2 test senaryosu 3 tarayicide da basarisiz oldu:**
 
-### Basarisiz Testler
+### 1. "should have a heading" (Baslik testi)
+- **Hata:** `locator('h1')` elementi bulunamadi
+- **Etkilenen tarayicilar:** Chromium, Firefox, Webkit
+- **Olasi sebep:** Sayfada `<h1>` etiketi yok ya da test kasten basarisiz yazilmis (test dosyasinda "Bu test kasitli olarak basarisiz" yorumu mevcut)
 
-**1. `should have a heading` — 3 tarayicide basarisiz**
-- Hata: `locator('h1')` bulunamadi. Sayfa yuklendi ancak `<h1>` etiketi gorunur degil.
-- Olasi sebep: `example.com` anasayfasinda test beklenen `<h1>` elementi yok ya da selector degismis. Test dosyasindaki yorum satirina gore bu test kasitli olarak basarisiz birakilmis ("rutinin yakalaması için").
+### 2. "should have a login button" (Giris butonu testi)
+- **Hata:** `locator('button#login')` elementi bulunamadi
+- **Etkilenen tarayicilar:** Chromium, Firefox, Webkit
+- **Olasi sebep:** `button#login` selector artik gecerli degil — buton kaldirilmis, id'si degismis ya da yapi degismis olabilir. Test dosyasinda kasitli basarisizlik yorumu da mevcut.
 
-**2. `should have a login button` — 3 tarayicide basarisiz**
-- Hata: `locator('button#login')` bulunamadi. `button#login` secicisiyle eslesen element yok.
-- Olasi sebep: `example.com` uzerinde bu ID'ye sahip bir giris butonu bulunmuyor. Selector yanlis ya da site bu elementi hic gostermedi.
+### Basarili Testler
+- "should load successfully" — Chromium, Firefox, Webkit: **GECTI** ✅
 
-### Genel Degerlendirme
-- Ana sayfa yukleme testi (`should load successfully`) tum tarayicilerde **gecti** — site erisilebilir durumda.
-- Basarisizliklar sayfa yukleme sorunundan degil, **beklenen HTML elementlerinin sayfada bulunmamasindan** kaynaklanmaktadir.
-- Bu durum ya test selectorlerinin guncelligini yitirmesine ya da kasitli demo hatasina isaret etmektedir.
+## Not
+Test dosyasinda (homepage.spec.js satir 15) "Bu test kasitli olarak basarisiz — rutinin yakalaması icin" yorumu bulunmaktadir. Bu basarisizliklar rutin tarafından yakalanmasi icin bilerek eklenmis olabilir.
+
+**GitHub Actions Run:** https://github.com/aydinserbest/claude-routines/actions/runs/39020780710
