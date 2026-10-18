@@ -1,29 +1,25 @@
-# Gunluk Playwright Test Raporu
-**Tarih:** 2026-10-17 09:22 UTC
+# Günlük Playwright Test Raporu
+**Tarih:** 2026-10-18 09:36 UTC
 
-## Ozet
-- Toplam test: 9 (3 senaryo × 3 tarayici: chromium, firefox, webkit)
-- Gecen: 3
-- Basarisiz: 6
+## Özet
+- Toplam test (spec): 3
+- Geçen: 1
+- Başarısız: 2
+- Tarayıcılar: chromium, firefox, webkit (her test 3 tarayıcıda çalıştırıldı)
 
-## Sonuc
+## Sonuç
 
-**2 test senaryosu 3 tarayicide da basarisiz oldu:**
+**2 başarısız test tespit edildi.**
 
-### 1. "should have a heading" (Baslik testi)
-- **Hata:** `locator('h1')` elementi bulunamadi
-- **Etkilenen tarayicilar:** Chromium, Firefox, Webkit
-- **Olasi sebep:** Sayfada `<h1>` etiketi yok ya da test kasten basarisiz yazilmis (test dosyasinda "Bu test kasitli olarak basarisiz" yorumu mevcut)
+### Başarısız Test 1: `should have a heading`
+- **Hata:** `locator('h1')` 5000ms içinde bulunamadı — "element(s) not found"
+- **Olası sebep:** Sayfada `<h1>` elementi yok veya DOM'a yüklenmedi. Test kodu yorumuna göre bu test kasıtlı olarak başarısız bırakılmış ("rutinin yakalaması için").
+- **Tüm tarayıcılarda başarısız** (chromium, firefox, webkit) — 3 deneme yapıldı, hepsi aynı hatayı verdi.
 
-### 2. "should have a login button" (Giris butonu testi)
-- **Hata:** `locator('button#login')` elementi bulunamadi
-- **Etkilenen tarayicilar:** Chromium, Firefox, Webkit
-- **Olasi sebep:** `button#login` selector artik gecerli degil — buton kaldirilmis, id'si degismis ya da yapi degismis olabilir. Test dosyasinda kasitli basarisizlik yorumu da mevcut.
+### Başarısız Test 2: `should have a login button`
+- **Hata:** `locator('button#login')` 3000ms içinde bulunamadı — "element(s) not found"
+- **Olası sebep:** `button#login` seçicisi artık mevcut değil. Buton kaldırılmış, id'si değiştirilmiş (`#login` yerine başka bir id) veya farklı bir DOM yapısı kullanılıyor olabilir.
+- **Tüm tarayıcılarda başarısız** (chromium, firefox, webkit) — 3 deneme yapıldı, hepsi aynı hatayı verdi.
 
-### Basarili Testler
-- "should load successfully" — Chromium, Firefox, Webkit: **GECTI** ✅
-
-## Not
-Test dosyasinda (homepage.spec.js satir 15) "Bu test kasitli olarak basarisiz — rutinin yakalaması icin" yorumu bulunmaktadir. Bu basarisizliklar rutin tarafından yakalanmasi icin bilerek eklenmis olabilir.
-
-**GitHub Actions Run:** https://github.com/aydinserbest/claude-routines/actions/runs/39020780710
+### Geçen Test
+- `should load successfully` — Tüm tarayıcılarda başarılı (sayfa yüklemesi çalışıyor, site erişilebilir).
