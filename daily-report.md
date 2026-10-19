@@ -1,25 +1,25 @@
-# Günlük Playwright Test Raporu
-**Tarih:** 2026-10-18 09:36 UTC
+# Gunluk Playwright Test Raporu
+**Tarih:** 2026-10-19 09:10 UTC
 
-## Özet
-- Toplam test (spec): 3
-- Geçen: 1
-- Başarısız: 2
-- Tarayıcılar: chromium, firefox, webkit (her test 3 tarayıcıda çalıştırıldı)
+## Ozet
+- Toplam test: 9 (3 senaryo × 3 tarayici: chromium, firefox, webkit)
+- Gecen: 3
+- Basarisiz: 6
 
-## Sonuç
+## Sonuc
 
-**2 başarısız test tespit edildi.**
+2 test senaryosu tum tarayicilarda basarisiz oldu:
 
-### Başarısız Test 1: `should have a heading`
-- **Hata:** `locator('h1')` 5000ms içinde bulunamadı — "element(s) not found"
-- **Olası sebep:** Sayfada `<h1>` elementi yok veya DOM'a yüklenmedi. Test kodu yorumuna göre bu test kasıtlı olarak başarısız bırakılmış ("rutinin yakalaması için").
-- **Tüm tarayıcılarda başarısız** (chromium, firefox, webkit) — 3 deneme yapıldı, hepsi aynı hatayı verdi.
+### 1. `should have a heading` — BASARISIZ (chromium, firefox, webkit)
+- **Hata:** `locator('h1')` elementi sayfada bulunamadi (5000ms timeout)
+- **Olasi sebep:** Sayfa `h1` etiketi icermiyor ya da selector degismis. Test kodundaki yoruma gore bu hata kasitli birakılmis ("rutinin yakalaması icin"). Site down olmadigi icin (sayfa yukleniyor) selector sorunu veya kasitli hata.
 
-### Başarısız Test 2: `should have a login button`
-- **Hata:** `locator('button#login')` 3000ms içinde bulunamadı — "element(s) not found"
-- **Olası sebep:** `button#login` seçicisi artık mevcut değil. Buton kaldırılmış, id'si değiştirilmiş (`#login` yerine başka bir id) veya farklı bir DOM yapısı kullanılıyor olabilir.
-- **Tüm tarayıcılarda başarısız** (chromium, firefox, webkit) — 3 deneme yapıldı, hepsi aynı hatayı verdi.
+### 2. `should have a login button` — BASARISIZ (chromium, firefox, webkit)
+- **Hata:** `locator('button#login')` elementi sayfada bulunamadi (3000ms timeout)
+- **Olasi sebep:** `button#login` id'li bir giris butonu mevcut degil. Selector yanlis ya da test kasitli olarak eklenmis.
 
-### Geçen Test
-- `should load successfully` — Tüm tarayıcılarda başarılı (sayfa yüklemesi çalışıyor, site erişilebilir).
+### Gecen Testler
+- `should load successfully` — Tum tarayicilarda basarili (sayfa erisilebilir durumda)
+
+### Genel Degerlendirme
+Site erisilebilir durumda (baglanti sorunu yok). Basarisizliklar selector hatasindan kaynaklanmaktadir. Test dosyasindaki Turkce yorum ("Bu test kasitli olarak basarisiz — rutinin yakalaması icin") bu hatalarin kasitli oldugunu dogruluyor.
