@@ -1,25 +1,26 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-10-19 09:10 UTC
+**Tarih:** 2026-10-20 09:27 UTC
 
 ## Ozet
-- Toplam test: 9 (3 senaryo × 3 tarayici: chromium, firefox, webkit)
+- Toplam test: 9 (3 spec × 3 tarayıcı: chromium, firefox, webkit)
 - Gecen: 3
 - Basarisiz: 6
 
+## Basarisiz Testler
+
+### 1. `should have a heading` (chromium, firefox, webkit)
+- **Hata:** `locator('h1')` ile aranan başlık elementi sayfada bulunamadı
+- **Selector:** `h1`
+- **Timeout:** 5000ms — 3 deneme de başarısız
+- **Dosya:** `tests/homepage.spec.js:12`
+- **Olası sebep:** Sayfanın `h1` elementi ya kaldırılmış ya da farklı bir tag ile değiştirilmiş (selector değişimi). *(Not: Test kodunda bu hatanın kasıtlı olduğu belirtilmiş.)*
+
+### 2. `should have a login button` (chromium, firefox, webkit)
+- **Hata:** `locator('button#login')` ile aranan login butonu bulunamadı
+- **Selector:** `button#login`
+- **Timeout:** 3000ms — 3 deneme de başarısız
+- **Dosya:** `tests/homepage.spec.js:19`
+- **Olası sebep:** Login butonu sayfadan kaldırılmış veya ID'si değiştirilmiş olabilir (selector değişimi).
+
 ## Sonuc
-
-2 test senaryosu tum tarayicilarda basarisiz oldu:
-
-### 1. `should have a heading` — BASARISIZ (chromium, firefox, webkit)
-- **Hata:** `locator('h1')` elementi sayfada bulunamadi (5000ms timeout)
-- **Olasi sebep:** Sayfa `h1` etiketi icermiyor ya da selector degismis. Test kodundaki yoruma gore bu hata kasitli birakılmis ("rutinin yakalaması icin"). Site down olmadigi icin (sayfa yukleniyor) selector sorunu veya kasitli hata.
-
-### 2. `should have a login button` — BASARISIZ (chromium, firefox, webkit)
-- **Hata:** `locator('button#login')` elementi sayfada bulunamadi (3000ms timeout)
-- **Olasi sebep:** `button#login` id'li bir giris butonu mevcut degil. Selector yanlis ya da test kasitli olarak eklenmis.
-
-### Gecen Testler
-- `should load successfully` — Tum tarayicilarda basarili (sayfa erisilebilir durumda)
-
-### Genel Degerlendirme
-Site erisilebilir durumda (baglanti sorunu yok). Basarisizliklar selector hatasindan kaynaklanmaktadir. Test dosyasindaki Turkce yorum ("Bu test kasitli olarak basarisiz — rutinin yakalaması icin") bu hatalarin kasitli oldugunu dogruluyor.
+2 test başarısız — her ikisi de 3 tarayıcıda (chromium, firefox, webkit) tekrar edildi ve hiçbirinde geçmedi. Sayfa yüklenmesi başarılı olduğundan site erişilebilir durumda; sorun büyük ihtimalle selector değişikliğinden kaynaklanıyor.
