@@ -1,24 +1,27 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-10-21 09:28 UTC
+**Tarih:** 2026-10-22 09:27 UTC
 
 ## Ozet
-- Toplam test: 9 (3 test senaryosu × 3 tarayıcı: chromium, firefox, webkit)
-- Gecen: 3
-- Basarisiz: 6
+- Toplam test (spec): 3
+- Gecen: 1
+- Basarisiz: 2
 
 ## Sonuc
 
-**2 test senaryosu tüm tarayıcılarda başarısız oldu.**
+Bugunku testlerde **2 basarisiz test** tespit edildi. Her iki test de Chromium, Firefox ve WebKit tarayicilarinin hepsinde basarisiz oldu.
 
-### Başarısız Test 1: `should have a heading`
-- **Tarayıcılar:** chromium, firefox, webkit
-- **Hata:** `locator('h1')` elementi sayfada bulunamadı (5000ms beklendi)
-- **Olası Sebep:** Sayfa yükleniyor (ilk test geçiyor), ancak `<h1>` etiketi DOM'da yok. Selector değişmiş olabilir ya da test kasıtlı olarak başarısız yazılmış (`// Bu test kasıtlı olarak başarısız — rutinin yakalaması için`).
+### Basarisiz Test 1: `should have a heading`
+- **Hata:** `h1` elementi sayfada bulunamadi (5 saniye beklendi, timeout)
+- **Locator:** `locator('h1')`
+- **Olasi Sebep:** Sitenin HTML yapisi degismis olabilir — `h1` etiketi yerine baska bir baslik etiketi (ornegin `h2` veya `div`) kullaniliyor olabilir. Ya da sayfa icerigi dinamik olarak yukleniyor ve `h1` henuz DOM'a eklenmemis.
 
-### Başarısız Test 2: `should have a login button`
-- **Tarayıcılar:** chromium, firefox, webkit
-- **Hata:** `locator('button#login')` elementi sayfada bulunamadı (3000ms beklendi)
-- **Olası Sebep:** Sayfada `id="login"` olan bir `<button>` yok. Selector değişmiş ya da bu test de kasıtlı olarak başarısız.
+### Basarisiz Test 2: `should have a login button`
+- **Hata:** `button#login` elementi sayfada bulunamadi (3 saniye beklendi, timeout)
+- **Locator:** `locator('button#login')`
+- **Olasi Sebep:** Login butonu CSS selector'u degismis olabilir (ornegin `id="login"` yerine baska bir ID veya class kullaniliyor), ya da buton tamamen kaldirilmis.
 
-### Not
-Test dosyasında `// Bu test kasıtlı olarak başarısız — rutinin yakalaması için` yorumu mevcut — bu başarısızlıklar muhtemelen rutinin çalışıp çalışmadığını doğrulamak için bilinçli bırakılmış.
+### Gecen Test
+- `should load successfully` — Chromium, Firefox ve WebKit'te basariyla geri dondu.
+
+### Genel Degerlendirme
+Sayfa yukleniyor ancak beklenen HTML elemanlari (`h1`, `button#login`) DOM'da yok. Bu durum ya sitenin yeniden yapilandirildigina ya da belirli elementlerin kaldirildigina isaret ediyor. Site down degil; erisim basarili.
