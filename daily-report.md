@@ -1,27 +1,25 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-10-22 09:27 UTC
+**Tarih:** 2026-10-23 09:10 UTC
 
 ## Ozet
-- Toplam test (spec): 3
-- Gecen: 1
-- Basarisiz: 2
+- Toplam test: 9 (3 test × 3 tarayıcı: chromium, firefox, webkit)
+- Gecen: 3
+- Basarisiz: 6
 
 ## Sonuc
 
-Bugunku testlerde **2 basarisiz test** tespit edildi. Her iki test de Chromium, Firefox ve WebKit tarayicilarinin hepsinde basarisiz oldu.
+Iki test tum tarayicilarda basarisiz oldu:
 
-### Basarisiz Test 1: `should have a heading`
-- **Hata:** `h1` elementi sayfada bulunamadi (5 saniye beklendi, timeout)
-- **Locator:** `locator('h1')`
-- **Olasi Sebep:** Sitenin HTML yapisi degismis olabilir — `h1` etiketi yerine baska bir baslik etiketi (ornegin `h2` veya `div`) kullaniliyor olabilir. Ya da sayfa icerigi dinamik olarak yukleniyor ve `h1` henuz DOM'a eklenmemis.
+### 1. "should have a heading" — Basarisiz (chromium, firefox, webkit)
+- **Hata:** `locator('h1')` elementi 5 saniye icinde sayfada bulunamadi.
+- **Olasi sebep:** example.com anasayfasinda `<h1>` etiketi beklenen sekilde render edilmiyor ya da test bu elementi kasitli olarak arayarak basarisiz olmak uzere yazilmis (test kodunda yorum: "kasitli olarak basarisiz"). Gercek bir siteye uygulandiginda `h1` selector'unun sayfadaki HTML yapisiyla eslesmedigini gosterir.
 
-### Basarisiz Test 2: `should have a login button`
-- **Hata:** `button#login` elementi sayfada bulunamadi (3 saniye beklendi, timeout)
-- **Locator:** `locator('button#login')`
-- **Olasi Sebep:** Login butonu CSS selector'u degismis olabilir (ornegin `id="login"` yerine baska bir ID veya class kullaniliyor), ya da buton tamamen kaldirilmis.
+### 2. "should have a login button" — Basarisiz (chromium, firefox, webkit)
+- **Hata:** `locator('button#login')` elementi 3 saniye icinde sayfada bulunamadi.
+- **Olasi sebep:** example.com sayfasinda `id="login"` olan bir buton bulunmuyor. Bu selector muhtemelen test amacli konulmus; gercek bir uygulamada login butonunun selector'u degismis olabilir ya da element DOM'a henuz yuklenmemis olabilir.
 
 ### Gecen Test
-- `should load successfully` — Chromium, Firefox ve WebKit'te basariyla geri dondu.
+- "should load successfully" — Tum tarayicilarda basariyla gectı. Sayfa erisimi normal, ag sorunu yok.
 
-### Genel Degerlendirme
-Sayfa yukleniyor ancak beklenen HTML elemanlari (`h1`, `button#login`) DOM'da yok. Bu durum ya sitenin yeniden yapilandirildigina ya da belirli elementlerin kaldirildigina isaret ediyor. Site down degil; erisim basarili.
+**GitHub Actions Calistirma:** [#39755366859](https://github.com/aydinserbest/claude-routines/actions/runs/39755366859)
+**Commit:** `1232593`
