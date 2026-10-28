@@ -1,27 +1,28 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-10-27 09:10 UTC
+**Tarih:** 2026-10-28 09:36 UTC
 
 ## Ozet
-- Toplam test: 9 (3 test × 3 tarayici: chromium, firefox, webkit)
+- Toplam test: 9 (3 tarayici × 3 test)
 - Gecen: 3
 - Basarisiz: 6
 
 ## Sonuc
 
-**2 farkli test 3 tarayicida da basarisiz oldu:**
+2 test 3 tarayicide da (chromium, firefox, webkit) basarisiz oldu.
 
-### 1. "should have a heading" — Chromium, Firefox, Webkit
-- **Hata:** `locator('h1')` elementi sayfada bulunamadi (timeout: 5000ms)
-- **Dosya:** `tests/homepage.spec.js` satir 12
-- **Retry:** 3 deneme sonrasi basarisiz
+### Basarisiz Testler
 
-### 2. "should have a login button" — Chromium, Firefox, Webkit
-- **Hata:** `locator('button#login')` elementi sayfada bulunamadi (timeout: 3000ms)
-- **Dosya:** `tests/homepage.spec.js` satir 19
-- **Retry:** 3 deneme sonrasi basarisiz
+**1. should have a heading** (homepage.spec.js:12)
+- Hata: `locator('h1')` — sayfa yukleniyor fakat `h1` elementi 5000ms icinde bulunamadi
+- Tarayicilar: chromium, firefox, webkit (3/3)
 
-## Olasi Sebep
+**2. should have a login button** (homepage.spec.js:19)
+- Hata: `locator('button#login')` — `button#login` elementi 3000ms icinde bulunamadi
+- Tarayicilar: chromium, firefox, webkit (3/3)
 
-Site yükleniyor ("should load successfully" tüm tarayicilarda gecti), bu nedenle site down degil.
+### Olasi Sebep
 
-Büyük ihtimalle **selector degismis** durumu: `h1` etiketi veya `button#login` elementi sayfada mevcut degil ya da farkli bir HTML yapisi/ID ile render ediliyor. Test dosyasindaki yorum ("Bu test kasitli olarak basarisiz — rutinin yakalaması için") bu hatalarin bilinçli olarak eklenmis oldugunu gosteriyor, ancak yine de izlenmeleri onemli.
+Test dosyasinda `// Bu test kasıtlı olarak başarısız — rutinin yakalaması için` yorumu mevcut; bu testler rutinin calismasini dogrulamak icin kasitli olarak basarisiz birakilan orneklerdir. Gercek bir ortamda bu hata asagidaki sebeplerden kaynaklanabilir:
+- Sayfanin HTML yapisinda `h1` etiketi kaldirilmis veya degistirilmis olabilir (ornegin `h2` ya da `<div class="title">` yapilmis)
+- Login butonu `button#login` yerine farkli bir selector ile implement edilmis olabilir
+- Sayfa icerigi henuz yuklenmeden selector sorgulanmis olabilir (render gecikmesi)
