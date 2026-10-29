@@ -1,28 +1,27 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-10-28 09:36 UTC
+**Tarih:** 2026-10-29 09:20 UTC
 
 ## Ozet
-- Toplam test: 9 (3 tarayici × 3 test)
+- Toplam test: 9 (3 senaryo × 3 tarayici: chromium, firefox, webkit)
 - Gecen: 3
 - Basarisiz: 6
 
 ## Sonuc
 
-2 test 3 tarayicide da (chromium, firefox, webkit) basarisiz oldu.
+Iki test senaryosu tum tarayicilarda basarisiz oldu.
 
-### Basarisiz Testler
+### Basarisiz Test 1: `should have a heading`
+- **Hata:** `locator('h1')` elementi sayfada bulunamadi.
+- **Detay:** Test, ana sayfa basligini (`<h1>` etiketi) 5000ms icinde bekledi ancak element hic goruntu vermedi.
+- **Olasi Sebep:** Sayfa yapisi degismis olabilir — `<h1>` etiketi baska bir etikete (ornegin `<h2>` veya `<div>`) donusturulmus ya da farkli bir selector ile erisiliyor olmali. Test dosyasindaki yorum da bu testin kasitli olarak basarisiz oldugunu gosteriyor (demo amacli).
 
-**1. should have a heading** (homepage.spec.js:12)
-- Hata: `locator('h1')` — sayfa yukleniyor fakat `h1` elementi 5000ms icinde bulunamadi
-- Tarayicilar: chromium, firefox, webkit (3/3)
+### Basarisiz Test 2: `should have a login button`
+- **Hata:** `locator('button#login')` elementi sayfada bulunamadi.
+- **Detay:** Login butonu `button#login` selectoruyla 3000ms icinde aranmis ama bulunamamis.
+- **Olasi Sebep:** Login butonu HTML'den kaldirilmis, ID'si degismis (`#login` yerine baska bir ID), ya da butona JavaScript tarafindan gecikmeli yukleniyor olabilir. Yine test notlarina gore bu kasitli bir basarisizlik.
 
-**2. should have a login button** (homepage.spec.js:19)
-- Hata: `locator('button#login')` — `button#login` elementi 3000ms icinde bulunamadi
-- Tarayicilar: chromium, firefox, webkit (3/3)
+### Gecen Testler
+- `should load successfully` — Chromium, Firefox, Webkit — Sayfa basariyla yuklendi.
 
-### Olasi Sebep
-
-Test dosyasinda `// Bu test kasıtlı olarak başarısız — rutinin yakalaması için` yorumu mevcut; bu testler rutinin calismasini dogrulamak icin kasitli olarak basarisiz birakilan orneklerdir. Gercek bir ortamda bu hata asagidaki sebeplerden kaynaklanabilir:
-- Sayfanin HTML yapisinda `h1` etiketi kaldirilmis veya degistirilmis olabilir (ornegin `h2` ya da `<div class="title">` yapilmis)
-- Login butonu `button#login` yerine farkli bir selector ile implement edilmis olabilir
-- Sayfa icerigi henuz yuklenmeden selector sorgulanmis olabilir (render gecikmesi)
+---
+*Rapor otomatik olarak Claude rutini tarafindan olusturulmustur.*
