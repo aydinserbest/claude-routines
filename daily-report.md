@@ -1,5 +1,5 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-10-29 09:20 UTC
+**Tarih:** 2026-10-30 09:19 UTC
 
 ## Ozet
 - Toplam test: 9 (3 senaryo × 3 tarayici: chromium, firefox, webkit)
@@ -8,20 +8,14 @@
 
 ## Sonuc
 
-Iki test senaryosu tum tarayicilarda basarisiz oldu.
+2 test senaryosu 3 tarayicinin hepsinde basarisiz oldu:
 
-### Basarisiz Test 1: `should have a heading`
-- **Hata:** `locator('h1')` elementi sayfada bulunamadi.
-- **Detay:** Test, ana sayfa basligini (`<h1>` etiketi) 5000ms icinde bekledi ancak element hic goruntu vermedi.
-- **Olasi Sebep:** Sayfa yapisi degismis olabilir — `<h1>` etiketi baska bir etikete (ornegin `<h2>` veya `<div>`) donusturulmus ya da farkli bir selector ile erisiliyor olmali. Test dosyasindaki yorum da bu testin kasitli olarak basarisiz oldugunu gosteriyor (demo amacli).
+### 1. `should have a heading` (chromium, firefox, webkit)
+- **Hata:** `locator('h1')` elementi bulunamadi (5 saniye beklendi)
+- **Olasi sebep:** Test kasitli olarak basarisiz yazilmis (kod yorumu: "Bu test kasitli olarak basarisiz — rutinin yakalaması icin"). example.com sayfasinda `h1` elementi mevcut, ancak bu test selector dogrulamasini atlamak icin kasitli bozulmus.
 
-### Basarisiz Test 2: `should have a login button`
-- **Hata:** `locator('button#login')` elementi sayfada bulunamadi.
-- **Detay:** Login butonu `button#login` selectoruyla 3000ms icinde aranmis ama bulunamamis.
-- **Olasi Sebep:** Login butonu HTML'den kaldirilmis, ID'si degismis (`#login` yerine baska bir ID), ya da butona JavaScript tarafindan gecikmeli yukleniyor olabilir. Yine test notlarina gore bu kasitli bir basarisizlik.
+### 2. `should have a login button` (chromium, firefox, webkit)
+- **Hata:** `locator('button#login')` elementi bulunamadi (3 saniye beklendi)
+- **Olasi sebep:** example.com sayfasinda `button#login` elementi bulunmuyor. Selector yanlis ya da test kasitli basarisiz birakilmis.
 
-### Gecen Testler
-- `should load successfully` — Chromium, Firefox, Webkit — Sayfa basariyla yuklendi.
-
----
-*Rapor otomatik olarak Claude rutini tarafindan olusturulmustur.*
+Her iki test de yeniden deneme (retry) mekanizmasini 2 kez kullandi ve yine de basarisiz oldu — gecici bir ag sorunu degil, kalici bir sorun.
