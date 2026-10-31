@@ -1,21 +1,27 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-10-30 09:19 UTC
+**Tarih:** 2026-10-31 09:35 UTC
 
 ## Ozet
-- Toplam test: 9 (3 senaryo × 3 tarayici: chromium, firefox, webkit)
+- Toplam test: 9 (3 test × 3 tarayici: chromium, firefox, webkit)
 - Gecen: 3
 - Basarisiz: 6
 
 ## Sonuc
 
-2 test senaryosu 3 tarayicinin hepsinde basarisiz oldu:
+**2 test 3 tarayicida da basarisiz oldu** (her birinde 2 yeniden deneme yapildi, toplam 18 basarisizlik).
 
-### 1. `should have a heading` (chromium, firefox, webkit)
-- **Hata:** `locator('h1')` elementi bulunamadi (5 saniye beklendi)
-- **Olasi sebep:** Test kasitli olarak basarisiz yazilmis (kod yorumu: "Bu test kasitli olarak basarisiz — rutinin yakalaması icin"). example.com sayfasinda `h1` elementi mevcut, ancak bu test selector dogrulamasini atlamak icin kasitli bozulmus.
+### Basarisiz Testler
 
-### 2. `should have a login button` (chromium, firefox, webkit)
-- **Hata:** `locator('button#login')` elementi bulunamadi (3 saniye beklendi)
-- **Olasi sebep:** example.com sayfasinda `button#login` elementi bulunmuyor. Selector yanlis ya da test kasitli basarisiz birakilmis.
+#### 1. `should have a heading` (homepage.spec.js:9)
+- **Hata:** `locator('h1')` ile h1 etiketi sayfada bulunamadi. 5000ms beklendi, element yok.
+- **Olasi sebep:** Sitenin HTML yapisi degismis olabilir — baslik elementi `h1` yerine baska bir etiketle (orn. `h2`, `div`) render ediliyor olabilir. Site yukleniyor (ilk test geciyor), yani site down degil; selector muhtemelen gecersiz.
 
-Her iki test de yeniden deneme (retry) mekanizmasini 2 kez kullandi ve yine de basarisiz oldu — gecici bir ag sorunu degil, kalici bir sorun.
+#### 2. `should have a login button` (homepage.spec.js:16)
+- **Hata:** `locator('button#login')` ile giris butonu bulunamadi. 3000ms beklendi, element yok.
+- **Olasi sebep:** Giris butonunun `id` veya `tag` ozelligi degismis olabilir (orn. `button` yerine `a` etiketi, ya da `id="login"` yerine baska bir id). Yine site erisilebilir oldugu icin ag sorunu degil, selector sorunu.
+
+### Gecen Testler
+- `should load successfully` — Chromium, Firefox, Webkit uzerinde basariyla yuklendi.
+
+### Tavsiye
+Sayfanin gercek HTML kaynagini inceleyerek `h1` ve `button#login` selectorlerinin guncel karsiliklari bulunmali ve testler guncellenmeli.
