@@ -1,5 +1,5 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-11-01 09:17 UTC
+**Tarih:** 2026-11-02 09:10 UTC
 
 ## Ozet
 - Toplam test: 9 (3 test × 3 tarayici: chromium, firefox, webkit)
@@ -8,20 +8,22 @@
 
 ## Sonuc
 
-**2 test 3 tarayicida da basarisiz oldu** (her birinde 2 yeniden deneme yapildi, toplam 18 basarisizlik).
+**2 test 3 tarayicida da basarisiz oldu (toplamda 6 hata):**
 
-### Basarisiz Testler
+### 1. `should have a heading` (chromium, firefox, webkit)
+- **Hata:** `locator('h1')` elementi sayfada bulunamadi
+- **Dosya:** `tests/homepage.spec.js` satir 12
+- **Detay:** Sayfa yuklendi ancak `<h1>` elementi 5 saniye icinde gorunur hale gelmedi. 2 kez yeniden denendi, sonuc degismedi.
+- **Olasi sebep:** Selector degismis olabilir (sayfada `h1` yerine baska bir baslik elementi kullaniliyor olabilir) ya da bu test kasitli olarak basarisiz birakilmis (test kodunda yorum var: "Bu test kasitli olarak basarisiz — rutinin yakalaması icin").
 
-#### 1. `should have a heading` (homepage.spec.js:9)
-- **Hata:** `locator('h1')` ile h1 etiketi sayfada bulunamadi. 5000ms beklendi, element yok.
-- **Olasi sebep:** Sitenin HTML yapisi degismis olabilir — baslik elementi `h1` yerine baska bir etiketle (orn. `h2`, `div`) render ediliyor olabilir. Site yukleniyor (ilk test geciyor), yani site down degil; selector muhtemelen gecersiz.
-
-#### 2. `should have a login button` (homepage.spec.js:16)
-- **Hata:** `locator('button#login')` ile giris butonu bulunamadi. 3000ms beklendi, element yok.
-- **Olasi sebep:** Giris butonunun `id` veya `tag` ozelligi degismis olabilir (orn. `button` yerine `a` etiketi, ya da `id="login"` yerine baska bir id). Yine site erisilebilir oldugu icin ag sorunu degil, selector sorunu.
+### 2. `should have a login button` (chromium, firefox, webkit)
+- **Hata:** `locator('button#login')` elementi sayfada bulunamadi
+- **Dosya:** `tests/homepage.spec.js` satir 19
+- **Detay:** `button#login` id'li giris butonu 3 saniye icinde bulunamadi. 2 kez yeniden denendi, sonuc degismedi.
+- **Olasi sebep:** Login butonu farkli bir id veya selector ile implemente edilmis olabilir. Ya da bu da kasitli basarisiz bir test.
 
 ### Gecen Testler
-- `should load successfully` — Chromium, Firefox, Webkit uzerinde basariyla yuklendi.
+- `should load successfully` — chromium, firefox, webkit (3/3 gecti)
 
-### Tavsiye
-Sayfanin gercek HTML kaynagini inceleyerek `h1` ve `button#login` selectorlerinin guncel karsiliklari bulunmali ve testler guncellenmeli.
+---
+**Not:** Test kodu icinde "Bu test kasitli olarak basarisiz — rutinin yakalaması icin" yorumu bulunmakta. Bu testler rutin izleme amaciyla kasitli olarak basarisiz birakilmis olabilir.
