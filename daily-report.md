@@ -1,27 +1,22 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-11-05 09:10 UTC
+**Tarih:** 2026-11-06 09:10 UTC
 
 ## Ozet
-- Toplam test: 9 (3 test senaryosu × 3 tarayici: chromium, firefox, webkit)
+- Toplam test: 9 (3 test × 3 tarayıcı: chromium, firefox, webkit)
 - Gecen: 3
 - Basarisiz: 6
 
-## Sonuc
+## Basarisiz Testler
 
-### Basarisiz Testler
-
-#### 1. `should have a heading` (Chromium, Firefox, Webkit)
+### 1. "should have a heading" — Tum Tarayicilar
 - **Hata:** `h1` elementi sayfada bulunamadi (5 saniye beklendi)
-- **Olasi Sebep:** Selector degismis olabilir — example.com sayfasinda `h1` etiketi yok ya da baska bir HTML yapisina gecilmis. Test kodu `locator('h1')` arıyor ancak sayfa bu elementi icermiyor.
-- **Dosya:** `tests/homepage.spec.js:12`
+- **Dosya:** `tests/homepage.spec.js` satir 12
+- **Olasi Sebep:** Sayfada `<h1>` etiketi yok ya da selector eski yapiya gore yazilmis. Test yorumuna gore kasitli olarak basarisiz birakilan bir test (`// Bu test kasıtlı olarak başarısız — rutinin yakalaması için`).
 
-#### 2. `should have a login button` (Chromium, Firefox, Webkit)
+### 2. "should have a login button" — Tum Tarayicilar
 - **Hata:** `button#login` elementi sayfada bulunamadi (3 saniye beklendi)
-- **Olasi Sebep:** Login butonu `button#login` selector'i ile eslesmıyor — ya silinmis, ya farkli bir ID verilmis (ornegin `btn-login`), ya da hicbir zaman olmayan bir selector. Muhtemelen selector degisikligi.
-- **Dosya:** `tests/homepage.spec.js:19`
+- **Dosya:** `tests/homepage.spec.js` satir 19
+- **Olasi Sebep:** `button#login` ID'li bir giris butonu sayfada bulunmuyor. Site yapisi degismis ya da bu element hic olmamis olabilir.
 
-### Gecen Testler
-- `should load successfully` — Chromium, Firefox, Webkit (sayfa basariyla yukleniyor)
-
-### Genel Degerlendirme
-Sayfa erisilebilir durumda (yuklenme testi geciyor). Sorun site down degil; selector uyumsuzlugu. `h1` ve `button#login` elementleri ya hic yok ya da farkli HTML yapisindan geliyor. Testin notunda "kasitli olarak basarisiz" yazdigina gore bu davranis bekleniyor olabilir, ancak gercek ortamda bu iki selector guncellenmeli.
+## Sonuc
+Toplam 2 benzersiz test senaryosu 3 tarayicida da basarisiz oldu (6 basarisiz sonuc). Sayfa yukleme testi (`should load successfully`) tum tarayicilarda gecti — site erisimi sorunsuz. Sorun selector'larda: `h1` ve `button#login` elementleri sayfada mevcut degil. Test yorumu kasitli basarisizlik oldugunu belirtiyor.
