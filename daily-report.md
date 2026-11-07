@@ -1,22 +1,29 @@
-# Gunluk Playwright Test Raporu
-**Tarih:** 2026-11-06 09:10 UTC
+# Günlük Playwright Test Raporu
+**Tarih:** 2026-11-07 09:10 UTC
 
-## Ozet
+## Özet
 - Toplam test: 9 (3 test × 3 tarayıcı: chromium, firefox, webkit)
-- Gecen: 3
-- Basarisiz: 6
+- Geçen: 3
+- Başarısız: 6
 
-## Basarisiz Testler
+## Sonuç
 
-### 1. "should have a heading" — Tum Tarayicilar
-- **Hata:** `h1` elementi sayfada bulunamadi (5 saniye beklendi)
-- **Dosya:** `tests/homepage.spec.js` satir 12
-- **Olasi Sebep:** Sayfada `<h1>` etiketi yok ya da selector eski yapiya gore yazilmis. Test yorumuna gore kasitli olarak basarisiz birakilan bir test (`// Bu test kasıtlı olarak başarısız — rutinin yakalaması için`).
+**2 test senaryosu tüm tarayıcılarda başarısız oldu:**
 
-### 2. "should have a login button" — Tum Tarayicilar
-- **Hata:** `button#login` elementi sayfada bulunamadi (3 saniye beklendi)
-- **Dosya:** `tests/homepage.spec.js` satir 19
-- **Olasi Sebep:** `button#login` ID'li bir giris butonu sayfada bulunmuyor. Site yapisi degismis ya da bu element hic olmamis olabilir.
+### 1. `should have a heading` (homepage.spec.js:9)
+- **Hata:** `h1` elementi sayfada bulunamadı (5000ms zaman aşımı)
+- **Selector:** `locator('h1')`
+- **Olası sebep:** Test dosyasındaki yoruma göre bu test **kasıtlı olarak başarısız** bırakılmış ("rutinin yakalaması için"). Ancak gerçek bir senaryoda: example.com ana sayfasında `<h1>` etiketi mevcut değil ya da farklı bir yapıya sahip.
+- **Durum:** 2 yeniden denemede de aynı hata (toplam 3 deneme)
 
-## Sonuc
-Toplam 2 benzersiz test senaryosu 3 tarayicida da basarisiz oldu (6 basarisiz sonuc). Sayfa yukleme testi (`should load successfully`) tum tarayicilarda gecti — site erisimi sorunsuz. Sorun selector'larda: `h1` ve `button#login` elementleri sayfada mevcut degil. Test yorumu kasitli basarisizlik oldugunu belirtiyor.
+### 2. `should have a login button` (homepage.spec.js:16)
+- **Hata:** `button#login` elementi sayfada bulunamadı (3000ms zaman aşımı)
+- **Selector:** `locator('button#login')`
+- **Olası sebep:** `button#login` gibi çok spesifik bir CSS selector kullanılmış. example.com sitesinde böyle bir giriş butonu zaten bulunmuyor — selector sitenin gerçek yapısına uymuyor.
+- **Durum:** 2 yeniden denemede de aynı hata (toplam 3 deneme)
+
+### Geçen Test
+- `should load successfully` — Chromium, Firefox ve WebKit'te başarıyla geçti. Sayfa yükleniyor.
+
+## Değerlendirme
+Sayfa erişimi sorunsuz çalışıyor (site down değil). Başarısızlıklar selector uyumsuzluğundan kaynaklanıyor. Test dosyasındaki yorum da bunu doğruluyor: bu testler rutinin çalıştığını doğrulamak için kasıtlı olarak başarısız yapılmış.
