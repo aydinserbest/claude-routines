@@ -1,29 +1,21 @@
-# Günlük Playwright Test Raporu
-**Tarih:** 2026-11-07 09:10 UTC
+# Gunluk Playwright Test Raporu
+**Tarih:** 2026-11-08 09:10 UTC
 
-## Özet
-- Toplam test: 9 (3 test × 3 tarayıcı: chromium, firefox, webkit)
-- Geçen: 3
-- Başarısız: 6
+## Ozet
+- Toplam test: 9 (3 test × 3 tarayici: chromium, firefox, webkit)
+- Gecen: 3
+- Basarisiz: 6
 
-## Sonuç
+## Sonuc
 
-**2 test senaryosu tüm tarayıcılarda başarısız oldu:**
+2 test, 3 tarayicinin hepsinde basarisiz oldu (her birinde 2 yeniden deneme dahil 3 tur calistirildi):
 
-### 1. `should have a heading` (homepage.spec.js:9)
-- **Hata:** `h1` elementi sayfada bulunamadı (5000ms zaman aşımı)
-- **Selector:** `locator('h1')`
-- **Olası sebep:** Test dosyasındaki yoruma göre bu test **kasıtlı olarak başarısız** bırakılmış ("rutinin yakalaması için"). Ancak gerçek bir senaryoda: example.com ana sayfasında `<h1>` etiketi mevcut değil ya da farklı bir yapıya sahip.
-- **Durum:** 2 yeniden denemede de aynı hata (toplam 3 deneme)
+### 1. `should have a heading` — `h1` elementi bulunamadi
+- **Hata:** `locator('h1')` için 5000ms beklendi, element sayfada yok
+- **Olasi sebep:** `example.com` anasayfasinda `<h1>` etiketi bulunmuyor; selector yanlis ya da test kasitli olarak basarisiz birakılmis (kod yorumunda "Bu test kasitli olarak basarisiz — rutinin yakalaması için" yazıyor)
 
-### 2. `should have a login button` (homepage.spec.js:16)
-- **Hata:** `button#login` elementi sayfada bulunamadı (3000ms zaman aşımı)
-- **Selector:** `locator('button#login')`
-- **Olası sebep:** `button#login` gibi çok spesifik bir CSS selector kullanılmış. example.com sitesinde böyle bir giriş butonu zaten bulunmuyor — selector sitenin gerçek yapısına uymuyor.
-- **Durum:** 2 yeniden denemede de aynı hata (toplam 3 deneme)
+### 2. `should have a login button` — `button#login` elementi bulunamadi
+- **Hata:** `locator('button#login')` için 3000ms beklendi, element sayfada yok
+- **Olasi sebep:** `example.com` sitesinde login butonu bulunmuyor; bu test de muhtemelen kasitli olarak basarisiz birakılmis ya da selector eski bir tasarima ait
 
-### Geçen Test
-- `should load successfully` — Chromium, Firefox ve WebKit'te başarıyla geçti. Sayfa yükleniyor.
-
-## Değerlendirme
-Sayfa erişimi sorunsuz çalışıyor (site down değil). Başarısızlıklar selector uyumsuzluğundan kaynaklanıyor. Test dosyasındaki yorum da bunu doğruluyor: bu testler rutinin çalıştığını doğrulamak için kasıtlı olarak başarısız yapılmış.
+Her iki test de tum tarayicilarda (Chromium, Firefox, WebKit) tutarli sekilde basarisiz oldu. Site `should load successfully` testini gecti, yani site erisim sorunu yok; sadece bu iki selector sayfa yapisina uymuyor.
