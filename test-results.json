@@ -12,24 +12,24 @@
     "maxFailures": 0,
     "metadata": {
       "ci": {
-        "commitHref": "https://github.com/aydinserbest/claude-routines/commit/4800970bd0113d2325322bee9524074149734e79",
-        "commitHash": "4800970bd0113d2325322bee9524074149734e79",
-        "buildHref": "https://github.com/aydinserbest/claude-routines/actions/runs/42686215433"
+        "commitHref": "https://github.com/aydinserbest/claude-routines/commit/3545b909d81db25da20ff9a4ef85d133b1177478",
+        "commitHash": "3545b909d81db25da20ff9a4ef85d133b1177478",
+        "buildHref": "https://github.com/aydinserbest/claude-routines/actions/runs/42860140103"
       },
       "gitCommit": {
-        "shortHash": "4800970",
-        "hash": "4800970bd0113d2325322bee9524074149734e79",
-        "subject": "report: 2026-11-09",
-        "body": "report: 2026-11-09\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01GjMLMC4oshAczVxCmTUT2h\n",
+        "shortHash": "3545b90",
+        "hash": "3545b909d81db25da20ff9a4ef85d133b1177478",
+        "subject": "report: 2026-11-10",
+        "body": "report: 2026-11-10\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01GjMLMC9RvjcokRg5VWiwMV\n",
         "author": {
           "name": "claude-routine",
           "email": "claude-routine@noreply",
-          "time": 1794217025000
+          "time": 1794303702000
         },
         "committer": {
           "name": "claude-routine",
           "email": "claude-routine@noreply",
-          "time": 1794217025000
+          "time": 1794303702000
         },
         "branch": "master"
       },
@@ -43,24 +43,24 @@
         "retries": 2,
         "metadata": {
           "ci": {
-            "commitHref": "https://github.com/aydinserbest/claude-routines/commit/4800970bd0113d2325322bee9524074149734e79",
-            "commitHash": "4800970bd0113d2325322bee9524074149734e79",
-            "buildHref": "https://github.com/aydinserbest/claude-routines/actions/runs/42686215433"
+            "commitHref": "https://github.com/aydinserbest/claude-routines/commit/3545b909d81db25da20ff9a4ef85d133b1177478",
+            "commitHash": "3545b909d81db25da20ff9a4ef85d133b1177478",
+            "buildHref": "https://github.com/aydinserbest/claude-routines/actions/runs/42860140103"
           },
           "gitCommit": {
-            "shortHash": "4800970",
-            "hash": "4800970bd0113d2325322bee9524074149734e79",
-            "subject": "report: 2026-11-09",
-            "body": "report: 2026-11-09\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01GjMLMC4oshAczVxCmTUT2h\n",
+            "shortHash": "3545b90",
+            "hash": "3545b909d81db25da20ff9a4ef85d133b1177478",
+            "subject": "report: 2026-11-10",
+            "body": "report: 2026-11-10\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01GjMLMC9RvjcokRg5VWiwMV\n",
             "author": {
               "name": "claude-routine",
               "email": "claude-routine@noreply",
-              "time": 1794217025000
+              "time": 1794303702000
             },
             "committer": {
               "name": "claude-routine",
               "email": "claude-routine@noreply",
-              "time": 1794217025000
+              "time": 1794303702000
             },
             "branch": "master"
           },
@@ -81,24 +81,24 @@
         "retries": 2,
         "metadata": {
           "ci": {
-            "commitHref": "https://github.com/aydinserbest/claude-routines/commit/4800970bd0113d2325322bee9524074149734e79",
-            "commitHash": "4800970bd0113d2325322bee9524074149734e79",
-            "buildHref": "https://github.com/aydinserbest/claude-routines/actions/runs/42686215433"
+            "commitHref": "https://github.com/aydinserbest/claude-routines/commit/3545b909d81db25da20ff9a4ef85d133b1177478",
+            "commitHash": "3545b909d81db25da20ff9a4ef85d133b1177478",
+            "buildHref": "https://github.com/aydinserbest/claude-routines/actions/runs/42860140103"
           },
           "gitCommit": {
-            "shortHash": "4800970",
-            "hash": "4800970bd0113d2325322bee9524074149734e79",
-            "subject": "report: 2026-11-09",
-            "body": "report: 2026-11-09\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01GjMLMC4oshAczVxCmTUT2h\n",
+            "shortHash": "3545b90",
+            "hash": "3545b909d81db25da20ff9a4ef85d133b1177478",
+            "subject": "report: 2026-11-10",
+            "body": "report: 2026-11-10\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01GjMLMC9RvjcokRg5VWiwMV\n",
             "author": {
               "name": "claude-routine",
               "email": "claude-routine@noreply",
-              "time": 1794217025000
+              "time": 1794303702000
             },
             "committer": {
               "name": "claude-routine",
               "email": "claude-routine@noreply",
-              "time": 1794217025000
+              "time": 1794303702000
             },
             "branch": "master"
           },
@@ -119,24 +119,24 @@
         "retries": 2,
         "metadata": {
           "ci": {
-            "commitHref": "https://github.com/aydinserbest/claude-routines/commit/4800970bd0113d2325322bee9524074149734e79",
-            "commitHash": "4800970bd0113d2325322bee9524074149734e79",
-            "buildHref": "https://github.com/aydinserbest/claude-routines/actions/runs/42686215433"
+            "commitHref": "https://github.com/aydinserbest/claude-routines/commit/3545b909d81db25da20ff9a4ef85d133b1177478",
+            "commitHash": "3545b909d81db25da20ff9a4ef85d133b1177478",
+            "buildHref": "https://github.com/aydinserbest/claude-routines/actions/runs/42860140103"
           },
           "gitCommit": {
-            "shortHash": "4800970",
-            "hash": "4800970bd0113d2325322bee9524074149734e79",
-            "subject": "report: 2026-11-09",
-            "body": "report: 2026-11-09\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01GjMLMC4oshAczVxCmTUT2h\n",
+            "shortHash": "3545b90",
+            "hash": "3545b909d81db25da20ff9a4ef85d133b1177478",
+            "subject": "report: 2026-11-10",
+            "body": "report: 2026-11-10\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01GjMLMC9RvjcokRg5VWiwMV\n",
             "author": {
               "name": "claude-routine",
               "email": "claude-routine@noreply",
-              "time": 1794217025000
+              "time": 1794303702000
             },
             "committer": {
               "name": "claude-routine",
               "email": "claude-routine@noreply",
-              "time": 1794217025000
+              "time": 1794303702000
             },
             "branch": "master"
           },
@@ -220,7 +220,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-09T19:44:36.879Z",
+                      "startTime": "2026-11-10T16:59:05.999Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -234,7 +234,7 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 3,
+                      "duration": 4,
                       "error": {
                         "message": "Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
                         "stack": "Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
@@ -247,7 +247,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 1,
-                      "startTime": "2026-11-09T19:44:37.403Z",
+                      "startTime": "2026-11-10T16:59:06.546Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -266,7 +266,7 @@
                       "workerIndex": 2,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 4,
+                      "duration": 3,
                       "error": {
                         "message": "Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
                         "stack": "Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
@@ -279,7 +279,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 2,
-                      "startTime": "2026-11-09T19:44:37.946Z",
+                      "startTime": "2026-11-10T16:59:07.098Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -327,7 +327,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-09T19:44:38.489Z",
+                      "startTime": "2026-11-10T16:59:07.632Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -354,7 +354,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 1,
-                      "startTime": "2026-11-09T19:44:39.034Z",
+                      "startTime": "2026-11-10T16:59:08.180Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -386,7 +386,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 2,
-                      "startTime": "2026-11-09T19:44:39.583Z",
+                      "startTime": "2026-11-10T16:59:08.744Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -421,7 +421,7 @@
                       "workerIndex": 6,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 4,
+                      "duration": 3,
                       "error": {
                         "message": "Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
                         "stack": "Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
@@ -434,7 +434,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-09T19:44:40.131Z",
+                      "startTime": "2026-11-10T16:59:09.283Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -461,7 +461,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 1,
-                      "startTime": "2026-11-09T19:44:40.690Z",
+                      "startTime": "2026-11-10T16:59:09.821Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -493,7 +493,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 2,
-                      "startTime": "2026-11-09T19:44:41.253Z",
+                      "startTime": "2026-11-10T16:59:10.379Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -541,7 +541,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-09T19:44:41.802Z",
+                      "startTime": "2026-11-10T16:59:10.923Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -568,7 +568,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 1,
-                      "startTime": "2026-11-09T19:44:42.343Z",
+                      "startTime": "2026-11-10T16:59:11.468Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -587,7 +587,7 @@
                       "workerIndex": 11,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 3,
+                      "duration": 4,
                       "error": {
                         "message": "Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/firefox-1522/firefox/firefox\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
                         "stack": "Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/firefox-1522/firefox/firefox\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
@@ -600,7 +600,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 2,
-                      "startTime": "2026-11-09T19:44:42.902Z",
+                      "startTime": "2026-11-10T16:59:12.043Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -648,7 +648,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-09T19:44:43.459Z",
+                      "startTime": "2026-11-10T16:59:12.579Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -662,7 +662,7 @@
                       "workerIndex": 13,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 4,
+                      "duration": 3,
                       "error": {
                         "message": "Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/firefox-1522/firefox/firefox\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
                         "stack": "Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/firefox-1522/firefox/firefox\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
@@ -675,7 +675,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 1,
-                      "startTime": "2026-11-09T19:44:44.023Z",
+                      "startTime": "2026-11-10T16:59:13.191Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -694,7 +694,7 @@
                       "workerIndex": 14,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 4,
+                      "duration": 3,
                       "error": {
                         "message": "Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/firefox-1522/firefox/firefox\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
                         "stack": "Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/firefox-1522/firefox/firefox\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
@@ -707,7 +707,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 2,
-                      "startTime": "2026-11-09T19:44:44.591Z",
+                      "startTime": "2026-11-10T16:59:13.746Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -755,7 +755,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-09T19:44:45.148Z",
+                      "startTime": "2026-11-10T16:59:14.297Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -782,7 +782,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 1,
-                      "startTime": "2026-11-09T19:44:45.699Z",
+                      "startTime": "2026-11-10T16:59:14.849Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -814,7 +814,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 2,
-                      "startTime": "2026-11-09T19:44:46.252Z",
+                      "startTime": "2026-11-10T16:59:15.404Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -849,7 +849,7 @@
                       "workerIndex": 18,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 3,
+                      "duration": 4,
                       "error": {
                         "message": "Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/webkit-2287/pw_run.sh\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
                         "stack": "Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/webkit-2287/pw_run.sh\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
@@ -862,7 +862,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-09T19:44:46.798Z",
+                      "startTime": "2026-11-10T16:59:15.961Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -889,7 +889,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 1,
-                      "startTime": "2026-11-09T19:44:47.343Z",
+                      "startTime": "2026-11-10T16:59:16.513Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -908,7 +908,7 @@
                       "workerIndex": 20,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 3,
+                      "duration": 4,
                       "error": {
                         "message": "Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/webkit-2287/pw_run.sh\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
                         "stack": "Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/webkit-2287/pw_run.sh\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
@@ -921,7 +921,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 2,
-                      "startTime": "2026-11-09T19:44:47.891Z",
+                      "startTime": "2026-11-10T16:59:17.068Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -969,7 +969,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-09T19:44:48.442Z",
+                      "startTime": "2026-11-10T16:59:17.645Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -983,7 +983,7 @@
                       "workerIndex": 22,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 3,
+                      "duration": 4,
                       "error": {
                         "message": "Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/webkit-2287/pw_run.sh\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
                         "stack": "Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/webkit-2287/pw_run.sh\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
@@ -996,7 +996,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 1,
-                      "startTime": "2026-11-09T19:44:48.991Z",
+                      "startTime": "2026-11-10T16:59:18.180Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -1015,7 +1015,7 @@
                       "workerIndex": 23,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 4,
+                      "duration": 3,
                       "error": {
                         "message": "Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/webkit-2287/pw_run.sh\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
                         "stack": "Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/webkit-2287/pw_run.sh\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
@@ -1028,7 +1028,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 2,
-                      "startTime": "2026-11-09T19:44:49.542Z",
+                      "startTime": "2026-11-10T16:59:18.751Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -1076,7 +1076,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-11-09T19:44:50.085Z",
+                      "startTime": "2026-11-10T16:59:19.295Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -1090,7 +1090,7 @@
                       "workerIndex": 25,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 3,
+                      "duration": 4,
                       "error": {
                         "message": "Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/webkit-2287/pw_run.sh\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
                         "stack": "Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/webkit-2287/pw_run.sh\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
@@ -1103,7 +1103,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 1,
-                      "startTime": "2026-11-09T19:44:50.627Z",
+                      "startTime": "2026-11-10T16:59:19.849Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -1135,7 +1135,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 2,
-                      "startTime": "2026-11-09T19:44:51.197Z",
+                      "startTime": "2026-11-10T16:59:20.408Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -1161,8 +1161,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-11-09T19:44:36.358Z",
-    "duration": 14917.563999999998,
+    "startTime": "2026-11-10T16:59:05.493Z",
+    "duration": 14993.097000000002,
     "expected": 0,
     "skipped": 0,
     "unexpected": 9,
