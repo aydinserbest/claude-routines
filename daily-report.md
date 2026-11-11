@@ -1,30 +1,31 @@
-# Günlük Playwright Test Raporu
-**Tarih:** 2026-11-10 09:41 UTC
+# Gunluk Playwright Test Raporu
+**Tarih:** 2026-11-11 09:10 UTC
 
-## Özet
+## Ozet
 - Toplam test: 9
-- Geçen: 0
-- Başarısız: 9
+- Gecen: 0
+- Basarisiz: 9
 
-## Sonuç
+## Sonuc
 
-**Tüm testler başarısız oldu.**
+**Tum testler basarisiz oldu.** Hata tarayici binary dosyalarinin eksik olmasi nedeniyle.
 
-### Hata Özeti
-3 test senaryosu (should load successfully, should have a heading, should have a login button), 3 tarayıcıda (Chromium, Firefox, WebKit) çalıştırıldı — toplam 9 test çalıştırması. Tamamı aynı hatayla düştü:
+### Hata Ozeti
 
-> Tarayıcı binary dosyası bulunamadı. Playwright kurulumu yenilenmiş veya güncellenmiş görünüyor; tarayıcılar indirilmemiş.
+Chromium, Firefox ve WebKit tarayicilarinin hepsi baslatılamadi. Hata mesaji:
 
-### Olası Sebep
-GitHub Actions iş akışında `npx playwright install` adımı eksik veya atlanmış. Playwright paketi güncellendi ve yeni sürüm farklı binary yolları gerektiriyor, ancak tarayıcılar henüz indirilmemiş. Bu durum site erişimiyle ya da test kodundaki selectorlarla ilgili değil — testler tarayıcı başlatılamadan tamamen çöküyor.
-
-### Önerilen Düzeltme
-GitHub Actions iş akışına aşağıdaki adımı ekleyin:
-```yaml
-- name: Install Playwright Browsers
-  run: npx playwright install --with-deps
 ```
-Bu adım, `npm install` sonrasına ve testleri çalıştırmadan önce eklenmelidir.
+Error: browserType.launch: Executable doesn't exist
+```
 
----
-_Rapor oluşturulma zamanı: 2026-11-10 09:41 UTC_
+Her 3 test (`should load successfully`, `should have a heading`, `should have a login button`) her 3 tarayicida da (Chromium, Firefox, WebKit) calismadi. Her test 2 kez tekrar denendi (retry: 2) ancak ayni hata devam etti.
+
+### Olasi Sebep
+
+**GitHub Actions'da `npx playwright install` adimi eksik.** Playwright tarayici dosyalarını cache'den bulamıyor. Muhtemelen Actions workflow'unda tarayici kurulum adimi (`npx playwright install --with-deps`) eklenmemiş veya cache gecersiz hale gelmis.
+
+**Duzeltme onerileri:**
+1. `.github/workflows` dosyasinda `npx playwright install --with-deps` adimini ekle
+2. veya Playwright Actions kullan: `uses: microsoft/playwright-github-action@v1`
+
+**Not:** Bu hata test edilen sitenin (example.com) durumundan bagımsızdir. Sorun tamamen CI ortamindan kaynaklanmaktadir.
