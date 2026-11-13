@@ -1,5 +1,5 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-11-12 (Test sonuclari: 2026-11-11 17:03 UTC)
+**Tarih:** 2026-11-13 09:10 UTC
 
 ## Ozet
 - Toplam test: 9
@@ -8,34 +8,28 @@
 
 ## Sonuc
 
-Tum testler basarisiz oldu. 3 farkli tarayici (Chromium, Firefox, WebKit) uzerinde 3 test senaryosu calistirildi ve hepsi ayni hatayla karsilasti.
+Tum testler basarisiz oldu. 3 test senaryosu (should load successfully, should have a heading, should have a login button) 3 tarayicida da (Chromium, Firefox, WebKit) calismadi.
 
-### Hata Ozeti
-
-**Hata:** Tarayici yuklu degil — `npx playwright install` komutu calistirilmamis.
+### Hata Mesaji
+Tum hatalarda ayni sorun: tarayici calistirilabilir dosyasi bulunamadi.
 
 ```
 Error: browserType.launch: Executable doesn't exist at
 /home/runner/.cache/ms-playwright/chromium_headless_shell-1223/...
 ```
 
-Her test 3 kez denendi (retry: 2) ve hepsi ayni hatayı verdi.
-
-### Basarisiz Testler
-| Test | Chromium | Firefox | WebKit |
-|------|----------|---------|--------|
-| should load successfully   | FAIL | FAIL | FAIL |
-| should have a heading      | FAIL | FAIL | FAIL |
-| should have a login button | FAIL | FAIL | FAIL |
-
 ### Olasi Sebep
+**GitHub Actions workflow'unda `npx playwright install` adimi eksik.** Playwright 1.60.0 surum guncellenmesi sonrasi yeni tarayici ikili dosyalari indirilmemis. Testler calistirma oncesinde `npx playwright install --with-deps` komutu calistirilmali.
 
-GitHub Actions workflow dosyasinda `npx playwright install --with-deps` adimi eksik. Playwright surumu guncellenmis olabilir ve yeni surum icin tarayici binary'leri yeniden indirilmesi gerekiyor. Bu bir site sorunu degil, CI yapilandirma sorunudur.
+Ozet: Site down degil, selector sorunu yok. Altyapi/CI yapilandirma sorunu. Workflow dosyasina `npx playwright install` eklenmesi gerekiyor.
 
-### Onerilecek Duzeltme
+### Etkilenen Testler
+- Homepage > should load successfully (Chromium, Firefox, WebKit)
+- Homepage > should have a heading (Chromium, Firefox, WebKit)
+- Homepage > should have a login button (Chromium, Firefox, WebKit)
 
-`.github/workflows/` altindaki workflow dosyasina su adim eklenebilir:
-
+### Duzeltme Onerisi
+`.github/workflows/` klasoründeki test workflow dosyasına `npx playwright install --with-deps` adimi eklenmelidir:
 ```yaml
 - name: Install Playwright browsers
   run: npx playwright install --with-deps
