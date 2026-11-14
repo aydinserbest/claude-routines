@@ -1,5 +1,5 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-11-13 09:10 UTC
+**Tarih:** 2026-11-14 09:14 UTC
 
 ## Ozet
 - Toplam test: 9
@@ -8,28 +8,21 @@
 
 ## Sonuc
 
-Tum testler basarisiz oldu. 3 test senaryosu (should load successfully, should have a heading, should have a login button) 3 tarayicida da (Chromium, Firefox, WebKit) calismadi.
+Tum testler basarisiz oldu. 3 farkli tarayicide (Chromium, Firefox, WebKit) ayni hata tekrarlandi.
 
-### Hata Mesaji
-Tum hatalarda ayni sorun: tarayici calistirilabilir dosyasi bulunamadi.
+**Hata:** Playwright tarayici yuklu degil — calistirilamadi.
 
-```
-Error: browserType.launch: Executable doesn't exist at
-/home/runner/.cache/ms-playwright/chromium_headless_shell-1223/...
-```
+**Hata mesaji (Turkce):**  
+Playwright'in beklettigi tarayici dosyalari GitHub Actions ortaminda bulunamadi.  
+Chromium icin: `chrome-headless-shell` yok  
+Firefox icin: `firefox` yok  
+WebKit icin: `pw_run.sh` yok
 
-### Olasi Sebep
-**GitHub Actions workflow'unda `npx playwright install` adimi eksik.** Playwright 1.60.0 surum guncellenmesi sonrasi yeni tarayici ikili dosyalari indirilmemis. Testler calistirma oncesinde `npx playwright install --with-deps` komutu calistirilmali.
+**Olasi sebep:**  
+GitHub Actions workflow dosyasinda `npx playwright install` adimi eksik veya atlanmis. Playwright yeni yuklendikten/guncellendikten sonra tarayici binary'lerini indirmek icin bu komutun calistirilmasi gerekiyor. Workflow'a `npx playwright install --with-deps` eklenmesi sorunu cozecektir.
 
-Ozet: Site down degil, selector sorunu yok. Altyapi/CI yapilandirma sorunu. Workflow dosyasina `npx playwright install` eklenmesi gerekiyor.
-
-### Etkilenen Testler
-- Homepage > should load successfully (Chromium, Firefox, WebKit)
-- Homepage > should have a heading (Chromium, Firefox, WebKit)
-- Homepage > should have a login button (Chromium, Firefox, WebKit)
-
-### Duzeltme Onerisi
-`.github/workflows/` klasoründeki test workflow dosyasına `npx playwright install --with-deps` adimi eklenmelidir:
+**Onerilen duzeltme:**  
+`.github/workflows/` altindaki workflow dosyasina su satiri ekleyin:
 ```yaml
 - name: Install Playwright browsers
   run: npx playwright install --with-deps
