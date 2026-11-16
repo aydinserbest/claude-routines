@@ -1,5 +1,5 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-11-15 09:14 UTC
+**Tarih:** 2026-11-16 09:23 UTC
 
 ## Ozet
 - Toplam test: 9
@@ -8,35 +8,21 @@
 
 ## Sonuc
 
-Tum testler basarisiz oldu. 3 farkli tarayicide (Chromium, Firefox, WebKit) calistirilan 3 test senaryosunun tamami ayni hatayla sonuclandi.
+Tum testler basarisiz oldu. Hata ayni: tarayici yuklu degil.
 
-**Hata:** Tarayici yuklu degil — Playwright browser yuklemeleri eksik.
+**Hata:** `browserType.launch: Executable doesn't exist`
 
-```
-Error: browserType.launch: Executable doesn't exist at
-/home/runner/.cache/ms-playwright/chromium_headless_shell-1223/...
-```
+**Etkilenen tarayicilar:** Chromium, Firefox, WebKit (her biri 3 test)
 
-**Olasi Sebep:** GitHub Actions workflow dosyasinda `npx playwright install` adimi eksik. Playwright surumu guncellenmis olabilir ve yeni browser binary'leri CI ortaminda indirilmemis. Bu bir site sorunu degil, CI yapilandirma sorunudur.
+**Etkilenen testler:**
+- `should load successfully` (3 tarayici)
+- `should have a heading` (3 tarayici)
+- `should have a login button` (3 tarayici)
 
-**Onerilen Cozum:** `.github/workflows` dosyasindaki workflow'a asagidaki adimi ekle:
+**Olasi sebep:** GitHub Actions ortaminda `npx playwright install` komutu calistirilmamis. Playwright paketi kurulu ama tarayici dosyalari indirilmemis. Bu bir CI yapilandirma sorunudur — workflow dosyasina `npx playwright install --with-deps` adimi eklenmeli.
 
+**Cozum onerisiz:** `.github/workflows/` dosyasindaki workflow'a asagidaki adimi ekle:
 ```yaml
 - name: Install Playwright Browsers
   run: npx playwright install --with-deps
 ```
-
-Bu adim `npm install`'dan sonra, `npx playwright test`'ten once olmalidir.
-
-## Basarisiz Test Listesi
-| Test | Tarayici | Hata |
-|------|----------|------|
-| should load successfully | chromium | Tarayici binary bulunamadi |
-| should have a heading | chromium | Tarayici binary bulunamadi |
-| should have a login button | chromium | Tarayici binary bulunamadi |
-| should load successfully | firefox | Tarayici binary bulunamadi |
-| should have a heading | firefox | Tarayici binary bulunamadi |
-| should have a login button | firefox | Tarayici binary bulunamadi |
-| should load successfully | webkit | Tarayici binary bulunamadi |
-| should have a heading | webkit | Tarayici binary bulunamadi |
-| should have a login button | webkit | Tarayici binary bulunamadi |
