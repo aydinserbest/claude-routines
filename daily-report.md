@@ -1,5 +1,5 @@
 # Gunluk Playwright Test Raporu
-**Tarih:** 2026-11-16 09:23 UTC
+**Tarih:** 2026-11-17 09:17 UTC
 
 ## Ozet
 - Toplam test: 9
@@ -8,21 +8,21 @@
 
 ## Sonuc
 
-Tum testler basarisiz oldu. Hata ayni: tarayici yuklu degil.
+Tum testler basarisiz oldu. 3 farkli test, 3 farkli tarayicida (chromium, firefox, webkit) calistirildi - hepsi ayni hatayla durdu.
 
-**Hata:** `browserType.launch: Executable doesn't exist`
+**Basarisiz testler:**
+- `should load successfully` (chromium, firefox, webkit)
+- `should have a heading` (chromium, firefox, webkit)
+- `should have a login button` (chromium, firefox, webkit)
 
-**Etkilenen tarayicilar:** Chromium, Firefox, WebKit (her biri 3 test)
+**Hata ozeti:**
+Tarayici yuklenemedi. Playwright, test ortaminda (GitHub Actions runner) tarayici dosyalarini bulamiyor:
+- Chromium: `chrome-headless-shell` bulunamadi
+- Firefox: `firefox` calistirilabilir dosyasi bulunamadi
+- WebKit: `pw_run.sh` bulunamadi
 
-**Etkilenen testler:**
-- `should load successfully` (3 tarayici)
-- `should have a heading` (3 tarayici)
-- `should have a login button` (3 tarayici)
+**Olasi sebep:**
+Bu bir altyapi sorunu — testlerin kendisiyle ya da hedef siteyle ilgisi yok. GitHub Actions workflow'unda `npx playwright install` adimi eksik veya calismamis. Playwright surumu guncellendikten sonra tarayicilar yeniden indirilmesi gerekiyor ancak workflow bunu yapmadan testleri calistiriyor.
 
-**Olasi sebep:** GitHub Actions ortaminda `npx playwright install` komutu calistirilmamis. Playwright paketi kurulu ama tarayici dosyalari indirilmemis. Bu bir CI yapilandirma sorunudur — workflow dosyasina `npx playwright install --with-deps` adimi eklenmeli.
-
-**Cozum onerisiz:** `.github/workflows/` dosyasindaki workflow'a asagidaki adimi ekle:
-```yaml
-- name: Install Playwright Browsers
-  run: npx playwright install --with-deps
-```
+**Cozum onerisi:**
+`.github/workflows` dosyasina `npx playwright install --with-deps` adimi eklenmeli.
